@@ -4,8 +4,7 @@
 
 
 
-Entreprise :
-- La Roue Tourne
+Entreprise : La Roue Tourne
 
 Groupe 1B4 : 
 
@@ -64,6 +63,6 @@ L'administrateur peut se connecter pour accéder aux fonctionnalités du site. I
 
 === 3. Ajout au panier
 
-== IV.Spécifications Techniques
+
 
 == Conclusion
