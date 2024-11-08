@@ -25,7 +25,7 @@ Le projet "La Roue Tourne" vise à créer une plateforme de commerce en ligne d�
 == I. Diagramme des cas d'utilisation
 
 === 1. Cas d'utilisation Client
-image::../image/useClient.png[Diagramme de classes métier client, width=700, height=500]
+image::../image/useClient.png[Diagramme de classes métier client, width=800, height=300]
 
 === 2. Cas d'utilisation administrateur
 image::../image/useAdm.png[Diagramme de classes métier client, width=700, height=500]
