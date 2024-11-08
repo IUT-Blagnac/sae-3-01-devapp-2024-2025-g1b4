@@ -1,37 +1,39 @@
 = Documentation de Conception
-== La Roue Tourne
+:toc:
+:toc-title: Sommaire
 
-Groupe 1B-4
+:Entreprise: La Roue Tourne
+:Groupe 1B4
 
- - ABAYEV Amina
- - GADBIN Hugo
- - ARGUELLES Alexian
- - DELAPLAGNE Titouan
+Créé par : 
 
-
-Sommaire :
-
-
+- ABAYEV Amina
+- GADBIN Hugo
+- ARGUELLES Alexian
+- DELAPLAGNE Titouan
 
 
-== Introduction
 
-== Diagramme des Use Cases
 
-== Diagramme de Classe Métier
 
-=== Diagramme de classe métier client
+= Introduction
 
-=== Diagramme de classe métier administrateur
+== I. Diagramme des Use Cases
 
-== Diagrammes de Classes de Conception
+== II.Diagramme de Classe Métier
 
-=== Recherche d’un produit
+=== 1.Diagramme de classe métier client
 
-=== Visualisation d’un produit
+=== 2.Diagramme de classe métier administrateur
 
-=== Ajout au panier
+== III. Diagrammes de Classes de Conception
 
-== Spécifications Techniques
+=== 1. Recherche d’un produit
+
+=== 2. Visualisation d’un produit
+
+=== 3. Ajout au panier
+
+== IV.Spécifications Techniques
 
 == Conclusion
