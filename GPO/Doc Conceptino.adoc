@@ -65,7 +65,7 @@ Un utilisateur peut initier une recherche via la classe Recherche, qui prend en 
 
 
 === 2. Visualisation d’un produit
-image::../image/consul.png[D, width=450, height=500]
+image::../image/consul.png[D, width=430, height=500]
 
 [.text-justify]
 Lorsqu'un Client consulte un produit, il peut voir des informations détaillées sur le produit telles que sa description, son prix, son stock, et son image via la méthode afficherDetails(). Le client peut également consulter les Avis laissés par d'autres clients sur ce produit. Ce diagramme met en évidence les interactions essentielles pour permettre à un client d'explorer les détails d'un produit et de prendre une décision d'achat éclairée.
