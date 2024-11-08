@@ -1,1 +1,30 @@
+= Documentation de Conception
+ABAYEV Amina, GADBIN Hugo, ARGUELLES Alexian, DELAPLAGNE Titouan
+Groupe 1B-4
+:toc: left
+:sectnums:
+
+== La roue tourne
+
+=== Introduction
+
+== I. Diagramme des Use Cases
+
+== II. Diagramme de Classe Métier
+
+=== 1. Diagramme de classe métier client
+
+=== 2. Diagramme de classe métier administrateur
+
+== III. Diagrammes de Classes de Conception
+
+=== 3. Recherche d’un produit
+
+=== 4. Visualisation d’un produit
+
+=== 5. Ajout au panier
+
+== IV. Spécifications Techniques
+
+== Conclusion
 
