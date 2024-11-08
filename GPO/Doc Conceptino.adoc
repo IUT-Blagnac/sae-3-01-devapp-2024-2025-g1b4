@@ -1,6 +1,11 @@
 = Documentation de Conception
+:toc:
+:toc-title: Sommaire
+
+:Groupe 1B-4
+
 ABAYEV Amina, GADBIN Hugo, ARGUELLES Alexian, DELAPLAGNE Titouan
-Groupe 1B-4
+
 
 == La roue tourne
 
