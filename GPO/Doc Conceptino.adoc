@@ -31,10 +31,10 @@ Le projet "La Roue Tourne" vise à créer une plateforme de commerce en ligne d�
 == II.Diagramme de Classe Métier
 
 === 1. Classes métier client
-image::image/diagClassClient.png[Diagramme de classes métier client]
+image::../image/diagClassClient.png[Diagramme de classes métier client, width=700, height=500]
 
 === 2. Classes métier administrateur
-image::image/DiagclassADm.png[Diagramme de classes métier administrateur, width=700, height=500]
+image::../image/DiagclassADm.png[Diagramme de classes métier administrateur, width=700, height=500]
 
 == III. Diagrammes de Classes de Conception
 
