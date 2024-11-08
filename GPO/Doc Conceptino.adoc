@@ -2,6 +2,7 @@
 :toc:
 :toc-title: Sommaire
 
+
 :Entreprise: La Roue Tourne
 :Groupe 1B4
 
@@ -16,7 +17,10 @@ Créé par :
 
 
 
-= Introduction
+== Introduction
+
+Le projet "La Roue Tourne" vise à créer une plateforme de commerce en ligne dédiée aux produits liés au cyclisme, incluant des vélos, accessoires, composants, vêtements et chaussures. Ce site permettra aux utilisateurs de parcourir une large gamme de produits, d'ajouter des articles au panier et de finaliser leurs achats via des méthodes de paiement sécurisées. La présente documentation de conception détaille l'architecture du système, incluant les diagrammes de cas d’utilisation, de classe métier, ainsi que les spécifications techniques, afin de guider le développement du site.
+
 
 == I. Diagramme des Use Cases
 
