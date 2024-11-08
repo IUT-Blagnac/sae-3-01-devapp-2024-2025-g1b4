@@ -18,7 +18,7 @@ Créé par :
 
 
 == Introduction
-
+[.text-justify]
 Le projet "La Roue Tourne" vise à créer une plateforme de commerce en ligne dédiée aux produits liés au cyclisme, incluant des vélos, accessoires, composants, vêtements et chaussures. Ce site permettra aux utilisateurs de parcourir une large gamme de produits, d'ajouter des articles au panier et de finaliser leurs achats via des méthodes de paiement sécurisées. La présente documentation de conception détaille l'architecture du système, incluant les diagrammes de cas d’utilisation, de classe métier, ainsi que les spécifications techniques, afin de guider le développement du site.
 
 
@@ -27,16 +27,28 @@ Le projet "La Roue Tourne" vise à créer une plateforme de commerce en ligne d�
 === 1. Cas d'utilisation Client
 image::../image/useClient.png[Diagramme de classes métier client, width=950, height=300]
 
+[.text-justify]
+Le diagramme ci-dessus décrit les cas d’utilisation du Client sur le site e-commerce de La Roue Tourne. Le Client peut créer un compte ou se connecter, parcourir les produits, ajouter des articles au panier, consulter son panier, payer sa commande, et suivre l'état de celle-ci. Lors de l’étape de paiement, une interaction est établie avec un système externe, le Système de Paiement, pour valider la transaction. Ce diagramme met en évidence les interactions entre l’utilisateur (Client) et le système, ainsi que le rôle d’un acteur externe pour la gestion des paiements. Il fournit une vue d'ensemble des fonctionnalités essentielles du site, ce qui facilite la compréhension du parcours utilisateur et des interactions principales avec le système.
+
 === 2. Cas d'utilisation administrateur
-image::../image/useAdm.png[Diagramme de classes métier client, width=950, height=300]
+image::../image/useAdm.png[Diagramme de classes métier client, width=950, height=250]
+
+[.text-justify]
+Le diagramme ci-dessus décrit les cas d'utilisation de l'administrateur sur le site e-commerce de La Roue Tourne. L'administrateur peut se connecter au site, gérer les produits, les catégories, et les utilisateurs, consulter les avis laissés par les clients, ainsi que visualiser les commandes en cours. Il est ainsi en charge de la gestion globale du site, des articles, et de l'interaction avec les utilisateurs. Ce diagramme met en évidence les différentes fonctions essentielles offertes à l'administrateur pour maintenir et superviser le bon fonctionnement du site. Il illustre également les relations directes entre l’administrateur et les diverses opérations administratives, offrant ainsi une vue d'ensemble claire des tâches clés qu'il peut effectuer pour assurer la gestion efficace du site e-commerce.
 
 == II.Diagramme de Classe Métier
 
-=== 1. Classes métier client
+=== 1. Spécifique au client
 image::../image/diagClassClient.png[Diagramme de classes métier client, width=700, height=500]
 
-=== 2. Classes métier administrateur
+[.text-justify]
+Le diagramme de classe ci-dessus décrit la structure métier du site e-commerce de La Roue Tourne du point de vue du Client. Un Client possède un Panier qui peut contenir un ou plusieurs Produits. Chaque produit appartient à une CategorieProduit, qui peut être une catégorie spécifique telle que Velo, Accessoire, Composant, Vetement ou Chaussure. Le client peut également laisser des Avis sur les produits qu'il a achetés et effectuer un Paiement pour ses commandes.
+
+=== 2. Spécifique à l'administrateur
 image::../image/DiagclassADm.png[Diagramme de classes métier administrateur, width=700, height=500]
+
+[.text-justify]
+
 
 == III. Diagrammes de Classes de Conception
 
