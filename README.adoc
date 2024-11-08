@@ -52,9 +52,10 @@ toc::[]
 
 Projet est réalisé par::
 
-- https://github.com/janeDoe[Jane Doe]
-- https://github.com/johnSmith[John Smith]
-...
+- ABAYEV Amina
+- ARGUELLES Alexian
+- GADBIN Hugo
+- DELAPLAGNE Titouan
 
 Tuteur/tutrice enseignant(e) de l'équipe:: mailto:jean-michel.bruel@univ-tlse2.fr[JMB]
 
