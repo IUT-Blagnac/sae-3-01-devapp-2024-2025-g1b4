@@ -32,7 +32,7 @@ image::../image/useClient.png[Diagramme de classes métier client du site La Rou
 Le Client peut créer un compte ou se connecter, parcourir les produits, ajouter des articles au panier, consulter son panier, payer sa commande, et suivre l'état de celle-ci. Lors de l’étape de paiement, une interaction est établie avec un système externe, le Système de Paiement, pour valider la transaction. Ce diagramme met en évidence les interactions entre l’utilisateur (Client) et le système, ainsi que le rôle d’un acteur externe pour la gestion des paiements. Il fournit une vue d'ensemble des fonctionnalités essentielles du site, ce qui facilite la compréhension du parcours utilisateur et des interactions principales avec le système.
 
 === 2. Cas d'utilisation administrateur
-image::../image/useAdm.png[Diagramme de classes métier client du site La Roue Tourne, width=950, height=250]
+image::../image/useAdm.png[Diagramme de classes métier client du site La Roue Tourne, width=1000, height=250]
 
 
 [.text-justify]
@@ -58,11 +58,20 @@ L'administrateur peut se connecter pour accéder aux fonctionnalités du site. I
 == III. Diagrammes de Classes de Conception
 
 === 1. Recherche d’un produit
+image::../image/recherche.png[D, width=700, height=500]
+
+[.text-justify]
+Un utilisateur peut initier une recherche via la classe Recherche, qui prend en entrée des mots-clés et retourne une liste de Produits correspondants. Chaque Produit peut appartenir à une CategorieProduit spécifique (comme Vélos, Accessoires, etc.), et peut aussi recevoir plusieurs Avis de la part des clients. La recherche peut être filtrée par catégorie de produit, permettant ainsi une recherche plus ciblée. Ce diagramme illustre les interactions entre les classes et montre comment un client peut rechercher, filtrer, et consulter les produits disponibles sur le site.
+
 
 === 2. Visualisation d’un produit
+image::../image/visualisation.png[D, width=700, height=500]
+
+[.text-justify]
 
 === 3. Ajout au panier
 
-
+[.text-justify]
 
 == Conclusion
+[.text-justify]
