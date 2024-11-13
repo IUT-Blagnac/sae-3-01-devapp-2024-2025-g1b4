@@ -1,6 +1,8 @@
 import configparser
 import paho.mqtt.client as mqtt
 import json
+import time
+import os
 
 config = configparser.ConfigParser()
 config.read('config.ini')
@@ -13,16 +15,33 @@ salles = set(config['donnees']['salles'].split(','))
 donnees = config['donnees']['donnees'].split(',')
 
 seuil = {}
+
+valeursFinal = {}
+
+
 if (len(config['seuil']) != len(donnees)):
     print("[WARNING] Seuil manquant dans le fichier de configuration")
 else:
     for do in donnees:
         seuil[do] = config['seuil'][do].split(',')
 
+def recover_data(tSleep = 3):
+    while True:
+        print("-------------------------")
+        print("VALEURS -> ", valeursFinal)
+        print("-------------------------")
+
+        time.sleep(tSleep)
+
 def on_connect(client, userdata, flags, rc):
     print(f"Connecté avec le code de résultat {rc}")
-    for topic in topics:
-        client.subscribe(topic.strip())
+
+    pid = os.fork()
+    if pid:
+        for topic in topics:
+            client.subscribe(topic.strip())
+    else:
+        recover_data(5)
 
 def on_message(client, userdata, msg):
     data = json.loads(msg.payload.decode())
@@ -31,12 +50,15 @@ def on_message(client, userdata, msg):
         print("----------------------------------")
         print("Solar panel")
         print(f"{data["lastUpdateTime"]}\nEnergie : {data["currentPower"]["power"]}")
+        valeursFinal["solarpanel"] = data["currentPower"]["power"]
     elif (newMsg == 'AM107'):
         if (data[1]["room"] in salles):
             print("----------------------------------")
             print(f"Salle -> {data[1]["room"]}")
+            if data[1]["room"] not in valeursFinal:
+                valeursFinal[data[1]["room"]] = {}
             for do in donnees:
-                print(f"{do} : {data[0][do]}")
+                valeursFinal[data[1]["room"]][do] = float(data[0][do])
                 if float(data[0][do]) <= float(seuil[do][0]):
                     print(f"[ALERT] Seuil minimum dépassé -> {do} : {data[0][do]}")
                 elif float(data[0][do]) >= float(seuil[do][1]):
