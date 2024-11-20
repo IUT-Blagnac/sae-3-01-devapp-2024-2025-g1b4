@@ -23,7 +23,8 @@ Tuteur/tutrice enseignant(e) de l'équipe:: mailto:jean-michel.bruel@univ-tlse2.
 ...
 
 == Backlog Produit : La Roue Tourne
-...
+* Chaque US sont assigné à une personne et à un Sprint. Ils sont consultable https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues[ici], et pour avoir les détails sur une US, il faut dérouler le petit menu *Projects* sur la droite.
+
 
 == Documentation
 - https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/blob/master/.github/GPO/Doc%20Conception.adoc[Document de conception]
