@@ -32,7 +32,7 @@ image::../image/UseCase.png[Diagramme de classes métier client du site La Roue 
 Le Client peut créer un compte ou se connecter, parcourir les produits, ajouter des articles au panier, consulter son panier, payer sa commande, et suivre l'état de celle-ci. Lors de l’étape de paiement, une interaction est établie avec un système externe, le Système de Paiement, pour valider la transaction. Ce diagramme met en évidence les interactions entre l’utilisateur (Client) et le système, ainsi que le rôle d’un acteur externe pour la gestion des paiements. Il fournit une vue d'ensemble des fonctionnalités essentielles du site, ce qui facilite la compréhension du parcours utilisateur et des interactions principales avec le système.
 
 === 2. Cas d'utilisation administrateur
-image::../image/UseCaseAdmin.png[Diagramme de classes métier client du site La Roue Tourne, width=1000, height=250]
+image::../image/UseCaseAdmin.png[Diagramme de classes métier client du site La Roue Tourne]
 
 
 [.text-justify]
