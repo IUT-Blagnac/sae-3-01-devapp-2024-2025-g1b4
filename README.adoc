@@ -23,11 +23,51 @@ Tuteur/tutrice enseignant(e) de l'équipe:: mailto:jean-michel.bruel@univ-tlse2.
 ...
 
 == Backlog Produit : La Roue Tourne
-* Chaque US sont assigné à une personne et à un Sprint. Elles sont consultable https://github.com/orgs/IUT-Blagnac/projects/267/views/2?visibleFields=%5B%22Title%22%2C%22Assignees%22%2C145884763%2C145884766%5D[ici], et pour avoir les détails sur une US, il faut dérouler le petit menu *Projects* sur la droite.
+* Chaque US sont assigné à une personne et à un Sprint. Elles sont consultable https://github.com/orgs/IUT-Blagnac/projects/267/views/2?visibleFields=%5B%22Title%22%2C%22Assignees%22%2C145884763%2C145884766%5D[ici], et pour avoir les détails sur une US, Clickez sur le nom de cette dernière.
+
+
+
+
+
+[cols="1,1"]
+|===
+| Nom de l'issue | Lien
+
+| [US]: Filtrer les produits par marques | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Voir le stock disponible | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Définir les paliers de stocks par produit | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Choix du paiement | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Filtrer les produits | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Trier par catégorie | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Ajouter un nouvel article | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Sélection de couleur du produit | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Avis utilisateurs | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Implémentations d'offres en lot | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Filtrer par prix | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Consulter sans acheter produit en rupture | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Partager un avis | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Créer un compte utilisateur | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Obligation de créer un compte avant de pouvoir procéder au paiement | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Rester connecter | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Se déconnecter | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Créer un compte administrateur | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Modifier les informations d'un produit | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Supprimer un produit | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Consulter un produit | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Consulter la liste des produits | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Naviguer facilement par un menu | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Carousel sur la page d'accueil | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Carte des magasins | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Se connecter | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+|===
+
+
 
 
 == Documentation
 - https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/blob/master/.github/GPO/Doc%20Conception.adoc[Document de conception]
+- Documentation utilisateur(Semaine 2)
+- Cahier de recettes(Semaine 51)
 
 == Réalisations
 ...
