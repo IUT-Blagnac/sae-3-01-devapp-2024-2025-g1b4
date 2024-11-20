@@ -24,30 +24,32 @@ Le projet "La Roue Tourne" vise à créer une plateforme de commerce en ligne d�
 
 == I. Diagramme des cas d'utilisation
 
-=== 1. Cas d'utilisation Client
+=== I.1. Cas d'utilisation Client
 image::../image/UseCase.png[Diagramme de classes métier client du site La Roue Tourne]
 
 
 [.text-justify]
 Le Client peut créer un compte ou se connecter, parcourir les produits, ajouter des articles au panier, consulter son panier, payer sa commande, et suivre l'état de celle-ci. Lors de l’étape de paiement, une interaction est établie avec un système externe, le Système de Paiement, pour valider la transaction. Ce diagramme met en évidence les interactions entre l’utilisateur (Client) et le système, ainsi que le rôle d’un acteur externe pour la gestion des paiements. Il fournit une vue d'ensemble des fonctionnalités essentielles du site, ce qui facilite la compréhension du parcours utilisateur et des interactions principales avec le système.
 
-=== 2. Cas d'utilisation administrateur
+=== I.2. Cas d'utilisation administrateur
 image::../image/UseCaseAdmin.png[Diagramme de classes métier client du site La Roue Tourne]
 
 
 [.text-justify]
 L'administrateur peut se connecter au site, gérer les produits, les catégories, et les utilisateurs, consulter les avis laissés par les clients, ainsi que visualiser les commandes en cours. Il est ainsi en charge de la gestion globale du site, des articles, et de l'interaction avec les utilisateurs. Ce diagramme met en évidence les différentes fonctions essentielles offertes à l'administrateur pour maintenir et superviser le bon fonctionnement du site. Il illustre également les relations directes entre l’administrateur et les diverses opérations administratives, offrant ainsi une vue d'ensemble claire des tâches clés qu'il peut effectuer pour assurer la gestion efficace du site e-commerce.
 
+=== I.3. Diagramme séquence
+
 == II.Diagramme de Classe Métier
 
-=== 1. Spécifique au client
+=== II.1. Spécifique au client
 image::../image/DiagclassADm.png[Diagramme de classes métier client du site La Roue Tourne, width=700, height=500]
 
 
 [.text-justify]
 Un Client possède un Panier qui peut contenir un ou plusieurs Produits. Chaque produit appartient à une CategorieProduit, qui peut être une catégorie spécifique telle que Velo, Accessoire, Composant, Vetement ou Chaussure. Le client peut également laisser des Avis sur les produits qu'il a achetés et effectuer un Paiement pour ses commandes.
 
-=== 2. Spécifique à l'administrateur
+=== II.2. Spécifique à l'administrateur
 image::../image/diagClassClient.png[Diagramme de classes métier administrateur du site La Roue Tourne, width=700, height=500]
 
 
@@ -57,20 +59,20 @@ L'administrateur peut se connecter pour accéder aux fonctionnalités du site. I
 
 == III. Diagrammes de Classes de Conception
 
-=== 1. Recherche d’un produit
+=== III.1. Recherche d’un produit
 image::../image/recherchee.png[D, width=500, height=550]
 
 [.text-justify]
 Un utilisateur peut initier une recherche via la classe Recherche, qui prend en entrée des mots-clés et retourne une liste de Produits correspondants. Chaque Produit peut appartenir à une CategorieProduit spécifique (comme Vélos, Accessoires, etc.), et peut aussi recevoir plusieurs Avis de la part des clients. La recherche peut être filtrée par catégorie de produit, permettant ainsi une recherche plus ciblée. Ce diagramme illustre les interactions entre les classes et montre comment un client peut rechercher, filtrer, et consulter les produits disponibles sur le site.
 
 
-=== 2. Visualisation d’un produit
+=== III.2. Visualisation d’un produit
 image::../image/consul.png[D, width=430, height=500]
 
 [.text-justify]
 Lorsqu'un Client consulte un produit, il peut voir des informations détaillées sur le produit telles que sa description, son prix, son stock, et son image via la méthode afficherDetails(). Le client peut également consulter les Avis laissés par d'autres clients sur ce produit. Ce diagramme met en évidence les interactions essentielles pour permettre à un client d'explorer les détails d'un produit et de prendre une décision d'achat éclairée.
 
-=== 3. Ajout au panier
+=== III.3. Ajout au panier
 image::../image/panier.png[D, width=450, height=500]
 
 [.text-justify]
