@@ -38,22 +38,22 @@ image::../image/UseCaseAdmin.png[Diagramme de classes métier client du site La 
 [.text-justify]
 L'administrateur peut se connecter au site, gérer les produits, les catégories, et les utilisateurs, consulter les avis laissés par les clients, ainsi que visualiser les commandes en cours. Il est ainsi en charge de la gestion globale du site, des articles, et de l'interaction avec les utilisateurs. Ce diagramme met en évidence les différentes fonctions essentielles offertes à l'administrateur pour maintenir et superviser le bon fonctionnement du site. Il illustre également les relations directes entre l’administrateur et les diverses opérations administratives, offrant ainsi une vue d'ensemble claire des tâches clés qu'il peut effectuer pour assurer la gestion efficace du site e-commerce.
 
-=== I.3. Diagramme séquence
+=== I.3. Diagramme séquence système
 
 === I.3.1. Gestion du compte
-image::../image/GestionCompte.png[]
+image::../image/DSSGestionCompte.png[]
 
 === I.3.2. Navigation et filtres
-image::../image/NavFiltres.png[]
+image::../image/DSSNavFiltres.png[]
 
 === I.3.3. Consultation des produits
-image::../image/ConsultationProduits.png[]
+image::../image/DSSConsultationProduits.png[]
 
 === I.3.4. Achat
-image::../image/Achat.png[]
+image::../image/DSSAchat.png[]
 
 === I.3.5. Avis
-image::../image/Avis.png[]
+image::../image/DSSAvis.png[]
 
 
 == II.Diagramme de Classe Métier
