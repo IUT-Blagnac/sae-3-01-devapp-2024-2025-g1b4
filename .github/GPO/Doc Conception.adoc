@@ -40,6 +40,22 @@ L'administrateur peut se connecter au site, gérer les produits, les catégories
 
 === I.3. Diagramme séquence
 
+=== I.3.1. Gestion du compte
+image::../image/GestionCompte.png
+
+=== I.3.2. Navigation et filtres
+image::../image/NavFiltres.png
+
+=== I.3.3. Consultation des produits
+image::../image/ConsultationProduits.png
+
+=== I.3.4. Achat
+image::../image/Achat.png
+
+=== I.3.5. Avis
+image::../image/Avis.png
+
+
 == II.Diagramme de Classe Métier
 
 === II.1. Spécifique au client
