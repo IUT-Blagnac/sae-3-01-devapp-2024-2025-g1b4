@@ -19,7 +19,7 @@ Tuteur/tutrice enseignant(e) de l'équipe:: mailto:jean-michel.bruel@univ-tlse2.
 // *** `us.yml` => Exemple de template pour les User Stories
 // *** `bug.yml` => Exemple de template pour les issues de bug report
 
-== Context du projet
+== Contexte du projet
 ...
 
 == Backlog Produit : La Roue Tourne
