@@ -1,7 +1,7 @@
 = Documentation de Conception
 :toc:
 :toc-title: Sommaire
-
+:toclevels: 4
 
 
 Entreprise : La Roue Tourne
@@ -22,14 +22,12 @@ Groupe 1B4 :
 Le projet "La Roue Tourne" vise à créer une plateforme de commerce en ligne dédiée aux produits liés au cyclisme, incluant des vélos, accessoires, composants, vêtements et chaussures. Ce site permettra aux utilisateurs de parcourir une large gamme de produits, d'ajouter des articles au panier et de finaliser leurs achats via des méthodes de paiement sécurisées. La présente documentation de conception détaille l'architecture du système, incluant les diagrammes de cas d’utilisation, de classe métier, ainsi que les spécifications techniques, afin de guider le développement du site.
 
 
-== I. Diagramme des cas d'utilisation
+== I. Diagrammes des cas d'utilisation
 
 === I.1. Cas d'utilisation Client
 image::../image/UseCase.png[Diagramme de classes métier client du site La Roue Tourne]
 
 Le UseCase du client peut-être découpé en 4 catégories:
-
-= Use Case Description
 
 . Gestion du compte, 
 les cas liés à la gestion du compte du client, permettant le passage et le suivi des commandes.
@@ -110,19 +108,19 @@ les cas liés à la gestion des niveaux de stock.
 
 === I.3. Diagramme séquence système
 
-=== I.3.1. Gestion du compte
+==== I.3.1. Gestion du compte
 image::../image/DSSGestionCompte.png[]
 
-=== I.3.2. Navigation et filtres
+==== I.3.2. Navigation et filtres
 image::../image/DSSNavFiltres.png[]
 
-=== I.3.3. Consultation des produits
+==== I.3.3. Consultation des produits
 image::../image/DSSConsultationProduits.png[]
 
-=== I.3.4. Achat
+==== I.3.4. Achat
 image::../image/DSSAchat.png[]
 
-=== I.3.5. Avis
+==== I.3.5. Avis
 image::../image/DSSAvis.png[]
 
 
