@@ -40,6 +40,6 @@ public class ConfigForm {
 
     public void openRoomPicker() {
         RoomPicker rp=new RoomPicker(this.configStage);
-        rp.doRoomPickerDialog();
+        System.out.println(rp.doRoomPickerDialog());
     }
 }

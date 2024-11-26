@@ -8,9 +8,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.*;
-public class JsonInteract {
 
-    public static String
+public class JsonInteract {
 
     private JSONObject appData;
 
@@ -21,8 +20,7 @@ public class JsonInteract {
             String content = Files.readString(Paths.get("./appData.json"));
             this.appData=new JSONObject(content);
             JSONArray jsArray=this.appData.getJSONArray("roomNames");
-            this.alRoomData=jsArray.toList().stream().map(Object::toString).toList();
-
+            this.alRoomData=new ArrayList<>(jsArray.toList().stream().map(Object::toString).toList());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -40,7 +38,7 @@ public class JsonInteract {
         this.appData.put("roomNames",this.alRoomData);
 
         try {
-            File file=new File("JsonFile.json");
+            File file=new File("appData.json");
             FileWriter fileWriter = new FileWriter(file);
 
 
