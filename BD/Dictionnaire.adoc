@@ -4,10 +4,8 @@
 
 | **Categorie**        | idCategorie           | INT                | Identifiant unique de la catégorie            | PRIMARY KEY, AUTO_INCREMENT                                    | NON 
 |                      | name                  | VARCHAR(50)        | Nom de la catégorie                           | UNIQUE                                                        | NON 
-|                      | idCategorieMère       | INT                | Identifiant de la catégorie mère              | FOREIGN KEY (`Categorie.idCategorie`)                         | OUI 
 
 | **Produit**          | idProduit             | INT                | Identifiant unique du produit                 | PRIMARY KEY, AUTO_INCREMENT                                    | NON 
-|                      | Categorie_idCategorie | INT                | Identifiant de la catégorie                   | FOREIGN KEY (`Categorie.idCategorie`)                         | NON 
 |                      | prix                  | DOUBLE             | Prix du produit                               | Aucun                                                         | OUI 
 |                      | nom                   | VARCHAR(45)        | Nom du produit                                | Aucun                                                         | OUI 
 |                      | Description           | VARCHAR(256)       | Description du produit                        | Aucun                                                         | OUI 
@@ -21,13 +19,10 @@
 |                      | email                 | VARCHAR(100)       | Adresse e-mail                                | Aucun                                                         | OUI 
 |                      | password              | VARCHAR(32)        | Mot de passe                                  | Aucun                                                         | NON 
 |                      | role                  | VARCHAR(10)        | Rôle de l'utilisateur                         | Aucun                                                         | NON 
-|                      | numTel                | CHAR(10)           | Numéro de téléphone                           | Aucun                                                         | NON 
-|                      | Adresse_idAdresse     | INT                | Identifiant de l'adresse                      | FOREIGN KEY (`Adresse.idAdresse`)                             | NON 
+|                      | numTel                | CHAR(10)           | Numéro de téléphone                           | Aucun       
+| NON 
 
 | **Commande**         | idCommande            | INT                | Identifiant unique de la commande             | PRIMARY KEY, AUTO_INCREMENT                                    | NON 
-|                      | Client_username       | VARCHAR(16)        | Nom d'utilisateur du client                   | FOREIGN KEY (`Client.username`)                               | NON 
-|                      | Adresse_idAdresse     | INT                | Adresse de livraison                          | FOREIGN KEY (`Adresse.idAdresse`)                             | NON 
-|                      | PointRelais_idPointRelais | INT             | Identifiant du point relais                   | FOREIGN KEY (`PointRelais.idPointRelais`)                     | NON 
 |                      | statut                | VARCHAR(45)        | Statut de la commande                         | DEFAULT 'En Cours'                                            | OUI 
 
 | **PointRelais**      | idPointRelais         | INT                | Identifiant unique du point relais            | PRIMARY KEY, AUTO_INCREMENT                                    | NON 
