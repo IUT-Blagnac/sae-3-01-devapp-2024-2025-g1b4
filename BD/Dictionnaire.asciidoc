@@ -1,0 +1,36 @@
+
+
+---
+
+| **Table**           | **Colonne**            | **Type**           | **Description**                                | **Contraintes**                                                | **Nullable** |
+|----------------------|------------------------|---------------------|-----------------------------------------------|----------------------------------------------------------------|--------------|
+| **Categorie**        | idCategorie           | INT                | Identifiant unique de la catégorie            | PRIMARY KEY, AUTO_INCREMENT                                    | NON          |
+|                      | name                  | VARCHAR(50)        | Nom de la catégorie                           | UNIQUE                                                        | NON          |
+|                      | idCategorieMère       | INT                | Identifiant de la catégorie mère              | FOREIGN KEY (`Categorie.idCategorie`)                         | OUI          |
+| **Produit**          | idProduit             | INT                | Identifiant unique du produit                 | PRIMARY KEY, AUTO_INCREMENT                                    | NON          |
+|                      | Categorie_idCategorie | INT                | Identifiant de la catégorie                   | FOREIGN KEY (`Categorie.idCategorie`)                         | NON          |
+|                      | prix                  | DOUBLE             | Prix du produit                               | Aucun                                                         | OUI          |
+|                      | nom                   | VARCHAR(45)        | Nom du produit                                | Aucun                                                         | OUI          |
+|                      | Description           | VARCHAR(256)       | Description du produit                        | Aucun                                                         | OUI          |
+| **Adresse**          | idAdresse             | INT                | Identifiant unique de l'adresse               | PRIMARY KEY, AUTO_INCREMENT                                    | NON          |
+|                      | codePostal            | CHAR(5)            | Code postal                                   | Aucun                                                         | OUI          |
+|                      | ville                 | VARCHAR(45)        | Ville                                         | Aucun                                                         | OUI          |
+|                      | adresse               | VARCHAR(80)        | Adresse complète                              | Aucun                                                         | OUI          |
+| **Client**           | username              | VARCHAR(16)        | Nom d'utilisateur unique                      | PRIMARY KEY, UNIQUE                                            | NON          |
+|                      | email                 | VARCHAR(100)       | Adresse e-mail                                | Aucun                                                         | OUI          |
+|                      | password              | VARCHAR(32)        | Mot de passe                                  | Aucun                                                         | NON          |
+|                      | role                  | VARCHAR(10)        | Rôle de l'utilisateur                         | Aucun                                                         | NON          |
+|                      | numTel                | CHAR(10)           | Numéro de téléphone                           | Aucun                                                         | NON          |
+|                      | Adresse_idAdresse     | INT                | Identifiant de l'adresse                      | FOREIGN KEY (`Adresse.idAdresse`)                             | NON          |
+| **Commande**         | idCommande            | INT                | Identifiant unique de la commande             | PRIMARY KEY, AUTO_INCREMENT                                    | NON          |
+|                      | Client_username       | VARCHAR(16)        | Nom d'utilisateur du client                   | FOREIGN KEY (`Client.username`)                               | NON          |
+|                      | Adresse_idAdresse     | INT                | Adresse de livraison                          | FOREIGN KEY (`Adresse.idAdresse`)                             | NON          |
+|                      | PointRelais_idPointRelais | INT             | Identifiant du point relais                   | FOREIGN KEY (`PointRelais.idPointRelais`)                     | NON          |
+|                      | statut                | VARCHAR(45)        | Statut de la commande                         | DEFAULT 'En Cours'                                            | OUI          |
+| **PointRelais**      | idPointRelais         | INT                | Identifiant unique du point relais            | PRIMARY KEY, AUTO_INCREMENT                                    | NON          |
+|                      | nomRelais             | VARCHAR(45)        | Nom du point relais                           | Aucun                                                         | OUI          |
+|                      | adresseRelais         | VARCHAR(45)        | Adresse du point relais                       | Aucun                                                         | OUI          |
+
+---
+
+Ce format contient tout : les types de données, les contraintes et la spécification "nullable". 😊
