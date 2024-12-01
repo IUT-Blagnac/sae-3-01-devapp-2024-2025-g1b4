@@ -1,96 +1,76 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=16950856&assignment_repo_type=AssignmentRepo)
-= SAÉ 3.01 2023-2024
-:icons: font
-:models: models
-:experimental:
-:incremental:
-:numbered:
-:toc: macro
-:window: _blank
-:correction!:
-
-// Useful definitions
-:asciidoc: http://www.methods.co.nz/asciidoc[AsciiDoc]
-:icongit: icon:git[]
-:git: http://git-scm.com/[{icongit}]
-:plantuml: https://plantuml.com/fr/[plantUML]
-:vscode: https://code.visualstudio.com/[VS Code]
-
-ifndef::env-github[:icons: font]
-// Specific to GitHub
-ifdef::env-github[]
-:correction:
-:!toc-title:
-:caution-caption: :fire:
-:important-caption: :exclamation:
-:note-caption: :paperclip:
-:tip-caption: :bulb:
-:warning-caption: :warning:
-:icongit: Git
-endif::[]
-
-// /!\ A MODIFIER !!!
-:baseURL: https://github.com/IUT-Blagnac/sae3-01-template
-
-// Tags
-image:{baseURL}/actions/workflows/blank.yml/badge.svg[Bidon] 
-image:{baseURL}/actions/workflows/build.yml/badge.svg[Build] 
-image:{baseURL}/actions/workflows/tests.yml/badge.svg[Tests] 
-image:https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg[License: MPL-2.0, link="https://opensource.org/licenses/MPL-2.0"]
-//---------------------------------------------------------------
-
-TIP: Pensez à mettre à jour les infos dans ce fichier pour que les badges pointent sur les résultats effectifs de vos intégrations continue ou sur la bonne licence logicielle.
-
-WARNING: Ce dépôt présente le projet à développer dans le cadre de la SAÉ 3.01 du BUT1 Informatique de l'IUT de Blagnac.
-
-Ce fichier `README.adoc` (dont vous lisez sûrement le rendu HTML automatiquement effectué par GitHUb), fait partie du dépôt initial cloné à partir du lien GitHub classroom qui vous a été donné en cours (https://classroom.github.com/a/fePVlfpN).
-Vous trouverez le dépôt "template" qui a servi de base ici : https://github.com/IUT-Blagnac/sae3-01-template. En complément du cours Moodle de la SAE 3.01 (cf. <<liensUtiles>>), ce dépôt template vous permet d'accéder à des exemples d'https://github.com/IUT-Blagnac/sae3-01-template/issues[issues], de https://github.com/IUT-Blagnac/sae3-01-template/releases[releases], ou d'autres artefacts à venir.
-
-toc::[]
-
-== Equipe
+= SAE 3.01 DevApp 2024-2025
 
 Projet est réalisé par::
 
-- ABAYEV Amina
-- ARGUELLES Alexian
-- GADBIN Hugo
-- DELAPLAGNE Titouan
+- https://github.com/aminaAbv[ABAYEV Amina] : Product Owner
+- https://github.com/alexian-a[ARGUELLES Alexian] : Scrum Master
+- https://github.com/gadbinhugo[GADBIN Hugo] : Développeur
+- https://github.com/Bob-the-great-the-third[DELAPLAGNE Titouan] : Développeur
 
 Tuteur/tutrice enseignant(e) de l'équipe:: mailto:jean-michel.bruel@univ-tlse2.fr[JMB]
 
-== Contexte général
+// Vous y trouverez des fichiers qui peuvent être supprimés s'ils ne vous sont pas utiles :
 
-TIP: Cette partie de votre `README.adoc` peut être supprimée ou mise ailleurs.
+// - `.gitignore` => un fichier minimaliste des éléments à ne pas pousser en général sur vos dépôts (utiliser la commande // `git add -f` pour forcer l'ajout d'un fichier Jar qui ne bougera plus, pour archive par exemple).
+// - `.github` => le répertoire qui contient des éléments de gestion de projet :
+// ** `workflows` => le repertoire qui contient les actions à lancer à chaque push sur votre repo. 
+// *** `blank.yml` => un exemple bidon mais dont vous pourrez vérifier l’exécution correcte (1er tag)
+// ** `ISSUE_TEMPLATE` => le repertoire qui contient quelques templates pour vos issues.
+// *** `us.yml` => Exemple de template pour les User Stories
+// *** `bug.yml` => Exemple de template pour les issues de bug report
 
-=== Dépôt initial
+== Contexte du projet
+...
 
-Ce dépôt initial a été créé pour que tous les groupes de 2ème année aient les mêmes informations de départ.
+== Backlog Produit : La Roue Tourne
+* Chaque US sont assigné à une personne et à un Sprint. Elles sont consultable https://github.com/orgs/IUT-Blagnac/projects/267/views/2?visibleFields=%5B%22Title%22%2C%22Assignees%22%2C145884763%2C145884766%5D[ici], et pour avoir les détails sur une US, Clickez sur le nom de cette dernière.
 
-Vous y trouverez des fichiers qui peuvent être supprimés s'ils ne vous sont pas utiles :
 
-- `.gitignore` => un fichier minimaliste des éléments à ne pas pousser en général sur vos dépôts (utiliser la commande `git add -f` pour forcer l'ajout d'un fichier Jar qui ne bougera plus, pour archive par exemple).
-- `.github` => le répertoire qui contient des éléments de gestion de projet :
-** `workflows` => le repertoire qui contient les actions à lancer à chaque push sur votre repo. 
-*** `blank.yml` => un exemple bidon mais dont vous pourrez vérifier l’exécution correcte (1er tag)
-** `ISSUE_TEMPLATE` => le repertoire qui contient quelques templates pour vos issues.
-*** `us.yml` => Exemple de template pour les User Stories
-*** `bug.yml` => Exemple de template pour les issues de bug report
 
-TIP: Adaptez ces fichiers à votre projet et à votre organisation. Et inspirez-vous en pour en ajouter.
 
-[[liensUtiles]]
-=== Liens utiles
 
-- Le https://webetud.iut-blagnac.fr/course/view.php?id=841[cours Moodle] sur la SAE
-- Le dépôt https://github.com/IUT-Blagnac/sae3-01-template[template] qui sert de base à tous les dépôts étudiants.
-- Le lien https://classroom.github.com/a/OUF7gxEa[classroom] si besoin.
+[cols="1,1"]
+|===
+| Nom de l'issue | Lien
 
-TIP: Pensez à utiliser les salons Discord dédiés pour poser vos questions.
+| [US]: Filtrer les produits par marques | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Voir le stock disponible | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Définir les paliers de stocks par produit | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Choix du paiement | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Filtrer les produits | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Trier par catégorie | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Ajouter un nouvel article | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Sélection de couleur du produit | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Avis utilisateurs | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Implémentations d'offres en lot | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Filtrer par prix | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Consulter sans acheter produit en rupture | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Partager un avis | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Créer un compte utilisateur | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Obligation de créer un compte avant de pouvoir procéder au paiement | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Rester connecter | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Se déconnecter | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Créer un compte administrateur | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Modifier les informations d'un produit | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Supprimer un produit | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Consulter un produit | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Consulter la liste des produits | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Naviguer facilement par un menu | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Carousel sur la page d'accueil | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Carte des magasins | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+| [US]: Se connecter | https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/issues/{counter:num}
+|===
 
-== Réalisations 
 
-TIP: Mettez ici toutes les informations nécessaire à l'utilisation de votre dépôt (comment on installe votre application, où sont les docs, etc.)
+
+
+== Documentation
+- https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/blob/master/.github/GPO/Doc%20Conception.adoc[Document de conception]
+- Documentation utilisateur(Semaine 2)
+- Cahier de recettes(Semaine 51)
+
+== Réalisations
+...
 
 == Gestion de projet & Qualité
 
@@ -107,14 +87,18 @@ De plus ce fichier `README.adoc` devra être à jour des informations suivantes 
 - Indicateurs de qualité du code (dette technique)
 - ... tout autre élément que vous jugerez utiles pour démontrer la qualité de votre application
 
-Voici un exemple d'évaluation :
+=== Evaluation bi-hebdomadaire des sprints  
 
 ifdef::env-github[]
-image:https://docs.google.com/spreadsheets/d/e/2PACX-1vTc3HJJ9iSI4aa2I9a567wX1AUEmgGrQsPl7tHGSAJ_Z-lzWXwYhlhcVIhh5vCJxoxHXYKjSLetP6NS/pubchart?oid=1850914734&amp;format=image[link=https://docs.google.com/spreadsheets/d/e/2PACX-1vTc3HJJ9iSI4aa2I9a567wX1AUEmgGrQsPl7tHGSAJ_Z-lzWXwYhlhcVIhh5vCJxoxHXYKjSLetP6NS/pubchart?oid=1850914734&amp;format=image]
+image:https://docs.google.com/spreadsheets/d/e/2PACX-1vSACcYeKaH_ims3faegSLAFJ9s5_Kd9Fbyi4ODEb8BTN5OnUXWenVGhlVPo84yQDhTkTj3f9nXiluh1/pubchart?oid=1097914647&amp;format=image[link=https://docs.google.com/spreadsheets/d/e/2PACX-1vSACcYeKaH_ims3faegSLAFJ9s5_Kd9Fbyi4ODEb8BTN5OnUXWenVGhlVPo84yQDhTkTj3f9nXiluh1/pubchart?oid=1097914647&amp;format=image]
 endif::[]
 
 ifndef::env-github[]
 ++++
-<iframe width="786" height="430" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTc3HJJ9iSI4aa2I9a567wX1AUEmgGrQsPl7tHGSAJ_Z-lzWXwYhlhcVIhh5vCJxoxHXYKjSLetP6NS/pubchart?oid=1850914734&amp;format=image"></iframe>
+<iframe width="786" height="430" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSACcYeKaH_ims3faegSLAFJ9s5_Kd9Fbyi4ODEb8BTN5OnUXWenVGhlVPo84yQDhTkTj3f9nXiluh1/pubchart?oid=1097914647&amp;format=interactive"></iframe>
 ++++
 endif::[]
+
+==== initialisation du dépôt:
+Il faut retravailler le readme et enlever les consignes. Je n'ai aucun lien actif dans le readme !! Pas de documentation (pas même la conception), pas de cahier de recettes, aucune doc initialisée ! J'ai les US qui doivent être eclatée en issues/taches dans le sprint. En scrum on ne prévoit que le sprint à venir ! Venir me voir pour des précisions ou demander au groupe 2. Pour l'instant c'est très insuffisant. Il manque les rôles dans l'équipe.
+

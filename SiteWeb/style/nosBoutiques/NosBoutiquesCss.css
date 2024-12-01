@@ -1,0 +1,95 @@
+body{
+    background-color: #e4e9ee;
+    overflow: hidden;
+}
+
+
+
+.carteInteractive{
+    position: relative;
+    background-image:url("Map France.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #e4e9ee;
+    background-size: contain;
+    height:100vh;
+}
+
+.pointeur{
+    position: absolute;
+    align-items: center; 
+    text-align: center;  
+}
+
+.pointeur img {
+    height: 30px; /* Taille du pointeur */
+}
+
+.pointeur div{
+    display: hidden;
+}
+
+/* Position des villes */
+#paris {
+    top: 25%; /* Ajustez ces valeurs */
+    left: 48%;
+    transform: translate(-50%, -50%);
+}
+
+#lyon {
+    top: 55%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+}
+
+#angers {
+    top: 38%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+
+#toulouse {
+    top: 75%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+}
+
+#agen {
+    top: 70%;
+    left: 43%;
+    transform: translate(-50%, -50%);
+}
+
+#cycliste{
+    position: absolute;
+    bottom:0;
+    height:250px;
+}
+
+
+#infoPopUp{
+    position: absolute;
+    display:100%;
+    height: 6em;
+    width: 15em;
+    top:2em;
+    background-color: #98b2d3;
+    border-radius: 25px;
+    padding: 15px;
+}
+
+label{
+    font-weight: bold;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+}
+
+#infoPopUp label{
+    font-size: 2rem;
+}
+
+#infoPopUp img{
+    position: absolute;
+    top:3%;
+    right: 2%;
+    height: 40%;
+}
