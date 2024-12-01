@@ -17,8 +17,8 @@
             <a href="">
                 <img src="./assets/accueil/Search.svg" alt="Profil" class="img_accueil">
             </a>
-            <a href="">
-                <img src="./assets/accueil/Panier.png" alt="Profil" class="img_accueil">
+            <a href="panier.php" aria-label="Voir le panier">
+                <img src="./assets/accueil/Panier.png" alt="Panier" class="img_accueil">
             </a>
             <a href="">
                 <img src="./assets/accueil/Profil.png" alt="Profil" class="img_accueil">
