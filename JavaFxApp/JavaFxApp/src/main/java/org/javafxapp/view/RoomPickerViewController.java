@@ -8,6 +8,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+import javafx.stage.WindowEvent;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 import org.controlsfx.control.textfield.TextFields;
 import org.javafxapp.Main;
@@ -31,7 +32,7 @@ public class RoomPickerViewController {
     public void initContext(Stage appStage, RoomPicker roomPicker) {
         this.appStage=appStage;
         this.roomPicker=roomPicker;
-        this.appStage.setOnCloseRequest(e -> this.appStage.close());
+        this.appStage.setOnCloseRequest(e -> this.closeWindow(e));
         this.configure();
     }
 
@@ -54,6 +55,20 @@ public class RoomPickerViewController {
 
         this.jsFile.properClose();
         return this.olRoomList;
+    }
+
+    /**
+     * Gestion de la fermeture de la fenêtre par l'utilisateur.
+     *
+     * @param e Evénement associé à la fermeture de la fenêtre
+     * @return null toujours (inutilisé)
+     *
+     * @see #properClose()
+     */
+    private Object closeWindow(WindowEvent e) {
+        this.properClose();
+        e.consume();
+        return null;
     }
 
     @FXML
