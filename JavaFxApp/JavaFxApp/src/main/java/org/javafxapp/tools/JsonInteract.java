@@ -1,7 +1,5 @@
 package org.javafxapp.tools;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -26,9 +24,7 @@ public class JsonInteract {
         }
     }
 
-    public List<String> getRoomList(){
-        return this.alRoomData;
-    }
+    public List<String> getRoomList(){return this.alRoomData;}
 
     public void addRoomToList(String roomName){
         this.alRoomData.add(roomName);
@@ -38,11 +34,12 @@ public class JsonInteract {
         this.appData.put("roomNames",this.alRoomData);
 
         try {
-            File file=new File("appData.json");
-            FileWriter fileWriter = new FileWriter(file);
+//            File file=new File("appData.json");
+//            FileWriter fileWriter = new FileWriter(file);
+            Files.writeString(Paths.get("./appData.json"),this.appData.toString());
 
 
-            fileWriter.write(this.appData.toString());
+//            fileWriter.write(this.appData.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
