@@ -2,12 +2,10 @@
 <html lang="fr">
 <head>
   <meta charset="utf-8">
-  <title>Titre de la page</title>
+  <title>La Roue Tourne</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style/header/style.css">
   <link rel="stylesheet" href="./style/accueil/style.css">
-  <script src="script.js"></script>
-
 </head>
 <body>
     <?php include './components/header.php'?>
@@ -31,6 +29,7 @@
             </div>
         </div>
         <div class="carrousel_wrapper">
+
           <div class="carrousel">
               <div class="carousel-item">
                   <img src="./assets/accueil/velo_demo.png" alt="Image 1">
@@ -89,8 +88,49 @@
           </div>
         </div>
       </div>
-      <div class="second_container">
 
+      <div class="second_container">
+        <div class="button_wrapper">
+            <div class="ligne"></div>
+            <button type="button" class="sc_button">ACHETER</button>
+        </div>
+        <div class="sc_items">
+            <div class="sc_item">
+                <img src="./assets/vêtements/casque.png" alt="" class="sc_items_image">
+                <div class="sc_items_text">
+                    <span>79€</span>
+                </div>
+                <button type="button" class="bulle_pay"><img src="./assets/accueil/Panier_article_vedette.svg" alt=""></button>
+            </div>
+            <div class="sc_item">
+                <img src="./assets/vêtements/gants_noir_gris.png" alt="" class="sc_items_image">
+                <div class="sc_items_text">
+                    <span>14€</span>
+                </div>
+                <button type="button" class="bulle_pay"><img src="./assets/accueil/Panier_article_vedette.svg" alt=""></button>
+            </div>
+            <div class="sc_item">
+                <img src="./assets/vêtements/pantalon_noir.png" alt="" class="sc_items_image">
+                <div class="sc_items_text">
+                    <span>79€</span>
+                </div>
+                <button type="button" class="bulle_pay"><img src="./assets/accueil/Panier_article_vedette.svg" alt=""></button>
+            </div>
+            <div class="sc_item">
+                <img src="./assets/vêtements/chaussure.png" alt="" class="sc_items_image">
+                <div class="sc_items_text">
+                    <span>39€</span>
+                </div>
+                <button type="button" class="bulle_pay"><img src="./assets/accueil/Panier_article_vedette.svg" alt=""></button>
+            </div>
+            <div class="sc_item">
+                <img src="./assets/vêtements/gants_orange_noir.png" alt="" class="sc_items_image">
+                <div class="sc_items_text">
+                    <span>19€</span>
+                </div>
+                <button type="button" class="bulle_pay"><img src="./assets/accueil/Panier_article_vedette.svg" alt=""></button>
+            </div>
+        </div>
       </div>
     </div>
 </body>
