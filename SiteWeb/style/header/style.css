@@ -1,0 +1,50 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+a:active {
+  color: inherit;
+}
+
+header {
+  width: 100%;
+  height: 75px;
+  background-color: rgb(228, 233, 238);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+}
+header .header_title {
+  margin-left: 20px;
+}
+header .header_title p {
+  font-weight: 700;
+  font-size: 24;
+}
+header .header_navigation {
+  display: flex;
+  gap: 20px;
+}
+header .header_navigation span {
+  font-weight: 500;
+}
+header .header_navigation a:hover {
+  color: rgb(152, 178, 211);
+}
+header .header_interaction {
+  display: flex;
+  gap: 15px;
+  margin-right: 20px;
+}
+header .header_interaction .img_accueil {
+  width: 35px;
+  height: 35px;
+}/*# sourceMappingURL=style.css.map */

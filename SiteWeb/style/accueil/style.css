@@ -1,0 +1,142 @@
+@charset "UTF-8";
+body {
+  background-color: rgb(228, 233, 238);
+  font-family: "Inter", sans-serif;
+}
+
+.accueil_center {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 75px);
+  width: 100%;
+}
+.accueil_center .main_container {
+  width: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.accueil_center .main_container .preview_wrapper {
+  width: 100%;
+  height: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.accueil_center .main_container .preview_wrapper .preview_wrapper_text {
+  height: 100%;
+  width: 30%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.accueil_center .main_container .preview_wrapper .preview_wrapper_text .pwt_text {
+  width: 60%;
+  height: 50%;
+  text-align: left;
+}
+.accueil_center .main_container .preview_wrapper .preview_wrapper_text .pwt_text span {
+  font-size: 45px;
+  font-weight: 700;
+}
+.accueil_center .main_container .preview_wrapper .preview_wrapper_text .pwt_wrapper_buttons {
+  width: 60%;
+  height: 25%;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  gap: 10px;
+}
+.accueil_center .main_container .preview_wrapper .preview_wrapper_text .pwt_wrapper_buttons .pwtwb_button {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 15px 30px;
+  background-color: rgb(2, 2, 2);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.accueil_center .main_container .preview_wrapper .preview_wrapper_text .pwt_wrapper_buttons .pwtwb_button:hover {
+  background-color: rgb(168, 168, 168);
+}
+.accueil_center .main_container .preview_wrapper .preview_wrapper_image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+.accueil_center .main_container .preview_wrapper .preview_wrapper_image .pwi_bulle {
+  height: 100%;
+}
+.accueil_center .main_container .preview_wrapper .preview_wrapper_image .pwi_overlay {
+  position: absolute;
+  height: 100%;
+}
+.accueil_center .main_container .carrousel_wrapper {
+  width: 100%;
+  height: 300px; /* Ajuste la hauteur selon tes besoins */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Cache tout excédent d'éléments */
+  position: relative;
+  overflow: visible;
+}
+.accueil_center .main_container .carrousel_wrapper .carrousel {
+  display: flex;
+  flex-direction: row; /* Alignement horizontal des items */
+  justify-content: flex-start; /* Aligne les items au début */
+  width: 60%; /* Occupe toute la largeur du conteneur parent */
+  height: 80%; /* Occupe toute la hauteur du conteneur parent */
+  overflow-x: auto; /* Cache la barre de défilement horizontale */
+  scroll-snap-type: x mandatory; /* Pour un alignement précis des éléments */
+  background-color: rgb(119, 156, 201);
+  border-radius: 30px;
+  align-items: center;
+  overflow-x: scroll;
+  position: relative;
+}
+.accueil_center .main_container .carrousel_wrapper .carrousel::-webkit-scrollbar {
+  height: 0.5em;
+  width: 3em;
+  background-color: rgb(217, 217, 217);
+  border-radius: 10px;
+}
+.accueil_center .main_container .carrousel_wrapper .carrousel::-webkit-scrollbar-thumb {
+  background-color: rgb(104, 135, 174);
+  border-radius: 10px;
+  transform: translateY(10px);
+}
+.accueil_center .main_container .carrousel_wrapper .carrousel::-webkit-scrollbar-track {
+  background-color: rgb(217, 217, 217);
+  border-radius: 10px;
+}
+.accueil_center .main_container .carrousel_wrapper .carrousel .carousel-item {
+  flex: 0 0 auto; /* Les éléments ne doivent pas se redimensionner */
+  width: 170px; /* Largeur fixe pour chaque image, ajuste selon tes besoins */
+  height: 100%; /* La hauteur est égale à celle du carrousel */
+  scroll-snap-align: start; /* Aligne chaque élément au début lors du défilement */
+}
+.accueil_center .main_container .carrousel_wrapper .carrousel .carousel-item:hover {
+  background-color: rgba(166, 189, 217, 0.7);
+}
+.accueil_center .main_container .carrousel_wrapper .carrousel .carousel-item img {
+  width: 100%; /* L'image occupe toute la largeur du div */
+  height: auto; /* Garder les proportions de l'image */
+  max-height: 100%; /* L'image ne doit pas dépasser la hauteur du conteneur */
+  -o-object-fit: cover;
+     object-fit: cover; /* L'image couvre toute la zone sans déformation */
+}
+.accueil_center .second_container {
+  width: 100%;
+  height: 30%;
+  background-color: lightgreen;
+}/*# sourceMappingURL=style.css.map */
