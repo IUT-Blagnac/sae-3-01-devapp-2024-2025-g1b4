@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 import org.ini4j.Wini;
 import org.javafxapp.tools.JsonInteract;
 import org.javafxapp.tools.StageManagement;
@@ -14,6 +15,10 @@ import org.javafxapp.view.ConfigFormViewController;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
+import org.javafxapp.tools.StageManagement;
+import org.javafxapp.view.ConfigFormViewController;
+
 
 public class ConfigForm {
     private Stage configStage;
@@ -56,6 +61,12 @@ public class ConfigForm {
         this.dataChoice=this.cFVM.displayDialog(this.wini);
         if(!this.dataChoice.isEmpty())
             this.alterConfigFile();
+        cFVM.displayDialog();
+    }
+
+    public void openRoomPicker() {
+        RoomPicker rp=new RoomPicker(this.configStage);
+        rp.doRoomPickerDialog();
     }
 
     private void alterConfigFile() {

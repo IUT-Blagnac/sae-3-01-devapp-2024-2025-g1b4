@@ -9,7 +9,7 @@
 <body>
 
     <?php
-        include 'components/header.php';
+        include './components/header.php';
         $imgPath="assets/".basename(__FILE__, '.php')."/";
     ?>
 

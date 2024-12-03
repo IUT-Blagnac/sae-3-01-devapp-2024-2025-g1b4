@@ -1,0 +1,59 @@
+Table,Column,Type,Description,Constraints
+Categorie,idCategorie,INT,Identifiant unique de la catégorie,"PRIMARY KEY, AUTO_INCREMENT"
+Categorie,name,VARCHAR(50),Nom de la catégorie,"UNIQUE, NOT NULL"
+
+Produit,idProduit,INT,Identifiant unique du produit,"PRIMARY KEY, AUTO_INCREMENT"
+Produit,prix,DOUBLE,Prix du produit,NULLABLE
+Produit,nom,VARCHAR(45),Nom du produit,NULLABLE
+Produit,description,VARCHAR(256),Description du produit,NULLABLE
+
+Adresse,idAdresse,INT,Identifiant unique de l'adresse,"PRIMARY KEY, AUTO_INCREMENT"
+Adresse,codePostal,CHAR(5),Code postal,NULLABLE
+Adresse,ville,VARCHAR(45),Ville,NULLABLE
+Adresse,adresse,VARCHAR(80),Adresse complète,NULLABLE
+
+Client,username,VARCHAR(16),Nom d'utilisateur unique,"PRIMARY KEY, UNIQUE, NOT NULL"
+Client,email,VARCHAR(100),Adresse e-mail,NULLABLE
+Client,password,VARCHAR(32),Mot de passe,NOT NULL
+Client,role,VARCHAR(10),Rôle de l'utilisateur,NOT NULL
+Client,nom,VARCHAR(45),Nom de l'utilisateur,NULLABLE
+Client,prenom,VARCHAR(45),Prénom de l'utilisateur,NULLABLE
+Client,numTel,CHAR(10),Numéro de téléphone,NOT NULL
+Client,genreC,CHAR(1),Genre de l'utilisateur,NULLABLE
+Client,dateNaissance,DATE,Date de naissance,NULLABLE
+
+PointRelais,idPointRelais,INT,Identifiant unique du point relais,"PRIMARY KEY, AUTO_INCREMENT"
+PointRelais,nomRelais,VARCHAR(45),Nom du point relais,NULLABLE
+PointRelais,adresseRelais,VARCHAR(45),Adresse du point relais,NULLABLE
+PointRelais,codePostalRelais,CHAR(5),Code postal,NULLABLE
+PointRelais,villeRelais,VARCHAR(45),Ville,NULLABLE
+
+Commande,idCommande,INT,Identifiant unique de la commande,"PRIMARY KEY, AUTO_INCREMENT"
+Commande,typeLivraison,VARCHAR(45),Type de livraison,NULLABLE
+Commande,typePaiement,VARCHAR(16),Type de paiement,NULLABLE
+Commande,statut,VARCHAR(45),Statut de la commande,"DEFAULT 'En Cours'"
+
+Couleur,idCouleur,INT,Identifiant unique de la couleur,"PRIMARY KEY, AUTO_INCREMENT"
+Couleur,nomCouleur,VARCHAR(64),Nom de la couleur,NULLABLE
+
+Taille,idTaille,INT,Identifiant unique de la taille,"PRIMARY KEY, AUTO_INCREMENT"
+Taille,nomTaille,VARCHAR(45),Nom de la taille,NULLABLE
+
+VariantArticle,stock,INT,Stock disponible,NULLABLE
+VariantArticle,seuilMin,INT,Seuil minimum,NULLABLE
+VariantArticle,seuilMax,INT,Seuil maximum,NULLABLE
+
+Composer,quantite,VARCHAR(45),Quantité,NULLABLE
+
+Panier,quantite,VARCHAR(45),Quantité,NULLABLE
+
+Virement,numVirement,INT,Identifiant unique du virement,"PRIMARY KEY"
+
+Paypal,numPaiement,INT,Identifiant unique du paiement PayPal,"PRIMARY KEY"
+
+CarteBancaire,idCarteBancaire,INT,Identifiant unique de la carte bancaire,"PRIMARY KEY"
+CarteBancaire,numeroBancaire,CHAR(16),Numéro bancaire,NULLABLE
+CarteBancaire,dateExpiration,DATE,Date d'expiration,NULLABLE
+CarteBancaire,cvv,TINYINT(3),Code de vérification,NULLABLE
+
+PaiementBancaire, numTransaction, INT, Numéro de transaction bancaire, PRIMARY KEY   
