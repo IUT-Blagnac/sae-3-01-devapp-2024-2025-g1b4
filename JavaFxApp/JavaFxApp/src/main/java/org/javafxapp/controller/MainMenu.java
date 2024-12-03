@@ -36,12 +36,11 @@ public class MainMenu extends Application {
         conForm.doConfigFormDialog();
     }
 
-    public void openPanneau(){
-        PanneauSolaire panSolaire = new PanneauSolaire(this.appStage);
-        panSolaire.doPanneauDialog();
+    public void openPanneau() {
+        PanneauSolaire panneauSolaire = new PanneauSolaire(this.appStage);
+        panneauSolaire.afficherFenetre();
     }
-
-
+    
 
     public static void main2(String[] args) {
         launch();

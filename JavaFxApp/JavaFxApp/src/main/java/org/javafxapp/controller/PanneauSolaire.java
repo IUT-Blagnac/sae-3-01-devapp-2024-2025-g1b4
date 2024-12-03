@@ -2,40 +2,35 @@ package org.javafxapp.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.javafxapp.tools.StageManagement;
-import org.javafxapp.view.PanneauSolaireViewController;
 
 public class PanneauSolaire {
-    private Stage panneauStage;
-    private PanneauSolaireViewController PSVC;
-    public PanneauSolaire(Stage appStage) {
 
+    private Stage fenetreDialogue; // Fenêtre principale pour afficher le graphique
+
+    public PanneauSolaire(Stage fenetrePrincipale) {
         try {
-            FXMLLoader loader = new FXMLLoader(PanneauSolaireViewController.class.getResource("panneau.fxml"));
-            BorderPane root = loader.load();
+            // Charger le fichier FXML
+            FXMLLoader chargeur = new FXMLLoader(getClass().getResource("/org/javafxapp/view/PanneauSolaireView.fxml"));
+            VBox racine = chargeur.load();
 
-            Scene scene = new Scene(root, root.getPrefWidth() + 50, root.getPrefHeight() + 10);
+            // Configurer la fenêtre
+            this.fenetreDialogue = new Stage();
+            this.fenetreDialogue.initModality(Modality.WINDOW_MODAL);
+            this.fenetreDialogue.initOwner(fenetrePrincipale);
+            this.fenetreDialogue.setTitle("Données des Panneaux Solaires");
 
-            this.panneauStage = new Stage();
-            this.panneauStage.initModality(Modality.WINDOW_MODAL);
-            this.panneauStage.initOwner(appStage);
-            StageManagement.manageCenteringStage(appStage, this.panneauStage);
-            this.panneauStage.setScene(scene);
-            this.panneauStage.setTitle("Panneaux solaires");
-            this.panneauStage.setResizable(false);
+            Scene scene = new Scene(racine);
+            this.fenetreDialogue.setScene(scene);
 
-            this.PSVC = loader.getController();
-            this.PSVC.initContext(this.panneauStage,this);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void doPanneauDialog() {
-        PSVC.displayDialog();
+    public void afficherFenetre() {
+        this.fenetreDialogue.showAndWait();
     }
 }
-
