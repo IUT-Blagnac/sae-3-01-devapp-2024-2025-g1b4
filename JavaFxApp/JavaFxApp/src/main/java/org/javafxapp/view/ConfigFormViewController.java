@@ -10,9 +10,13 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import org.ini4j.Wini;
 import org.javafxapp.controller.ConfigForm;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ConfigFormViewController {
@@ -29,7 +33,25 @@ public class ConfigFormViewController {
         this.selectedData=new ArrayList<>();
     }
 
-    public List<String> displayDialog() {
+    public List<String> displayDialog(Wini wini) {
+        loadData:
+        {
+            if(wini==null)
+                System.exit(0);
+            this.selectedData= Arrays.asList(wini.get("donnees","donnees").split("\\."));
+
+
+            if (this.selectedData.isEmpty())
+                break loadData;
+
+            ObservableList<Node> checkBoxes = selection.getChildren();
+            CheckBox checkBox;
+
+            for (Node nd : checkBoxes) {
+                checkBox = (CheckBox) nd;
+                checkBox.setSelected(this.selectedData.contains(checkBox.getId()));
+            }
+        }
 
         this.appStage.showAndWait();
 
@@ -91,4 +113,15 @@ public class ConfigFormViewController {
         this.properClose();
     }
 
+    public static void main(String[] args) {
+        Wini wini= null;
+        try {
+            wini = new Wini(new File("C:\\Users\\Dell\\Documents\\Fichiers Persos\\Studies\\BUT Info\\S3\\SAÉS\\Temp\\sae-3-01-devapp-2024-2025-g1b4\\IOT\\config.ini"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        System.out.println(wini.get("donnees","donnees"));
+
+    }
 }

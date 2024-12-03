@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import org.json.*;
 
@@ -40,20 +41,45 @@ public class JsonInteract {
         this.appData.put("roomNames",this.alRoomData);
 
         try {
-//            File file=new File("appData.json");
-//            FileWriter fileWriter = new FileWriter(file);
             Files.writeString(Paths.get("./appData.json"),this.appData.toString());
-
-
-//            fileWriter.write(this.appData.toString());
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
 
+//    public boolean set(String pathToData, Object elt){
+//        JSONObject jsOb=this.appData;
+//        Object temp=null;
+//            for (String str : pathToData.split("\\.")) {
+//                temp = jsOb.get(str);
+//                if (temp instanceof JSONObject)
+//                    jsOb = (JSONObject) temp;
+//            }
+//
+//    }
+
+    public Object get(String pathToData){
+
+        return this.getThroughArray(pathToData.split("\\."));
+    }
+
+    public Object getThroughArray(String[] paths){
+        JSONObject jsOb=this.appData;
+        Object temp=null;
+        for(String str:paths){
+            temp=jsOb.get(str);
+            if(temp instanceof JSONObject)
+                jsOb=(JSONObject) temp;
+            else
+                return temp;
+        }
+
+        return jsOb;
+    }
+
     public static void main(String[] args) {
-        new JsonInteract();
+        JsonInteract jsInt=new JsonInteract();
+        System.out.println(jsInt.get("data.test"));
     }
 }
