@@ -34,17 +34,15 @@ public class ConfigFormViewController {
     }
 
     public List<String> displayDialog(Wini wini) {
-        loadData:
-        {
-            if(wini==null)
-                System.exit(0);
-            this.selectedData= Arrays.asList(wini.get("donnees","donnees").split("\\."));
+        loadData:{
+            String data=wini.get("donnees","donnees");
+            this.selectedData.addAll(Arrays.asList(data.split(",")));
 
 
             if (this.selectedData.isEmpty())
                 break loadData;
 
-            ObservableList<Node> checkBoxes = selection.getChildren();
+            ObservableList<Node> checkBoxes=this.getSelectChildren();
             CheckBox checkBox;
 
             for (Node nd : checkBoxes) {
@@ -56,6 +54,16 @@ public class ConfigFormViewController {
         this.appStage.showAndWait();
 
         return this.selectedData;
+    }
+
+    private ObservableList<Node> getSelectChildren() {
+        ObservableList<Node> hBoxes= this.selection.getChildren();
+        ObservableList<Node> allChildren;
+        for(Node nd: hBoxes)
+            ;
+
+        return null;
+
     }
 
     /**
