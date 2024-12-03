@@ -87,6 +87,11 @@ De plus ce fichier `README.adoc` devra être à jour des informations suivantes 
 - Indicateurs de qualité du code (dette technique)
 - ... tout autre élément que vous jugerez utiles pour démontrer la qualité de votre application
 
+=== Evaluation communication (EP)
+==== Evaluation ODJ et CR semaine 48
+Aucun lien dans le Github, travail non fait.
+Note : 0/3
+
 === Evaluation bi-hebdomadaire des sprints  
 
 ifdef::env-github[]
