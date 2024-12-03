@@ -61,12 +61,7 @@ public class ConfigForm {
         this.dataChoice=this.cFVM.displayDialog(this.wini);
         if(!this.dataChoice.isEmpty())
             this.alterConfigFile();
-        cFVM.displayDialog();
-    }
-
-    public void openRoomPicker() {
-        RoomPicker rp=new RoomPicker(this.configStage);
-        rp.doRoomPickerDialog();
+        cFVM.displayDialog(wini);
     }
 
     private void alterConfigFile() {
