@@ -29,7 +29,7 @@
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Button mnemonicParsing="false" text="Choisir" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#boutonGauche" text="Choisir" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
    </left>
@@ -50,7 +50,7 @@
                   <Insets right="10.0" />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" prefWidth="50.0" text="Chosir" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#boutonDroit" prefWidth="50.0" text="Chosir" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </right>
