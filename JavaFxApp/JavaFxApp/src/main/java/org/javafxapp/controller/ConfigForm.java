@@ -38,6 +38,7 @@ public class ConfigForm {
         cFVM.displayDialog();
     }
 
+
     public void openRoomPicker() {
         RoomPicker rp=new RoomPicker(this.configStage);
         rp.doRoomPickerDialog();
