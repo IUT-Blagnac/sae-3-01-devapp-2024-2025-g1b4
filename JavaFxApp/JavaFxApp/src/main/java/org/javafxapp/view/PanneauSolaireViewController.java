@@ -12,6 +12,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Map;
 import java.util.TreeMap;
+
+import org.javafxapp.tools.JsonInteract;
 import org.json.JSONObject;
 
 public class PanneauSolaireViewController {
@@ -41,7 +43,8 @@ public class PanneauSolaireViewController {
 
         try {
             // Lire le fichier JSON
-            String cheminRelatif = "./JavaFxApp/JavaFxApp/result.json";
+            JsonInteract jsInt = new JsonInteract();
+            String cheminRelatif = (String)jsInt.get("dataPath");
             System.out.println("Chemin courant (pour result.json) : " + Paths.get(".").toAbsolutePath());
             String content = Files.readString(Paths.get(cheminRelatif));
             JSONObject solarData = new JSONObject(content).getJSONObject("solarpanel");
@@ -81,7 +84,6 @@ public class PanneauSolaireViewController {
         for (Map.Entry<Integer, Double> entry : donnees.entrySet()) {
             String heure = entry.getKey() + "h";
             Double puissance = entry.getValue();
-            System.out.println("Ajout au graphique : Heure = " + heure + ", Puissance = " + puissance);
             serie.getData().add(new XYChart.Data<>(heure, puissance));
         }
 
