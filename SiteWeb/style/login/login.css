@@ -1,0 +1,117 @@
+/* Corps de la page */
+body {
+    background-color: rgba(228, 233, 238, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* min-height: 100vh; */
+}
+
+.login-container {
+    background-color: white;
+    padding: 20px 40px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 20px;
+}
+
+/* Titre */
+.login-container h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+/* Formulaire */
+.login-form .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.login-form label {
+    font-size: 14px;
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.login-form input:focus {
+    border-color: #7193BE;
+    outline: none;
+}
+
+/* Bouton de connexion */
+.login-btn {
+    background-color: #7193BE;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background-color: #0c4fa6;
+}
+
+/* Case à cocher */
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #555;
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;    
+    vertical-align: middle;
+}
+
+/* Style personnalisé lorsqu'elle est cochée */
+.remember-me input[type="checkbox"]:checked {
+    accent-color: #7193BE; /* Change la couleur lorsqu'elle est cochée */
+}
+
+/* Ajustement précis pour descendre le texte */
+.remember-me label {
+    position: relative;
+    top: 2px; /* Descend légèrement le texte */
+    cursor: pointer; /* Ajoute un pointeur survol pour le texte */
+}
+
+/* Lien d'inscription */
+.register-link {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #555;
+}
+
+.register-link a {
+    color: #7193BE;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+
+
+

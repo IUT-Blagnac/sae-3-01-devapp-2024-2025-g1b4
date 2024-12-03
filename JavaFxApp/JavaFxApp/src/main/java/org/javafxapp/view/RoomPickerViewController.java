@@ -8,6 +8,10 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+
+import javafx.stage.WindowEvent;
+import org.controlsfx.control.textfield.AutoCompletionBinding;
+
 import org.controlsfx.control.textfield.TextFields;
 import org.javafxapp.Main;
 import org.javafxapp.controller.RoomPicker;
@@ -24,17 +28,22 @@ public class RoomPickerViewController {
 
     private ObservableList<String> olRoomList;
     private RoomPicker roomPicker;
+
+
+    private AutoCompletionBinding bindingTextField;
+
     public void initContext(Stage appStage, RoomPicker roomPicker) {
         this.appStage=appStage;
         this.roomPicker=roomPicker;
-        this.appStage.setOnCloseRequest(e -> this.appStage.close());
+        this.appStage.setOnCloseRequest(e -> this.closeWindow(e));
         this.configure();
     }
 
     private void configure() {
         this.olRoomList=this.roomList.getItems();
         this.jsFile=new JsonInteract();
-        TextFields.bindAutoCompletion(this.roomName, this.jsFile.getRoomList());
+        this.bindingTextField=TextFields.bindAutoCompletion(this.roomName, this.jsFile.getRoomList());
+
 
         this.olRoomList.addAll(this.getPrevConfig());
     }
@@ -48,7 +57,22 @@ public class RoomPickerViewController {
 
         this.appStage.showAndWait();
 
+        this.jsFile.properClose();
         return this.olRoomList;
+    }
+
+    /**
+     * Gestion de la fermeture de la fenêtre par l'utilisateur.
+     *
+     * @param e Evénement associé à la fermeture de la fenêtre
+     * @return null toujours (inutilisé)
+     *
+     * @see #properClose()
+     */
+    private Object closeWindow(WindowEvent e) {
+        this.properClose();
+        e.consume();
+        return null;
     }
 
     @FXML
@@ -68,7 +92,9 @@ public class RoomPickerViewController {
                     return;
 
                 this.jsFile.addRoomToList(roomName.getText());
-                TextFields.bindAutoCompletion(this.roomName, Main.knownRooms);
+                this.bindingTextField.dispose();
+                this.bindingTextField=TextFields.bindAutoCompletion(this.roomName, this.jsFile.getRoomList());
+
 
             }
             this.olRoomList.add(roomName.getText());
@@ -97,6 +123,18 @@ public class RoomPickerViewController {
 
     @FXML
     public void doConfirm(){
+        this.properClose();
+    }
+
+    @FXML
+    public void doCancel(){
+        this.olRoomList.clear();
+        this.properClose();
+    }
+
+    public void properClose(){
+        this.jsFile.properClose();
+        this.appStage.close();
 
     }
 }
