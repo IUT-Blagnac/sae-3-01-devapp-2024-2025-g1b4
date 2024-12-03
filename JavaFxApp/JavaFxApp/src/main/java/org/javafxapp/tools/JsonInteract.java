@@ -13,8 +13,6 @@ import org.json.*;
 
 public class JsonInteract {
 
-    public static String
-
     private JSONObject appData;
 
     private List<String> alRoomData;
