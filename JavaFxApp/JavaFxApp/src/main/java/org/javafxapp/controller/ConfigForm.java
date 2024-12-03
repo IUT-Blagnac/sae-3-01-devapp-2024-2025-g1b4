@@ -64,14 +64,16 @@ public class ConfigForm {
         cFVM.displayDialog(wini);
     }
 
+
+    public void openRoomPicker() {
+        RoomPicker rp=new RoomPicker(this.configStage);
+        rp.doRoomPickerDialog();
+    }
+
     private void alterConfigFile() {
 
     }
 
-    public void openRoomPicker() {
-        RoomPicker rp=new RoomPicker(this.configStage);
-        this.roomChoice=rp.doRoomPickerDialog();
-    }
 
     private List<String> roomChoice;
     private List<String> dataChoice;
