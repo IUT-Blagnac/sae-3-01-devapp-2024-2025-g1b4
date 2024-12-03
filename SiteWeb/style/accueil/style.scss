@@ -19,6 +19,8 @@ body {
         
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
         
         .preview_wrapper {
             width: 100%;
@@ -37,6 +39,8 @@ body {
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
+
+                position: relative;
 
                 .pwt_text {
                     width: 60%;
@@ -59,6 +63,8 @@ body {
                     justify-content: left;
                     align-items:center;
                     gap: 10px;
+
+                    position: relative;
                     
                     .pwtwb_button {
                         font-size: 20px;
@@ -93,7 +99,8 @@ body {
                 width: 50%;
 
                 .pwi_bulle {
-                    height: 100%;
+                    height: auto;
+                    max-height: 100%;
                 }
 
                 .pwi_overlay {
@@ -104,64 +111,63 @@ body {
         }
 
         .carrousel_wrapper {
-            width: 100%;
-            height: 300px; /* Ajuste la hauteur selon tes besoins */
+            width: 60%;
+            height: 200px; 
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden; /* Cache tout excédent d'éléments */
 
             position: relative;
-            overflow: visible;
+            overflow: hidden;
+
+            overflow-x: scroll; 
+
+            &::-webkit-scrollbar {
+                height: 0.5em;
+                width: 3em;
+                background-color: rgba(217, 217, 217, 1);
+                border-radius: 10px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: rgba(104, 135, 174, 1);
+                border-radius: 10px;
+            }
+            
+            &::-webkit-scrollbar-track {
+                background-color: rgba(217, 217, 217, 1);
+                border-radius: 10px;
+            }
 
             .carrousel {
                 display: flex;
-                flex-direction: row; /* Alignement horizontal des items */
-                justify-content: flex-start; /* Aligne les items au début */
-                width: 60%; /* Occupe toute la largeur du conteneur parent */
-                height: 80%; /* Occupe toute la hauteur du conteneur parent */
-                overflow-x: auto; /* Cache la barre de défilement horizontale */
-                scroll-snap-type: x mandatory; /* Pour un alignement précis des éléments */
+                flex-direction: row; 
+                justify-content: flex-start;
+                width: 100%; 
+                height: 80%; 
+
+
                 background-color: rgba(119, 156, 201, 1);
                 border-radius: 30px;
                 align-items: center;
-                overflow-x: scroll;
-
+                margin-top: 20px;
                 position: relative;
                 
-                &::-webkit-scrollbar {
-                    height: 0.5em;
-                    width: 3em;
-                    background-color: rgba(217, 217, 217, 1);
-                    border-radius: 10px;
-                }
-
-                &::-webkit-scrollbar-thumb {
-                    background-color: rgba(104, 135, 174, 1);
-                    border-radius: 10px;
-                    transform: translateY(10px); 
-                }
-                
-                &::-webkit-scrollbar-track {
-                    background-color: rgba(217, 217, 217, 1);
-                    border-radius: 10px;
-                }
 
                 .carousel-item {
-                    flex: 0 0 auto; /* Les éléments ne doivent pas se redimensionner */
-                    width: 170px; /* Largeur fixe pour chaque image, ajuste selon tes besoins */
-                    height: 100%; /* La hauteur est égale à celle du carrousel */
-                    scroll-snap-align: start; /* Aligne chaque élément au début lors du défilement */
+                    flex: 0 0 auto; 
+                    width: 170px; 
+                    height: 100%; 
                 
                     &:hover {
                         background-color: rgba(166, 189, 217, 0.7);
                     }
                     
                     img {
-                        width: 100%; /* L'image occupe toute la largeur du div */
-                        height: auto; /* Garder les proportions de l'image */
-                        max-height: 100%; /* L'image ne doit pas dépasser la hauteur du conteneur */
-                        object-fit: cover; /* L'image couvre toute la zone sans déformation */
+                        width: 100%;
+                        height: auto; 
+                        max-height: 100%;
+                        object-fit: cover; 
                     }
                 }
 
@@ -173,6 +179,123 @@ body {
     .second_container {
         width: 100%; 
         height: 30%; 
-        background-color: lightgreen; 
+        
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        
+        .button_wrapper {
+            width: 100%;
+            height: 40%;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            
+            margin-bottom: 20px;
+
+            position: relative;
+
+            .ligne {
+                width: 95%;
+                height: 2px;
+                background-color: rgba(2, 2, 2, 1);
+                margin: 20px auto;
+            }
+
+            .sc_button {
+                font-size: 20px;
+                font-weight: 500;
+                padding: 15px 30px;
+                background-color: rgba(2, 2, 2, 1);
+                color: white;
+                border: none;
+                border-radius: 15px;
+                letter-spacing: 0.8px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+    
+                &:hover {
+                    background-color: rgb(168, 168, 168);
+                }
+            }
+        }
+
+        .sc_items {
+            width: 70%;
+            height: 40%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            gap : 120px;
+
+            position: relative;
+
+            .sc_item {
+
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                height: 100%;
+                width: 50%;
+                border-radius: 15px;
+                gap: 10px;
+
+                background-color: rgba(166, 189, 217, 0.7);
+
+                position: relative;
+
+                img {
+
+                    position: relative;
+
+                    max-width: 70%;
+                    max-height: 70%;
+                    width: auto;
+                    height: auto; 
+                    object-fit: cover; 
+                }
+
+                .sc_items_text {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    width: 100%;
+                    height: auto;
+                }
+
+                // J'aimerai que bulle_pay ne soit pas compter comme un élément du flex mais comme un élément à part
+
+                .bulle_pay {
+                    position: absolute;
+                    bottom: -15%;
+                    left: 75%;
+                    background-color: rgba(152, 178, 211, 1);
+                    width: 55px;
+                    height: 45px;
+                    border-radius: 20px;
+                    border: none;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    &:hover {
+                        background-color: rgba(119, 156, 201, 1);
+                    }
+
+                }
+            }
+        }
+
     }
 }
