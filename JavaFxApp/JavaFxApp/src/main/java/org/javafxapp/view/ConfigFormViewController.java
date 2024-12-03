@@ -1,6 +1,7 @@
 package org.javafxapp.view;
 
 import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -19,6 +20,7 @@ public class ConfigFormViewController {
     private Stage appStage;
     private ConfigForm conFormLoader;
     private List<String> selectedData;
+
 
     public void initContext(Stage appStage, ConfigForm configForm) {
         this.appStage=appStage;
@@ -88,4 +90,5 @@ public class ConfigFormViewController {
         this.selectedData.clear();
         this.properClose();
     }
+
 }

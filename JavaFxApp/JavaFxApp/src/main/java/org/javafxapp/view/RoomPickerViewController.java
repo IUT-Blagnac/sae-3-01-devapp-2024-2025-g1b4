@@ -8,8 +8,10 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import javafx.scene.control.TextField;
+
 import javafx.stage.WindowEvent;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
+
 import org.controlsfx.control.textfield.TextFields;
 import org.javafxapp.Main;
 import org.javafxapp.controller.RoomPicker;
@@ -27,6 +29,7 @@ public class RoomPickerViewController {
     private ObservableList<String> olRoomList;
     private RoomPicker roomPicker;
 
+
     private AutoCompletionBinding bindingTextField;
 
     public void initContext(Stage appStage, RoomPicker roomPicker) {
@@ -40,6 +43,7 @@ public class RoomPickerViewController {
         this.olRoomList=this.roomList.getItems();
         this.jsFile=new JsonInteract();
         this.bindingTextField=TextFields.bindAutoCompletion(this.roomName, this.jsFile.getRoomList());
+
 
         this.olRoomList.addAll(this.getPrevConfig());
     }
@@ -131,5 +135,6 @@ public class RoomPickerViewController {
     public void properClose(){
         this.jsFile.properClose();
         this.appStage.close();
+
     }
 }
