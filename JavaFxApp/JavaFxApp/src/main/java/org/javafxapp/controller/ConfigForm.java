@@ -2,11 +2,13 @@ package org.javafxapp.controller;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import org.ini4j.Wini;
+import org.javafxapp.tools.JsonInteract;
 import org.javafxapp.tools.StageManagement;
 import org.javafxapp.view.ConfigFormViewController;
 
@@ -44,9 +46,19 @@ public class ConfigForm {
         }
     }
 
-    public void doConfigFormDialog() {
+    private Wini wini;
 
-        this.dataChoice=this.cFVM.displayDialog();
+    public void doConfigFormDialog() {
+        JsonInteract jsInt=new JsonInteract();
+        try{
+            this.wini=new Wini(new File((String)jsInt.get("config.winiFilePath")));
+        }catch(IOException e){
+            Alert alert=new Alert(Alert.AlertType.ERROR, "Le fichier de configuration(config.ini) est introuvable!! Vérifiez le chemin(appData.json)!!");
+            alert.show();
+            e.printStackTrace();
+        }
+
+        this.dataChoice=this.cFVM.displayDialog(this.wini);
         if(!this.dataChoice.isEmpty())
             this.alterConfigFile();
         cFVM.displayDialog();
@@ -58,12 +70,7 @@ public class ConfigForm {
     }
 
     private void alterConfigFile() {
-//        try {
-//            Wini ini = new Wini(new File(Main.IOTPath));
-//
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
+
     }
 
     public void openRoomPicker() {

@@ -8,21 +8,11 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
+-- Table `Categorie`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `Categorie` ;
 
--- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
-USE `mydb` ;
-
--- -----------------------------------------------------
--- Table `mydb`.`Categorie`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Categorie` ;
-
-CREATE TABLE IF NOT EXISTS `mydb`.`Categorie` (
+CREATE TABLE IF NOT EXISTS `Categorie` (
   `idCategorie` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(50) NOT NULL,
   `idCategorieMère` INT NULL,
@@ -31,17 +21,17 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Categorie` (
   INDEX `fk_Categorie_Categorie1_idx` (`idCategorieMère` ASC) VISIBLE,
   CONSTRAINT `fk_Categorie_Categorie1`
     FOREIGN KEY (`idCategorieMère`)
-    REFERENCES `mydb`.`Categorie` (`idCategorie`)
+    REFERENCES `Categorie` (`idCategorie`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Produit`
+-- Table `Produit`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Produit` ;
+DROP TABLE IF EXISTS `Produit` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Produit` (
+CREATE TABLE IF NOT EXISTS `Produit` (
   `idProduit` INT NOT NULL AUTO_INCREMENT,
   `Categorie_idCategorie` INT NOT NULL,
   `prix` DOUBLE NULL,
@@ -51,18 +41,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Produit` (
   INDEX `fk_Produit_Categorie1_idx` (`Categorie_idCategorie` ASC) VISIBLE,
   CONSTRAINT `fk_Produit_Categorie1`
     FOREIGN KEY (`Categorie_idCategorie`)
-    REFERENCES `mydb`.`Categorie` (`idCategorie`)
+    REFERENCES `Categorie` (`idCategorie`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Adresse`
+-- Table `Adresse`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Adresse` ;
+DROP TABLE IF EXISTS `Adresse` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Adresse` (
+CREATE TABLE IF NOT EXISTS `Adresse` (
   `idAdresse` INT NOT NULL AUTO_INCREMENT,
   `codePostal` CHAR(5) NULL,
   `ville` VARCHAR(45) NULL,
@@ -72,11 +62,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Client`
+-- Table `Client`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Client` ;
+DROP TABLE IF EXISTS `Client` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Client` (
+CREATE TABLE IF NOT EXISTS `Client` (
   `username` VARCHAR(16) NOT NULL,
   `email` VARCHAR(100) NULL,
   `password` VARCHAR(32) NOT NULL,
@@ -92,17 +82,17 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Client` (
   INDEX `fk_Client_Adresse1_idx` (`Adresse_idAdresse` ASC) VISIBLE,
   CONSTRAINT `fk_Client_Adresse1`
     FOREIGN KEY (`Adresse_idAdresse`)
-    REFERENCES `mydb`.`Adresse` (`idAdresse`)
+    REFERENCES `Adresse` (`idAdresse`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`PointRelais`
+-- Table `PointRelais`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`PointRelais` ;
+DROP TABLE IF EXISTS `PointRelais` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`PointRelais` (
+CREATE TABLE IF NOT EXISTS `PointRelais` (
   `idPointRelais` INT NOT NULL AUTO_INCREMENT,
   `nomRelais` VARCHAR(45) NULL,
   `adresseRelais` VARCHAR(45) NULL,
@@ -113,11 +103,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Commande`
+-- Table `Commande`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Commande` ;
+DROP TABLE IF EXISTS `Commande` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Commande` (
+CREATE TABLE IF NOT EXISTS `Commande` (
   `idCommande` INT NOT NULL AUTO_INCREMENT,
   `Client_username` VARCHAR(16) NOT NULL,
   `typeLivraison` VARCHAR(45) NULL,
@@ -131,28 +121,28 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Commande` (
   INDEX `fk_Commande_PointRelais1_idx` (`PointRelais_idPointRelais` ASC) VISIBLE,
   CONSTRAINT `fk_Commande_Client1`
     FOREIGN KEY (`Client_username`)
-    REFERENCES `mydb`.`Client` (`username`)
+    REFERENCES `Client` (`username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Commande_Adresse1`
     FOREIGN KEY (`Adresse_idAdresse`)
-    REFERENCES `mydb`.`Adresse` (`idAdresse`)
+    REFERENCES `Adresse` (`idAdresse`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Commande_PointRelais1`
     FOREIGN KEY (`PointRelais_idPointRelais`)
-    REFERENCES `mydb`.`PointRelais` (`idPointRelais`)
+    REFERENCES `PointRelais` (`idPointRelais`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Couleur`
+-- Table `Couleur`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Couleur` ;
+DROP TABLE IF EXISTS `Couleur` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Couleur` (
+CREATE TABLE IF NOT EXISTS `Couleur` (
   `idCouleur` INT NOT NULL AUTO_INCREMENT,
   `nomCouleur` VARCHAR(64) NULL,
   PRIMARY KEY (`idCouleur`))
@@ -160,11 +150,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Taille`
+-- Table `Taille`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Taille` ;
+DROP TABLE IF EXISTS `Taille` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Taille` (
+CREATE TABLE IF NOT EXISTS `Taille` (
   `idTaille` INT NOT NULL AUTO_INCREMENT,
   `nomTaille` VARCHAR(45) NULL,
   PRIMARY KEY (`idTaille`))
@@ -172,11 +162,11 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`VariantArticle`
+-- Table `VariantArticle`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`VariantArticle` ;
+DROP TABLE IF EXISTS `VariantArticle` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`VariantArticle` (
+CREATE TABLE IF NOT EXISTS `VariantArticle` (
   `Produit_idProduit` INT NOT NULL,
   `Couleur_idCouleur` INT NOT NULL,
   `Taille_idTaille` INT NOT NULL,
@@ -189,28 +179,28 @@ CREATE TABLE IF NOT EXISTS `mydb`.`VariantArticle` (
   INDEX `fk_Produit_has_Couleur_Taille1_idx` (`Taille_idTaille` ASC) VISIBLE,
   CONSTRAINT `fk_Produit_has_Couleur_Produit1`
     FOREIGN KEY (`Produit_idProduit`)
-    REFERENCES `mydb`.`Produit` (`idProduit`)
+    REFERENCES `Produit` (`idProduit`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Produit_has_Couleur_Couleur1`
     FOREIGN KEY (`Couleur_idCouleur`)
-    REFERENCES `mydb`.`Couleur` (`idCouleur`)
+    REFERENCES `Couleur` (`idCouleur`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Produit_has_Couleur_Taille1`
     FOREIGN KEY (`Taille_idTaille`)
-    REFERENCES `mydb`.`Taille` (`idTaille`)
+    REFERENCES `Taille` (`idTaille`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Composer`
+-- Table `Composer`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Composer` ;
+DROP TABLE IF EXISTS `Composer` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Composer` (
+CREATE TABLE IF NOT EXISTS `Composer` (
   `Commande_idCommande` INT NOT NULL,
   `Quantité` VARCHAR(45) NULL,
   `Produit_has_Couleur_Produit_idProduit` INT NOT NULL,
@@ -221,23 +211,23 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Composer` (
   INDEX `fk_Composer_Produit_has_Couleur1_idx` (`Produit_has_Couleur_Produit_idProduit` ASC, `Produit_has_Couleur_Couleur_idCouleur` ASC, `Produit_has_Couleur_Taille_idTaille` ASC) VISIBLE,
   CONSTRAINT `fk_Produit_has_Commande_Commande1`
     FOREIGN KEY (`Commande_idCommande`)
-    REFERENCES `mydb`.`Commande` (`idCommande`)
+    REFERENCES `Commande` (`idCommande`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Composer_Produit_has_Couleur1`
     FOREIGN KEY (`Produit_has_Couleur_Produit_idProduit` , `Produit_has_Couleur_Couleur_idCouleur` , `Produit_has_Couleur_Taille_idTaille`)
-    REFERENCES `mydb`.`VariantArticle` (`Produit_idProduit` , `Couleur_idCouleur` , `Taille_idTaille`)
+    REFERENCES `VariantArticle` (`Produit_idProduit` , `Couleur_idCouleur` , `Taille_idTaille`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Panier`
+-- Table `Panier`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Panier` ;
+DROP TABLE IF EXISTS `Panier` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Panier` (
+CREATE TABLE IF NOT EXISTS `Panier` (
   `Client_username` VARCHAR(16) NOT NULL,
   `quantite` VARCHAR(45) NULL,
   `ProduitTailleCouleur_Produit_idProduit` INT NOT NULL,
@@ -248,59 +238,59 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Panier` (
   INDEX `fk_Panier_ProduitTailleCouleur1_idx` (`ProduitTailleCouleur_Produit_idProduit` ASC, `ProduitTailleCouleur_Couleur_idCouleur` ASC, `ProduitTailleCouleur_Taille_idTaille` ASC) VISIBLE,
   CONSTRAINT `fk_Produit_has_Client_Client1`
     FOREIGN KEY (`Client_username`)
-    REFERENCES `mydb`.`Client` (`username`)
+    REFERENCES `Client` (`username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_Panier_ProduitTailleCouleur1`
     FOREIGN KEY (`ProduitTailleCouleur_Produit_idProduit` , `ProduitTailleCouleur_Couleur_idCouleur` , `ProduitTailleCouleur_Taille_idTaille`)
-    REFERENCES `mydb`.`VariantArticle` (`Produit_idProduit` , `Couleur_idCouleur` , `Taille_idTaille`)
+    REFERENCES `VariantArticle` (`Produit_idProduit` , `Couleur_idCouleur` , `Taille_idTaille`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Virement`
+-- Table `Virement`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Virement` ;
+DROP TABLE IF EXISTS `Virement` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Virement` (
+CREATE TABLE IF NOT EXISTS `Virement` (
   `numVirement` INT NOT NULL,
   `Commande_idCommande` INT NOT NULL,
   PRIMARY KEY (`numVirement`),
   INDEX `fk_Virement_Commande1_idx` (`Commande_idCommande` ASC) VISIBLE,
   CONSTRAINT `fk_Virement_Commande1`
     FOREIGN KEY (`Commande_idCommande`)
-    REFERENCES `mydb`.`Commande` (`idCommande`)
+    REFERENCES `Commande` (`idCommande`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Paypal`
+-- Table `Paypal`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`Paypal` ;
+DROP TABLE IF EXISTS `Paypal` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`Paypal` (
+CREATE TABLE IF NOT EXISTS `Paypal` (
   `numPaiement` INT NOT NULL AUTO_INCREMENT,
   `Commande_idCommande` INT NOT NULL,
   PRIMARY KEY (`numPaiement`),
   INDEX `fk_Paypal_Commande1_idx` (`Commande_idCommande` ASC) VISIBLE,
   CONSTRAINT `fk_Paypal_Commande1`
     FOREIGN KEY (`Commande_idCommande`)
-    REFERENCES `mydb`.`Commande` (`idCommande`)
+    REFERENCES `Commande` (`idCommande`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`CarteBancaire`
+-- Table `CarteBancaire`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`CarteBancaire` ;
+DROP TABLE IF EXISTS `CarteBancaire` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`CarteBancaire` (
+CREATE TABLE IF NOT EXISTS `CarteBancaire` (
   `idCarteBancaire` INT NOT NULL,
   `numeroBancaire` CHAR(16) NULL,
   `dateExpiration` DATE NULL,
@@ -310,18 +300,18 @@ CREATE TABLE IF NOT EXISTS `mydb`.`CarteBancaire` (
   INDEX `fk_CarteBancaire_Client1_idx` (`Client_username` ASC) VISIBLE,
   CONSTRAINT `fk_CarteBancaire_Client1`
     FOREIGN KEY (`Client_username`)
-    REFERENCES `mydb`.`Client` (`username`)
+    REFERENCES `Client` (`username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`CarteBancaire`
+-- Table `CarteBancaire`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`CarteBancaire` ;
+DROP TABLE IF EXISTS `CarteBancaire` ;
 
-CREATE TABLE IF NOT EXISTS `mydb`.`CarteBancaire` (
+CREATE TABLE IF NOT EXISTS `CarteBancaire` (
   `idCarteBancaire` INT NOT NULL,
   `numeroBancaire` CHAR(16) NULL,
   `dateExpiration` DATE NULL,
@@ -331,7 +321,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`CarteBancaire` (
   INDEX `fk_CarteBancaire_Client1_idx` (`Client_username` ASC) VISIBLE,
   CONSTRAINT `fk_CarteBancaire_Client1`
     FOREIGN KEY (`Client_username`)
-    REFERENCES `mydb`.`Client` (`username`)
+    REFERENCES `Client` (`username`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
