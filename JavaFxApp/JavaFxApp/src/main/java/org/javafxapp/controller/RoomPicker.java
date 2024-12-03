@@ -9,6 +9,8 @@ import org.javafxapp.tools.StageManagement;
 import org.javafxapp.view.ConfigFormViewController;
 import org.javafxapp.view.RoomPickerViewController;
 
+import java.util.List;
+
 public class RoomPicker {
     private Stage roomPickerStage;
 
@@ -36,7 +38,7 @@ public class RoomPicker {
         }
     }
 
-    public void doRoomPickerDialog() {
-        this.rPVM.displayDialog();
+    public List<String> doRoomPickerDialog() {
+        return this.rPVM.displayDialog();
     }
 }

@@ -87,6 +87,11 @@ De plus ce fichier `README.adoc` devra être à jour des informations suivantes 
 - Indicateurs de qualité du code (dette technique)
 - ... tout autre élément que vous jugerez utiles pour démontrer la qualité de votre application
 
+=== Evaluation communication (EP)
+==== Evaluation ODJ et CR semaine 48
+Aucun lien dans le Github, travail non fait.
+Note : 0/3
+
 === Evaluation bi-hebdomadaire des sprints  
 
 ifdef::env-github[]
@@ -101,4 +106,7 @@ endif::[]
 
 ==== initialisation du dépôt:
 Il faut retravailler le readme et enlever les consignes. Je n'ai aucun lien actif dans le readme !! Pas de documentation (pas même la conception), pas de cahier de recettes, aucune doc initialisée ! J'ai les US qui doivent être eclatée en issues/taches dans le sprint. En scrum on ne prévoit que le sprint à venir ! Venir me voir pour des précisions ou demander au groupe 2. Pour l'instant c'est très insuffisant. Il manque les rôles dans l'équipe.
+
+=== Evaluation semaine 49
+Backlog produit ok mais pas de backlog de sprint !! Pas d'issues en cours de traitement. Pas de cahier de tests. J'ai la doc de conception mais pas doc utilisateur et tech. Release des codes non commentée, le lien vers le site actif ne marche pas. Pas de présentation du contexte dans le readme.
 
