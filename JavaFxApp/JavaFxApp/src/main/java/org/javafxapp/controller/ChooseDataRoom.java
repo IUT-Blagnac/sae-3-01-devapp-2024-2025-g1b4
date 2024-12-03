@@ -24,9 +24,10 @@ public class ChooseDataRoom {
             Scene scene = new Scene(root, root.getPrefWidth() + 20, root.getPrefHeight() + 10);
 
             this.fenetreDialogue.setScene(scene);
-            this.fenetreDialogue.setTitle("Menu");
-
-            
+            this.fenetreDialogue.setTitle("A VOIR");
+            ChooseDataRoomViewController cdrvController = cLoader.getController();
+            cdrvController.initContext(this.fenetreDialogue, this);
+            cdrvController.displayDialog();
         } catch (Exception e) {
             e.printStackTrace();
         }

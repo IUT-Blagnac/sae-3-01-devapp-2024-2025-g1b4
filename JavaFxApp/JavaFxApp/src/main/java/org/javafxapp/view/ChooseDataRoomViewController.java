@@ -1,17 +1,18 @@
 package org.javafxapp.view;
 
-import org.javafxapp.controller.MainMenu;
+import org.javafxapp.controller.ChooseDataRoom;
 
+import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
 public class ChooseDataRoomViewController {
 
-    private MainMenu mainMenuDialogController;
+    private ChooseDataRoom dialogController;
 
     private Stage appStage;
 
-    public void initContext(Stage appStage, MainMenu mainMenu) {
-        this.mainMenuDialogController = mainMenu;
+    public void initContext(Stage appStage, ChooseDataRoom stageControl) {
+        this.dialogController = stageControl;
         this.appStage = appStage;
         this.appStage.setOnCloseRequest(e -> this.appStage.close());
     }
@@ -20,4 +21,15 @@ public class ChooseDataRoomViewController {
         this.appStage.show();
     }
     
+
+    @FXML
+    public void boutonGauche() {
+
+    }
+
+    @FXML
+    public void boutonDroit() {
+
+    }
+
 }
