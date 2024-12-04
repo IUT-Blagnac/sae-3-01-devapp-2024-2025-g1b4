@@ -124,7 +124,7 @@ public class SallesAvecDonneeViewController {
 
     @FXML
     private void retourButton() {
-        System.out.println("Retour à faire...");
+        this.dialogController.openDataRoom();
     }
 
     @FXML

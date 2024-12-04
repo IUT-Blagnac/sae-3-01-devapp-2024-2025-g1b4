@@ -12,7 +12,6 @@ public class SallesAvecDonnee {
     
     private Stage fenetreDialogue;
 
-
     public SallesAvecDonnee(Stage fenetreP) {
         this.fenetreDialogue = fenetreP;
 
@@ -31,6 +30,10 @@ public class SallesAvecDonnee {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void openDataRoom() {
+        ChooseDataRoom cDataRoom = new ChooseDataRoom(this.fenetreDialogue);
     }
 
 }
