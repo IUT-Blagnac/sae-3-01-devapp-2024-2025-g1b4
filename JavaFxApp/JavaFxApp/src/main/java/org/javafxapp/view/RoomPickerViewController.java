@@ -13,13 +13,14 @@ import javafx.stage.WindowEvent;
 import org.controlsfx.control.textfield.AutoCompletionBinding;
 
 import org.controlsfx.control.textfield.TextFields;
-import org.javafxapp.Main;
+import org.ini4j.Wini;
 import org.javafxapp.controller.RoomPicker;
 import org.javafxapp.tools.JsonInteract;
 
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
+import java.util.List;
 
 public class RoomPickerViewController {
     private Stage appStage;
@@ -53,7 +54,9 @@ public class RoomPickerViewController {
     }
 
 
-    public ObservableList<String> displayDialog() {
+    public ObservableList<String> displayDialog(List<String> rooms) {
+
+        this.olRoomList.addAll(rooms);
 
         this.appStage.showAndWait();
 
@@ -128,8 +131,12 @@ public class RoomPickerViewController {
 
     @FXML
     public void doCancel(){
-        this.olRoomList.clear();
-        this.properClose();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Les modifications seront abandonnées!! Êtes-vous certain de vouloir annuler?");
+        alert.showAndWait();
+        if(alert.getResult()== ButtonType.OK) {
+            this.olRoomList.clear();
+            this.properClose();
+        }
     }
 
     public void properClose(){
