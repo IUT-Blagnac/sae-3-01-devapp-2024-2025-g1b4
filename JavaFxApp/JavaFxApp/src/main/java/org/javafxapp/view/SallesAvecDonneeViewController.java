@@ -1,7 +1,12 @@
 package org.javafxapp.view;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.controlsfx.control.CheckComboBox;
@@ -10,10 +15,14 @@ import org.javafxapp.tools.JsonInteract;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
@@ -25,14 +34,22 @@ public class SallesAvecDonneeViewController {
 
     private Stage appStage;
 
+    private String valueSelect;
+
     @FXML
     private ComboBox<String> dataSelectionComboBox;
+
+    @FXML
+    private CheckComboBox<String> checkComboBox;
 
     @FXML
     private LineChart<String, Number> lineChart;
 
     @FXML
     private VBox vBox;
+
+    @FXML
+    private Button appliqueButton;
 
 
 
@@ -45,6 +62,11 @@ public class SallesAvecDonneeViewController {
         JSONArray chosenData = (JSONArray) jsInt.get("communes.chosenData");
         JSONObject traduction = (JSONObject) jsInt.get("traduction");
         JSONArray salles = (JSONArray) jsInt.get("communes.chosenRooms");
+
+
+        lineChart.setTitle("Graphique des Salles");
+        lineChart.getXAxis().setLabel("Temps");
+        lineChart.getYAxis().setLabel("Valeurs");
 
         // Créer une liste pour les éléments traduits
         ObservableList<String> translatedData = FXCollections.observableArrayList();
@@ -64,22 +86,26 @@ public class SallesAvecDonneeViewController {
             String selectedTranslated = dataSelectionComboBox.getSelectionModel().getSelectedItem();
             String realName = getRealNameFromTranslated(selectedTranslated, chosenData, traduction);
             System.out.println("Nom réel sélectionné : " + realName);
+            this.valueSelect = realName;
         });
 
-
-        CheckComboBox<String> checkComboBox = new CheckComboBox<>();
-        for (Object item : salles) {            
+        // Créer le CheckComboBox
+        checkComboBox = new CheckComboBox<>();
+        for (Object item : salles) {
             checkComboBox.getItems().add(item.toString());
         }
 
-
+        // Ajouter le CheckComboBox à l'interface
         Label checkComboLabel = new Label("Liste des salles");
+
         vBox.getChildren().add(checkComboLabel);
         vBox.getChildren().add(checkComboBox);
-
     }
 
-    // Méthode pour retrouver le nom réel en fonction de la traduction sélectionnée
+    public void displayDialog() {
+        this.appStage.show();
+    }
+    
     private String getRealNameFromTranslated(String translated, JSONArray chosenData, JSONObject traduction) {
         for (Object item : chosenData) {
             String key = item.toString();
@@ -91,7 +117,72 @@ public class SallesAvecDonneeViewController {
         return null;  // Si la traduction n'est pas trouvée
     }
 
-    public void displayDialog() {
-        this.appStage.show();
+    @FXML
+    private void appliqueButton() {
+        ObservableList<String> selectedItems = checkComboBox.getCheckModel().getCheckedItems();
+
+        lineChart.getData().clear();
+
+        // Afficher les éléments sélectionnés dans la console (ou les utiliser comme bon vous semble)
+        System.out.println("Éléments sélectionnés : ");
+        for (String item : selectedItems) {
+            System.out.println(item); // Affiche chaque élément sélectionné
+            ArrayList data = dataBySalle(item);
+            if (data != null && !data.isEmpty()) {
+                addDataToChart(item, data); // Ajouter les données de la salle au graphique
+            }
+        }
+    }
+
+    private ArrayList dataBySalle(String nomSalle) {
+        try {
+            // Lire le fichier JSON
+            JsonInteract jsInt = new JsonInteract();
+            String cheminRelatif = (String)jsInt.get("communes.pathResultJson");
+            System.out.println("Chemin courant (pour result.json) : " + Paths.get(".").toAbsolutePath());
+            String content = Files.readString(Paths.get(cheminRelatif));
+            System.out.println(nomSalle);
+
+            JSONObject dataParSalee = new JSONObject(content).getJSONObject(nomSalle);
+
+            ArrayList donnePreciseParSalle = new ArrayList<>();
+
+            for (String key : dataParSalee.keySet()) {
+
+                JSONObject roomData = dataParSalee.getJSONObject(key);
+                
+                int value = roomData.getInt(this.valueSelect);
+                donnePreciseParSalle.add(value);
+            }
+
+            return donnePreciseParSalle;
+
+        } catch (IOException e) {
+            System.out.println("Erreur : Impossible de lire le fichier result.json.");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Erreur lors de l'extraction des données JSON : " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    private void addDataToChart(String salleName, ArrayList<Integer> data) {
+        // Créer une nouvelle série de données pour cette salle
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName(salleName);
+
+        // Ajouter les données à la série
+        for (int i = 0; i < data.size(); i++) {
+            series.getData().add(new XYChart.Data<>(String.valueOf(i), data.get(i)));
+        }
+
+        // Ajouter la série au LineChart
+        lineChart.getData().add(series);
+    }
+
+    private void updateLineChart() {
+
     }
 }
