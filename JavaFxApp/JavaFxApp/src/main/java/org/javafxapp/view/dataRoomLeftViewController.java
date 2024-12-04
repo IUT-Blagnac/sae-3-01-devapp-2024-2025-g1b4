@@ -5,12 +5,15 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import org.javafxapp.controller.DataRoomLeft;
+import org.javafxapp.tools.JsonInteract;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import org.json.*;
+
 
 public class DataRoomLeftViewController implements Initializable {
 
@@ -30,11 +33,14 @@ public class DataRoomLeftViewController implements Initializable {
     @FXML
     private ChoiceBox<String> myChoiceBoxSalle;
 
-    private String[] salle = { "B103", "E101", "E207", "E209"};
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        myChoiceBoxSalle.getItems().addAll(salle);
+        JsonInteract jsInt=new JsonInteract();
+        
+        System.out.println(jsInt.get("communes.chosenData"));
+        System.out.println(((JSONArray)jsInt.get("communes.chosenData")).toList().stream().map(Object::toString).toList());
+
+        myChoiceBoxSalle.getItems().addAll(((JSONArray)jsInt.get("communes.chosenData")).toList().stream().map(Object::toString).toList());
     }
 
     public void displayDialog() {

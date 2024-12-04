@@ -1,5 +1,6 @@
 package org.javafxapp.controller;
 
+import org.javafxapp.tools.JsonInteract;
 import org.javafxapp.view.DataRoomLeftViewController;
 import org.javafxapp.view.MainMenuViewController;
 
@@ -14,6 +15,8 @@ public class DataRoomLeft {
 
     public DataRoomLeft(Stage fenetreP) {
         this.fenetreDialogue = fenetreP;
+
+        
 
         try {
             FXMLLoader cLoader = new FXMLLoader(MainMenuViewController.class.getResource("dataRoomLeftView.fxml"));
