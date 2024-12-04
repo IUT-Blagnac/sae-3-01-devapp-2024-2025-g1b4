@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox xmlns="http://javafx.com/javafx/21"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.javafxapp.view.PanneauSolaireViewController">
+
+    <LineChart fx:id="graphiqueBarres" title="Données des Panneaux Solaires">
+        <xAxis>
+            <CategoryAxis label="Temps (h)" />
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Puissance (W)" />
+        </yAxis>
+    </LineChart>
+</VBox>

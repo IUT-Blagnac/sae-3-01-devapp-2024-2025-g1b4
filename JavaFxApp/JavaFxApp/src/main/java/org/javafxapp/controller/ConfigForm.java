@@ -113,7 +113,7 @@ public class ConfigForm {
     public void openRoomPicker() {
         RoomPicker rp=new RoomPicker(this.configStage);
         this.roomChoice=rp.doRoomPickerDialog(this.roomChoice);
-    }
+
 
     private List<String> roomChoice;
     private List<String> dataChoice;

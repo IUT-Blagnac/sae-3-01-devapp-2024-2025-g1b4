@@ -43,7 +43,7 @@ public class MainMenuViewController {
 
     @FXML
     public void doOpenSolarInfos() {
-
+        this.mainMenuDialogController.openPanneau();
     }
 
     @FXML
