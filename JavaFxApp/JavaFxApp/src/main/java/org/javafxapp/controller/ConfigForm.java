@@ -3,23 +3,23 @@ package org.javafxapp.controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import javafx.util.Pair;
 import org.ini4j.Profile;
 import org.ini4j.Wini;
 import org.javafxapp.tools.JsonInteract;
 import org.javafxapp.tools.StageManagement;
 import org.javafxapp.view.ConfigFormViewController;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-
+import java.util.*;
 
 
 public class ConfigForm {
@@ -85,8 +85,21 @@ public class ConfigForm {
         }
 
         this.dataChoice=this.cFVM.displayDialog(this.dataChoice);
-        if(!this.dataChoice.isEmpty() && !this.roomChoice.isEmpty())
+        if(!this.dataChoice.isEmpty() && !this.roomChoice.isEmpty()) {
             this.alterConfigFile();
+            this.rememberChoiceJSon();
+        }
+    }
+
+    private void rememberChoiceJSon() {
+        JsonInteract jsInt=new JsonInteract();
+
+        JSONObject jsObj=(JSONObject) jsInt.get("communes");
+
+        jsObj.put("chosenData",this.dataChoice);
+        jsObj.put("chosenRooms",this.roomChoice);
+
+        jsInt.properClose();
     }
 
     private void alterConfigFile() {
@@ -100,6 +113,9 @@ public class ConfigForm {
 
         this.wini.put("donnees","donnees",choixDonnees.replaceAll("\\s",""));
         this.wini.put("donnees","salles",choixSalles.replaceAll("\\s", ""));
+
+        Profile.Section section=this.wini.get("seuil");
+        section.putAll(this.seuils);
 
         try {
             this.wini.store();
@@ -119,15 +135,21 @@ public class ConfigForm {
     private List<String> roomChoice;
     private List<String> dataChoice;
 
-    private List<String> seuils;
+    private Map<String,String> seuils;
 
     public void getSeuilSelection(List<String> selectedData) {
 
-        loadData:{
-            Map<String,String> sec=wini.get("seuil");
+        Map<String,String> prevSeuils=wini.get("seuil");
 
-            for(Map.Entry<String,String> entry : sec.entrySet()){
-            }
+        this.seuils=new HashMap<>();
+
+        for(String str:selectedData){
+
+            SeuilSeter seuilSeter=new SeuilSeter(this.configStage,str);
+            String prevSeuil=prevSeuils.get(str)==null ? prevSeuils.get(str) : "0,100";
+
+            String newSeuil=seuilSeter.displayDialog(prevSeuil.split(","));
+            this.seuils.put(str,newSeuil!=null ? newSeuil : prevSeuil);
         }
     }
 }

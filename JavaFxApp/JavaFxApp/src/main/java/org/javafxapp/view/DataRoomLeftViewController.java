@@ -36,7 +36,7 @@ public class DataRoomLeftViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         JsonInteract jsInt=new JsonInteract();
-        
+
         System.out.println(jsInt.get("communes.chosenData"));
         System.out.println(((JSONArray)jsInt.get("communes.chosenData")).toList().stream().map(Object::toString).toList());
 
@@ -48,5 +48,5 @@ public class DataRoomLeftViewController implements Initializable {
     }
 
 }
-    
+
 

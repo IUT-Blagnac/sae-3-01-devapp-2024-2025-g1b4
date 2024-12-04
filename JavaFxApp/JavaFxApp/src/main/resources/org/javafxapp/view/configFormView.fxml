@@ -78,7 +78,7 @@
                               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                            </HBox.margin>
                         </CheckBox>
-                        <CheckBox fx:id="illumintation" alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="45.0" mnemonicParsing="false" text="Luminosité">
+                        <CheckBox fx:id="illumination" alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="45.0" mnemonicParsing="false" text="Luminosité">
                            <font>
                               <Font size="20.0" />
                            </font>

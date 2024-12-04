@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.ini4j.Wini;
 import org.javafxapp.controller.ConfigForm;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,13 +28,14 @@ public class ConfigFormViewController {
 
 
     public void initContext(Stage appStage, ConfigForm configForm) {
-        this.appStage=appStage;
-        this.conFormLoader=configForm;
+        this.appStage = appStage;
+        this.conFormLoader = configForm;
         this.appStage.setOnCloseRequest(this::closeWindow);
-        this.selectedData=new ArrayList<>();
+        this.selectedData = new ArrayList<>();
     }
+
     public List<String> displayDialog(List<String> data) {
-        this.selectedData=data;
+        this.selectedData = data;
         if (!this.selectedData.isEmpty()) {
 
             ObservableList<Node> checkBoxes = this.getAllCheckBoxes();
@@ -50,12 +53,12 @@ public class ConfigFormViewController {
     }
 
     private ObservableList<Node> getAllCheckBoxes() {
-        ObservableList<Node> sons=this.selection.getChildren();
-        ObservableList<Node> grandSons=FXCollections.observableList(new ArrayList<>());
+        ObservableList<Node> sons = this.selection.getChildren();
+        ObservableList<Node> grandSons = FXCollections.observableList(new ArrayList<>());
 
-        for(Node nd : sons)
-            if(nd instanceof HBox)
-                grandSons.addAll(((HBox)nd).getChildren());
+        for (Node nd : sons)
+            if (nd instanceof HBox)
+                grandSons.addAll(((HBox) nd).getChildren());
 
         return grandSons;
     }
@@ -65,7 +68,6 @@ public class ConfigFormViewController {
      *
      * @param e Evénement associé à la fermeture de la fenêtre
      * @return null toujours (inutilisé)
-     *
      */
     private Object closeWindow(WindowEvent e) {
         this.selectedData.clear();
@@ -74,7 +76,7 @@ public class ConfigFormViewController {
         return null;
     }
 
-    public void properClose(){
+    public void properClose() {
         this.appStage.close();
     }
 
@@ -84,15 +86,15 @@ public class ConfigFormViewController {
         this.selectedData.clear();
 
         for (Node nd : checkBoxes) {
-            checkBox=(CheckBox)nd;
+            checkBox = (CheckBox) nd;
             if (checkBox.isSelected())
                 this.selectedData.add(checkBox.getId());
         }
 
-        if(!this.selectedData.isEmpty())
+        if (!this.selectedData.isEmpty())
             return;
 
-        Alert noDataSelected=new Alert(Alert.AlertType.WARNING,"Vous devez sélectioner des données!!");
+        Alert noDataSelected = new Alert(Alert.AlertType.WARNING, "Vous devez sélectioner des données!!");
         noDataSelected.show();
     }
 
@@ -100,17 +102,13 @@ public class ConfigFormViewController {
     VBox selection;
 
     @FXML
-    public void doOpenRoom(){
+    public void doOpenRoom() {
         this.conFormLoader.openRoomPicker();
     }
 
     @FXML
-    public void doConfirm(){
+    public void doConfirm() {
         this.getSelection();
-
-        Alert alert=new Alert(Alert.AlertType.CONFIRMATION,"Souhaitez-vous régler tous les seuils, ou seulement ceux qui n'ont pas encore de valeurs?",ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-
 
         this.conFormLoader.getSeuilSelection(this.selectedData);
 
@@ -118,10 +116,10 @@ public class ConfigFormViewController {
     }
 
     @FXML
-    public void doCancel(){
+    public void doCancel() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Les modifications seront abandonnées!! Êtes-vous certain de vouloir annuler?");
         alert.showAndWait();
-        if(alert.getResult()== ButtonType.OK) {
+        if (alert.getResult() == ButtonType.OK) {
             this.selectedData.clear();
             this.properClose();
         }

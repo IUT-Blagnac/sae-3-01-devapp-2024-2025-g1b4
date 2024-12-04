@@ -50,17 +50,6 @@ public class JsonInteract {
 
     }
 
-//    public boolean set(String pathToData, Object elt){
-//        JSONObject jsOb=this.appData;
-//        Object temp=null;
-//            for (String str : pathToData.split("\\.")) {
-//                temp = jsOb.get(str);
-//                if (temp instanceof JSONObject)
-//                    jsOb = (JSONObject) temp;
-//            }
-//
-//    }
-
     public Object get(String pathToData){
 
         return this.getThroughArray(pathToData.split("\\."));
