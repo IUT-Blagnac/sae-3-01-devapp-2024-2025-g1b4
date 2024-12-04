@@ -37,4 +37,8 @@ public class ChooseDataRoom {
         SallesAvecDonnee cSAD = new SallesAvecDonnee(this.fenetreDialogue);
     }
 
+    public void openDataRoomLeft(){
+        DataRoomLeft cDRL = new DataRoomLeft(this.fenetreDialogue);
+    }
+
 }

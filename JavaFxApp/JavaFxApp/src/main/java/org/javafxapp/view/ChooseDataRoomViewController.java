@@ -1,6 +1,7 @@
 package org.javafxapp.view;
 
 import org.javafxapp.controller.ChooseDataRoom;
+import org.javafxapp.controller.DataRoomLeft;
 
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
@@ -24,7 +25,7 @@ public class ChooseDataRoomViewController {
 
     @FXML
     public void boutonGauche() {
-
+        this.dialogController.openDataRoomLeft();
     }
 
     @FXML
