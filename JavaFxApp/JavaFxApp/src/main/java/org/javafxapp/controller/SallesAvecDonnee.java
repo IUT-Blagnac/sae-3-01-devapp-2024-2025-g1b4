@@ -12,6 +12,7 @@ public class SallesAvecDonnee {
     
     private Stage fenetreDialogue;
 
+
     public SallesAvecDonnee(Stage fenetreP) {
         this.fenetreDialogue = fenetreP;
 
@@ -31,5 +32,9 @@ public class SallesAvecDonnee {
             e.printStackTrace();
         }
     }
+
+
+
+
 
 }
