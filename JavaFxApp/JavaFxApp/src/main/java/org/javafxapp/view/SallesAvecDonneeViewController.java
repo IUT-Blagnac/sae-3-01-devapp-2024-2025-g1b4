@@ -36,6 +36,8 @@ public class SallesAvecDonneeViewController {
 
     private String valueSelect;
 
+    private Boolean firstClick = true;
+
     @FXML
     private ComboBox<String> dataSelectionComboBox;
 
@@ -57,6 +59,8 @@ public class SallesAvecDonneeViewController {
         this.dialogController = stageControl;
         this.appStage = appStage;
         this.appStage.setOnCloseRequest(e -> this.appStage.close());
+
+        appliqueButton.setDisable(true);
 
         JsonInteract jsInt = new JsonInteract();
         JSONArray chosenData = (JSONArray) jsInt.get("communes.chosenData");
@@ -85,21 +89,22 @@ public class SallesAvecDonneeViewController {
         dataSelectionComboBox.setOnAction(event -> {
             String selectedTranslated = dataSelectionComboBox.getSelectionModel().getSelectedItem();
             String realName = getRealNameFromTranslated(selectedTranslated, chosenData, traduction);
-            System.out.println("Nom réel sélectionné : " + realName);
             this.valueSelect = realName;
+            appliqueButton.setDisable(false);
         });
-
+        
         // Créer le CheckComboBox
         checkComboBox = new CheckComboBox<>();
         for (Object item : salles) {
             checkComboBox.getItems().add(item.toString());
         }
-
+        
         // Ajouter le CheckComboBox à l'interface
         Label checkComboLabel = new Label("Liste des salles");
 
         vBox.getChildren().add(checkComboLabel);
         vBox.getChildren().add(checkComboBox);
+
     }
 
     public void displayDialog() {
@@ -118,15 +123,22 @@ public class SallesAvecDonneeViewController {
     }
 
     @FXML
+    private void retourButton() {
+        System.out.println("Retour à faire...");
+    }
+
+    @FXML
     private void appliqueButton() {
         ObservableList<String> selectedItems = checkComboBox.getCheckModel().getCheckedItems();
 
-        lineChart.getData().clear();
+        if (!this.firstClick) {
+            lineChart.getData().clear();
+        } else {
+            this.firstClick = false;
+        }
 
         // Afficher les éléments sélectionnés dans la console (ou les utiliser comme bon vous semble)
-        System.out.println("Éléments sélectionnés : ");
         for (String item : selectedItems) {
-            System.out.println(item); // Affiche chaque élément sélectionné
             ArrayList data = dataBySalle(item);
             if (data != null && !data.isEmpty()) {
                 addDataToChart(item, data); // Ajouter les données de la salle au graphique
@@ -139,9 +151,7 @@ public class SallesAvecDonneeViewController {
             // Lire le fichier JSON
             JsonInteract jsInt = new JsonInteract();
             String cheminRelatif = (String)jsInt.get("communes.pathResultJson");
-            System.out.println("Chemin courant (pour result.json) : " + Paths.get(".").toAbsolutePath());
             String content = Files.readString(Paths.get(cheminRelatif));
-            System.out.println(nomSalle);
 
             JSONObject dataParSalee = new JSONObject(content).getJSONObject(nomSalle);
 
@@ -182,7 +192,4 @@ public class SallesAvecDonneeViewController {
         lineChart.getData().add(series);
     }
 
-    private void updateLineChart() {
-
-    }
 }
