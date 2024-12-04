@@ -29,7 +29,7 @@ public class ChooseDataRoomViewController {
 
     @FXML
     public void boutonDroit() {
-
+        this.dialogController.openSalleAvecDonnee();
     }
 
 }
