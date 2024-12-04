@@ -5,6 +5,7 @@
     "winiFilePath":"./../../IOT/config.ini"
   },
   "communes": {
-    "selectedRooms":[]
+    "chosenData":[""],
+    "chosenRooms": [""]
   }
 }

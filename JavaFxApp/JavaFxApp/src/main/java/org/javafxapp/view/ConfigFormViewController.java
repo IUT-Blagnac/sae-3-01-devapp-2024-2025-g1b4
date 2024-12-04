@@ -108,6 +108,10 @@ public class ConfigFormViewController {
     public void doConfirm(){
         this.getSelection();
 
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION,"Souhaitez-vous régler tous les seuils, ou seulement ceux qui n'ont pas encore de valeurs?",ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+
+
         this.conFormLoader.getSeuilSelection(this.selectedData);
 
         this.properClose();
