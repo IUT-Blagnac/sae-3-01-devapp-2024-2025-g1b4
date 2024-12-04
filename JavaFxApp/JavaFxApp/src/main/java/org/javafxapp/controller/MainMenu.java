@@ -11,7 +11,7 @@ public class MainMenu extends Application {
 
     private Stage appStage;
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         this.appStage=stage;
 
         try {

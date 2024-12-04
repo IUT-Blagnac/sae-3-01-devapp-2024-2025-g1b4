@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.ini4j.Wini;
 import org.javafxapp.tools.StageManagement;
 import org.javafxapp.view.ConfigFormViewController;
 import org.javafxapp.view.RoomPickerViewController;
@@ -38,7 +39,7 @@ public class RoomPicker {
         }
     }
 
-    public List<String> doRoomPickerDialog() {
-        return this.rPVM.displayDialog();
+    public List<String> doRoomPickerDialog(List<String> rooms) {
+        return this.rPVM.displayDialog(rooms);
     }
 }
