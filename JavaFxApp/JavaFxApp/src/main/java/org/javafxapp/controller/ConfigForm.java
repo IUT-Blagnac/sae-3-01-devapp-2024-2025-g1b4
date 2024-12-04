@@ -111,8 +111,9 @@ public class ConfigForm {
     }
 
     public void openRoomPicker() {
-        RoomPicker rp=new RoomPicker(this.configStage);
-        this.roomChoice=rp.doRoomPickerDialog(this.roomChoice);
+        RoomPicker rp = new RoomPicker(this.configStage);
+        this.roomChoice = rp.doRoomPickerDialog(this.roomChoice);
+    }
 
 
     private List<String> roomChoice;
@@ -126,7 +127,6 @@ public class ConfigForm {
             Map<String,String> sec=wini.get("seuil");
 
             for(Map.Entry<String,String> entry : sec.entrySet()){
-                System.out.println(entry.getKey() + " : " + entry.getValue());
             }
         }
     }
