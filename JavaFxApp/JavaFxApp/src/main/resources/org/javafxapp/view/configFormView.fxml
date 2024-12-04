@@ -24,46 +24,97 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-
-            <HBox fx:id="selection" alignment="CENTER" prefHeight="75.0" prefWidth="200.0">
+            <VBox fx:id="selection" prefHeight="200.0" prefWidth="100.0">
                <children>
-                  <CheckBox fx:id="co2" mnemonicParsing="false" text="Taux CO2">
-
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </CheckBox>
-
-                  <CheckBox fx:id="humidity" mnemonicParsing="false" text="Taux d'Humidité">
-
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </CheckBox>
-
-                  <CheckBox fx:id="temperature" layoutX="236.0" layoutY="52.0" mnemonicParsing="false" text="Température">
-
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </CheckBox>
+                  <HBox alignment="CENTER" prefHeight="75.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox fx:id="co2" mnemonicParsing="false" text="Taux CO2">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="humidity" mnemonicParsing="false" text="Taux d'Humidité">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="temperature" layoutX="236.0" layoutY="52.0" mnemonicParsing="false" text="Température">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox fx:id="activity" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Activité">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="tvoc" alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="45.0" mnemonicParsing="false" text="Tvoc">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="illumintation" alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="45.0" mnemonicParsing="false" text="Luminosité">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="85.0" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <CheckBox fx:id="infrared" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Infrared">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </CheckBox>
+                        <CheckBox fx:id="infrared_and_visible" alignment="CENTER" contentDisplay="CENTER" layoutX="260.0" layoutY="45.0" mnemonicParsing="false" text="Infrared et Visible">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                        <CheckBox fx:id="pressure" alignment="CENTER" contentDisplay="CENTER" layoutX="322.0" layoutY="45.0" mnemonicParsing="false" text="Pression">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                     </children>
+                  </HBox>
                </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </HBox>
+            </VBox>
          </children></VBox>
    </center>
    <top>
@@ -76,10 +127,8 @@
    <bottom>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <buttons>
-
             <Button mnemonicParsing="false" onAction="#doCancel" text="Annuler" />
           <Button mnemonicParsing="false" onAction="#doConfirm" text="Valider" />
-
         </buttons>
          <opaqueInsets>
             <Insets />
