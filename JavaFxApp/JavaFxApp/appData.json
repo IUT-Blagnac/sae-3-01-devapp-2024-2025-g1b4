@@ -15,8 +15,8 @@
         "activity" : "Activité",
         "tvoc" : "Tvoc",
         "illumintation" : "Luminosité",
-        "infrared" : "Infrared",
-        "infrared_and_visible" : "Infrared et Visible",
+        "infrared" : "Infrarouge",
+        "infrared_and_visible" : "Infrarouge et Visible",
         "pressure" : "Pression"
     }
 }
