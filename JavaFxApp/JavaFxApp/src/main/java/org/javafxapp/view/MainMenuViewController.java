@@ -48,7 +48,7 @@ public class MainMenuViewController {
 
     @FXML
     public void doOpenRoomData() {
-
+        this.mainMenuDialogController.openDataRoom();
     }
 
     @FXML

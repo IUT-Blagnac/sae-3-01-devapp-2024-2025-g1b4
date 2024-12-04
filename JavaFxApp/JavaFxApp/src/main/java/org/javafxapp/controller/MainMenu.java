@@ -42,6 +42,10 @@ public class MainMenu extends Application {
     }
     
 
+    public void openDataRoom() {
+        ChooseDataRoom cDataRoom = new ChooseDataRoom(this.appStage);
+    }
+
     public static void main2(String[] args) {
         launch();
     }
