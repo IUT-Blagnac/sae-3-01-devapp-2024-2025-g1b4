@@ -44,6 +44,7 @@ public class SallesAvecDonneeViewController {
         JsonInteract jsInt = new JsonInteract();
         JSONArray chosenData = (JSONArray) jsInt.get("communes.chosenData");
         JSONObject traduction = (JSONObject) jsInt.get("traduction");
+        JSONArray salles = (JSONArray) jsInt.get("communes.chosenRooms");
 
         // Créer une liste pour les éléments traduits
         ObservableList<String> translatedData = FXCollections.observableArrayList();
@@ -67,7 +68,9 @@ public class SallesAvecDonneeViewController {
 
 
         CheckComboBox<String> checkComboBox = new CheckComboBox<>();
-        checkComboBox.getItems().addAll("Option 1", "Option 2", "Option 3", "Option 4");
+        for (Object item : salles) {            
+            checkComboBox.getItems().add(item.toString());
+        }
 
 
         Label checkComboLabel = new Label("Liste des salles");
