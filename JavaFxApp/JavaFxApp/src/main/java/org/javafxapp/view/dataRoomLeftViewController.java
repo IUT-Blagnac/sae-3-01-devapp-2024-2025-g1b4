@@ -90,6 +90,11 @@ public class DataRoomLeftViewController {
     }
 
     @FXML
+    private void retourButton() {
+        this.dialogController.openDataRoom();
+    }
+
+    @FXML
     private void onAppliqueButtonClick() {
         // Chercher un CheckComboBox parmi les enfants de vBox
         CheckComboBox<String> checkComboBox = null;

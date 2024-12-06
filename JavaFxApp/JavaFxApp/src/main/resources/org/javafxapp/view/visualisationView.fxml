@@ -54,4 +54,11 @@
          </children>
       </GridPane>
    </right>
+   <bottom>
+      <Button mnemonicParsing="false" text="Retour" BorderPane.alignment="BOTTOM_RIGHT">
+         <BorderPane.margin>
+            <Insets bottom="10.0" right="10.0" />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
 </BorderPane>
