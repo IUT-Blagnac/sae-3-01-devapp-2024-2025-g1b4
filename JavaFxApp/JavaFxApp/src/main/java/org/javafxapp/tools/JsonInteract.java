@@ -9,11 +9,11 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import org.javafxapp.Main;
 import org.json.*;
 
 public class JsonInteract {
-
-    public static String
 
     private JSONObject appData;
 
@@ -43,7 +43,7 @@ public class JsonInteract {
         this.appData.put("roomNames",this.alRoomData);
 
         try {
-            Files.writeString(Paths.get("./appData.json"),this.appData.toString());
+            Files.writeString(Paths.get(Main.appDataPath),this.appData.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

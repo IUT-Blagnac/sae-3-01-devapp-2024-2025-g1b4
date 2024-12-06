@@ -1,20 +1,19 @@
 package org.javafxapp.view;
 
-import impl.org.controlsfx.autocompletion.AutoCompletionTextFieldBinding;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import org.ini4j.Wini;
 import org.javafxapp.controller.ConfigForm;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -32,19 +31,11 @@ public class ConfigFormViewController {
         this.appStage.setOnCloseRequest(this::closeWindow);
         this.selectedData=new ArrayList<>();
     }
+    public List<String> displayDialog(List<String> data) {
+        this.selectedData=data;
+        if (!this.selectedData.isEmpty()) {
 
-    public List<String> displayDialog(Wini wini) {
-        loadData:
-        {
-            if(wini==null)
-                System.exit(0);
-            this.selectedData= Arrays.asList(wini.get("donnees","donnees").split("\\."));
-
-
-            if (this.selectedData.isEmpty())
-                break loadData;
-
-            ObservableList<Node> checkBoxes = selection.getChildren();
+            ObservableList<Node> checkBoxes = this.getAllCheckBoxes();
             CheckBox checkBox;
 
             for (Node nd : checkBoxes) {
@@ -56,6 +47,17 @@ public class ConfigFormViewController {
         this.appStage.showAndWait();
 
         return this.selectedData;
+    }
+
+    private ObservableList<Node> getAllCheckBoxes() {
+        ObservableList<Node> sons=this.selection.getChildren();
+        ObservableList<Node> grandSons=FXCollections.observableList(new ArrayList<>());
+
+        for(Node nd : sons)
+            if(nd instanceof HBox)
+                grandSons.addAll(((HBox)nd).getChildren());
+
+        return grandSons;
     }
 
     /**
@@ -77,8 +79,9 @@ public class ConfigFormViewController {
     }
 
     private void getSelection() {
-        ObservableList<Node> checkBoxes = selection.getChildren();
+        ObservableList<Node> checkBoxes = this.getAllCheckBoxes();
         CheckBox checkBox;
+        this.selectedData.clear();
 
         for (Node nd : checkBoxes) {
             checkBox=(CheckBox)nd;
@@ -94,7 +97,7 @@ public class ConfigFormViewController {
     }
 
     @FXML
-    HBox selection;
+    VBox selection;
 
     @FXML
     public void doOpenRoom(){
@@ -104,24 +107,23 @@ public class ConfigFormViewController {
     @FXML
     public void doConfirm(){
         this.getSelection();
+
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION,"Souhaitez-vous régler tous les seuils, ou seulement ceux qui n'ont pas encore de valeurs?",ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+
+
+        this.conFormLoader.getSeuilSelection(this.selectedData);
+
         this.properClose();
     }
 
     @FXML
     public void doCancel(){
-        this.selectedData.clear();
-        this.properClose();
-    }
-
-    public static void main(String[] args) {
-        Wini wini= null;
-        try {
-            wini = new Wini(new File("C:\\Users\\Dell\\Documents\\Fichiers Persos\\Studies\\BUT Info\\S3\\SAÉS\\Temp\\sae-3-01-devapp-2024-2025-g1b4\\IOT\\config.ini"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Les modifications seront abandonnées!! Êtes-vous certain de vouloir annuler?");
+        alert.showAndWait();
+        if(alert.getResult()== ButtonType.OK) {
+            this.selectedData.clear();
+            this.properClose();
         }
-
-        System.out.println(wini.get("donnees","donnees"));
-
     }
 }

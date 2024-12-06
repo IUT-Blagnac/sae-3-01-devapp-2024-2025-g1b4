@@ -11,7 +11,7 @@ public class MainMenu extends Application {
 
     private Stage appStage;
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         this.appStage=stage;
 
         try {
@@ -36,6 +36,11 @@ public class MainMenu extends Application {
         conForm.doConfigFormDialog();
     }
 
+    public void openPanneau() {
+        PanneauSolaire panneauSolaire = new PanneauSolaire(this.appStage);
+        panneauSolaire.afficherFenetre();
+    }
+    
 
     public static void main2(String[] args) {
         launch();
