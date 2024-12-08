@@ -1,5 +1,6 @@
 import configparser
 import os
+import sys
 
 import paho.mqtt.client as mqtt
 import json
@@ -19,6 +20,7 @@ temps = int(config['donnees']['temps'])
 
 seuil = {}
 valeursFinal = {}
+
 
 if (len(config['seuil']) != len(donnees)):
     print("[WARNING] Seuil manquant dans le fichier de configuration")
@@ -85,12 +87,13 @@ def on_message(client, userdata, msg):
                 newData = {}
             for do in donnees:
                 newData[do] = float(data[0][do])
-                if float(data[0][do]) <= float(seuil[do][0]):
-                    print(f"[ALERT] Seuil minimum dépassé -> {do} : {data[0][do]}")
-                elif float(data[0][do]) >= float(seuil[do][1]):
-                    print(f"[ALERT] Seuil maximum dépassé -> {do} : {data[0][do]}")
-                else:
-                    print(f"{do} : {data[0][do]}")
+                with os.open("AlertPipe.txt", os.O_WRONLY | os.O_CREAT | os.O_TRUNC,0o644) as alertFile:
+                    if float(data[0][do]) <= float(seuil[do][0]):
+                        alertFile.write(f"[ALERT] Seuil minimum dépassé -> {do} : {data[0][do]}")
+                    elif float(data[0][do]) >= float(seuil[do][1]):
+                        alertFile.write(f"[ALERT] Seuil maximum dépassé -> {do} : {data[0][do]}")
+                    else:
+                        alertFile.write(f"{do} : {data[0][do]}")
             valeursFinal[data[1]["room"]][str(len(valeursFinal[data[1]["room"]]))] = newData
 
 client = mqtt.Client()
@@ -103,6 +106,8 @@ try:
 except Exception as e:
     print(f"Erreur lors de la connexion au broker : {e}")
     exit(1)
+if(len(sys.argv)>1):
+    exit(0)
 
 
 # Création d'un nouveau thread

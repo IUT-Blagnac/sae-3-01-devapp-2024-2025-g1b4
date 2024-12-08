@@ -1,17 +1,18 @@
 package org.javafxapp.controller;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import org.controlsfx.control.Notifications;
 import org.javafxapp.view.MainMenuViewController;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -20,9 +21,12 @@ public class MainMenu extends Application {
     private Stage appStage;
 
     private Process pythonProcess;
+
+    private AtomicBoolean checkingWarnings;
     @Override
     public void start(Stage stage) {
 
+        this.checkingWarnings=new AtomicBoolean(false);
         this.appStage=stage;
 
         try {
@@ -63,7 +67,7 @@ public class MainMenu extends Application {
         if(this.pythonProcess!=null)
             this.pythonProcess.destroy();
 
-        Thread.startVirtualThread(new Runnable()     {
+        Thread.startVirtualThread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -81,9 +85,77 @@ public class MainMenu extends Application {
             }
 
         });
+
+        this.startCheckingWarnings();
+    }
+
+    public void startCheckingWarnings() {
+        this.checkingWarnings=new AtomicBoolean(true);
+        Thread.startVirtualThread(new Runnable() {
+            @Override
+            public void run() {
+                File warnings=new File("AlertPipe.txt");
+                while(checkingWarnings.get()){
+                    try {
+                        Thread.sleep(100);
+
+                        Scanner warning=new Scanner(warnings).useDelimiter("\\A");
+
+
+
+                        if(warning.hasNext()){
+                            Platform.runLater(() ->{
+                                Notifications.create()
+                                        .title("Erreur")
+                                        .text(warning.next())
+                                        .showWarning();
+                            });
+
+                            PrintWriter pw=new PrintWriter(warnings);
+                            pw.print("");
+                            pw.close();
+                        }
+
+
+                    } catch (FileNotFoundException | InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+
+
+                }
+            }
+
+        });
     }
 
     public void testConnexion() {
+
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                Process process;
+                try {
+                    process = Runtime.getRuntime().exec("python ./iot/iot.py test");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+
+                int exit = 1;
+
+                // Wait for the process to finish and check the exit code
+                try {
+                    exit=process.waitFor();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+                if(exit==0)
+                    Notifications.create().text("La connexion est un succès ! ").showInformation();
+                else
+                    Notifications.create().text("La connexion a échouée!").showError();
+            }
+        });
 
     }
 

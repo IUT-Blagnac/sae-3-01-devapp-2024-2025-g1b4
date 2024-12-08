@@ -48,6 +48,11 @@ public class MainMenuViewController {
     }
 
     @FXML
+    public void doTesterConnex(){
+        this.mainMenuDialogController.testConnexion();
+    }
+
+    @FXML
     public void doOpenConfig() {
         this.mainMenuDialogController.openConfig();
     }

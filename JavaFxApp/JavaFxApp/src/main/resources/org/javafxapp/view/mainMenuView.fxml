@@ -10,6 +10,7 @@
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
+            <Button mnemonicParsing="false" onAction="#doTesterConnex" text="Tester la Connexion" />
             <Button contentDisplay="CENTER" mnemonicParsing="false" onAction="#doOpenConfig" text="Config" />
             <Button mnemonicParsing="false" onAction="#doOpenSolarInfos" text="Panneaux Solaires" />
             <Button mnemonicParsing="false" onAction="#doOpenRoomData" text="Salles" />
