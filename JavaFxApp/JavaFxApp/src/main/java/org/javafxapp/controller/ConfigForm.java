@@ -21,12 +21,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-
+/**
+ * Classe de configuration du formulaire.
+ */
 public class ConfigForm {
     private Stage configStage;
     private ConfigFormViewController cFVM;
-    public ConfigForm(Stage appStage) {
 
+    /**
+     * Constructeur pour le formulaire de configuration
+     * @param appStage La scène de l'application
+     */
+    public ConfigForm(Stage appStage) {
         this.roomChoice=new ArrayList<>();
         this.dataChoice=new ArrayList<>();
 
@@ -53,6 +59,9 @@ public class ConfigForm {
 
     private Wini wini;
 
+    /**
+     * Initialise le formulaire de configuration.
+     */
     public void doConfigFormDialog() {
         JsonInteract jsInt=new JsonInteract();
 
@@ -81,9 +90,7 @@ public class ConfigForm {
 
             this.tps=wini.get("donnees","temps");
 
-
-
-        }catch(IOException e){
+        } catch(IOException e){
             Alert alert=new Alert(Alert.AlertType.ERROR, "Le fichier de configuration(config.ini) est introuvable!! Vérifiez le chemin(appData.json)!!");
             alert.show();
             e.printStackTrace();
@@ -97,6 +104,9 @@ public class ConfigForm {
         }
     }
 
+    /**
+     * Enregistre le choix dans un fichier JSON.
+     */
     private void rememberChoiceJSon() {
         JsonInteract jsInt=new JsonInteract();
 
@@ -108,15 +118,14 @@ public class ConfigForm {
         jsInt.properClose();
     }
 
+    /**
+     * Altere le fichier de configuration.
+     */
     private void alterConfigFile() {
-
-
         String choixDonnees=this.dataChoice.toString();
         choixDonnees=choixDonnees.substring(1,choixDonnees.length()-1);
-
         String choixSalles=this.roomChoice.toString();
         choixSalles=choixSalles.substring(1,choixSalles.length()-1);
-
 
         this.wini.put("donnees","donnees",choixDonnees.replaceAll("\\s",""));
         this.wini.put("donnees","salles",choixSalles.replaceAll("\\s", ""));
@@ -134,34 +143,33 @@ public class ConfigForm {
         }
     }
 
+    /**
+     * Ouvre le choix de la salle.
+     */
     public void openRoomPicker() {
         RoomPicker rp = new RoomPicker(this.configStage);
         this.roomChoice = rp.doRoomPickerDialog(this.roomChoice);
     }
 
-
     private List<String> roomChoice;
     private List<String> dataChoice;
-
     private String tps;
-
     private Map<String,String> seuils;
 
+    /**
+     * Obtient une sélection de seuil.
+     * @param selectedData Les données sélectionnées
+     */
     public void getSeuilSelection(List<String> selectedData) {
-
         Map<String,String> prevSeuils=wini.get("seuil");
 
         this.seuils=new HashMap<>();
 
         for(String str:selectedData){
-
-
             SeuilSeter seuilSeter=new SeuilSeter(this.configStage,str);
             String prevSeuil=prevSeuils.get(str)==null ? prevSeuils.get(str) : "0,100";
-
             String newSeuil=seuilSeter.displayDialog(prevSeuil.split(","));
             this.seuils.put(str,newSeuil!=null ? newSeuil : prevSeuil);
-
         }
     }
 }
