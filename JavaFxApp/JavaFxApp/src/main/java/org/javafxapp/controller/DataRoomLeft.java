@@ -35,4 +35,9 @@ public class DataRoomLeft {
         }
     }
 
+    public void openDataRoom() {
+        ChooseDataRoom cDataRoom = new ChooseDataRoom(this.fenetreDialogue);
+    }
+
+
 }
