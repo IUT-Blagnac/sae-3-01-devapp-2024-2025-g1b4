@@ -16,6 +16,7 @@ import org.controlsfx.control.textfield.TextFields;
 import org.ini4j.Wini;
 import org.javafxapp.controller.RoomPicker;
 import org.javafxapp.tools.JsonInteract;
+import org.json.JSONArray;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +26,8 @@ import java.util.List;
 public class RoomPickerViewController {
     private Stage appStage;
 
-    private JsonInteract jsFile;
+    private JSONArray allRoomList;
+    private JsonInteract jsInt;
 
     private ObservableList<String> olRoomList;
     private RoomPicker roomPicker;
@@ -42,8 +44,9 @@ public class RoomPickerViewController {
 
     private void configure() {
         this.olRoomList=this.roomList.getItems();
-        this.jsFile=new JsonInteract();
-        this.bindingTextField=TextFields.bindAutoCompletion(this.roomName, this.jsFile.getRoomList());
+        this.jsInt=new JsonInteract();
+        this.allRoomList=(JSONArray) jsInt.get("roomNames");
+        this.bindingTextField=TextFields.bindAutoCompletion(this.roomName, this.allRoomList.toList());
 
 
         this.olRoomList.addAll(this.getPrevConfig());
@@ -60,7 +63,7 @@ public class RoomPickerViewController {
 
         this.appStage.showAndWait();
 
-        this.jsFile.properClose();
+        this.jsInt.properClose();
         return this.olRoomList;
     }
 
@@ -87,19 +90,20 @@ public class RoomPickerViewController {
     @FXML
     public void doAjouterSalle(){
         if(!this.olRoomList.contains(roomName.getText())){
-            if(!this.jsFile.getRoomList().contains(roomName.getText())){
+            if(!this.allRoomList.toList().contains(roomName.getText())){
                 Alert alert =new Alert(Alert.AlertType.CONFIRMATION,"La Salle est inconnue voulez-vous vraiment l'ajouter?");
                 alert.showAndWait();
 
                 if(alert.getResult()!=ButtonType.OK)
                     return;
 
-                this.jsFile.addRoomToList(roomName.getText());
+                this.allRoomList.put(roomName.getText());
                 this.bindingTextField.dispose();
-                this.bindingTextField=TextFields.bindAutoCompletion(this.roomName, this.jsFile.getRoomList());
+                this.bindingTextField=TextFields.bindAutoCompletion(this.roomName, this.allRoomList.toList());
 
 
             }
+
             this.olRoomList.add(roomName.getText());
             roomName.clear();
 
@@ -140,8 +144,6 @@ public class RoomPickerViewController {
     }
 
     public void properClose(){
-        this.jsFile.properClose();
         this.appStage.close();
-
     }
 }
