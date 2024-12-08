@@ -1,6 +1,5 @@
 package org.javafxapp.view;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,20 +18,31 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Contrôleur de la vue pour le formulaire de configuration.
+ */
 public class ConfigFormViewController {
 
+    // Le stage principal de l'application.
     private Stage appStage;
+    // Le contrôleur pour le formulaire de configuration
     private ConfigForm conFormLoader;
+    // Les données sélectionnées.
     private List<String> selectedData;
 
 
+    /**
+     * Initialise le contexte du contrôleur.
+     * @param appStage le stage principal de l'application.
+     * @param configForm le contrôleur du formulaire de configuration.
+     */
     public void initContext(Stage appStage, ConfigForm configForm) {
         this.appStage = appStage;
         this.conFormLoader = configForm;
         this.appStage.setOnCloseRequest(this::closeWindow);
         this.selectedData = new ArrayList<>();
 
-
+        // Création et configuration du validateur des données.
         Validator validator=new Validator();
         validator.createCheck().dependsOn("value",this.tps.textProperty()).withMethod( c -> {
             String max=c.get("value");
@@ -41,6 +51,12 @@ public class ConfigFormViewController {
         }).immediate().decorates(this.tps);
     }
 
+    /**
+     * Affiche le dialogue avec les données et le temps de seuil.
+     * @param data Les données à afficher.
+     * @param tps Le temps à utiliser sur le seuil.
+     * @return Les données sélectionnées.
+     */
     public List<String> displayDialog(List<String> data, String tps) {
         this.selectedData = data;
 
@@ -61,6 +77,10 @@ public class ConfigFormViewController {
         return this.selectedData;
     }
 
+    /**
+     * Récupère toutes les checkbox de la sélection.
+     * @return Une liste observable de tous les noeuds de type CheckBox.
+     */
     private ObservableList<Node> getAllCheckBoxes() {
         ObservableList<Node> sons = this.selection.getChildren();
         ObservableList<Node> grandSons = FXCollections.observableList(new ArrayList<>());
@@ -73,22 +93,24 @@ public class ConfigFormViewController {
     }
 
     /**
-     * Gestion de la fermeture de la fenêtre par l'utilisateur.
-     *
-     * @param e Evénement associé à la fermeture de la fenêtre
-     * @return null toujours (inutilisé)
+     * Gestion de l'événement de fermeture de la fenêtre par l'utilisateur.
      */
-    private Object closeWindow(WindowEvent e) {
+    private void closeWindow(WindowEvent e) {
         this.selectedData.clear();
         this.properClose();
         e.consume();
-        return null;
     }
 
+    /**
+     * Ferme correctement la fenêtre.
+     */
     public void properClose() {
         this.appStage.close();
     }
 
+    /**
+     * Récupère la sélection de l'utilisateur.
+     */
     private void getSelection() {
         ObservableList<Node> checkBoxes = this.getAllCheckBoxes();
         CheckBox checkBox;
@@ -100,6 +122,7 @@ public class ConfigFormViewController {
                 this.selectedData.add(checkBox.getId());
         }
 
+        // Affiche un avertissement si aucune donnée n'est sélectionnée.
         if (!this.selectedData.isEmpty())
             return;
 
@@ -113,11 +136,17 @@ public class ConfigFormViewController {
     @FXML
     TextField tps;
 
+    /**
+     * Ouvre le sélecteur de salle.
+     */
     @FXML
     public void doOpenRoom() {
         this.conFormLoader.openRoomPicker();
     }
 
+    /**
+     * Confirme la sélection et ferme le dialogue.
+     */
     @FXML
     public void doConfirm() {
         this.getSelection();
@@ -127,6 +156,9 @@ public class ConfigFormViewController {
         this.properClose();
     }
 
+    /**
+     * Annule la sélection et demande une confirmation avant de fermer le dialogue.
+     */
     @FXML
     public void doCancel() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Les modifications seront abandonnées!! Êtes-vous certain de vouloir annuler?");

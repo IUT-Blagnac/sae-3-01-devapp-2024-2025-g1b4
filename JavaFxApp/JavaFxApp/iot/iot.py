@@ -23,7 +23,8 @@ valeursFinal = {}
 
 
 if (len(config['seuil']) < len(donnees)):
-    print("[WARNING] Seuil manquant dans le fichier de configuration")
+    with open("AlertPipe.txt", "w") as alertFile:
+        alertFile.write("[WARNING] Seuil manquant dans le fichier de configuration")
 else:
     for do in donnees:
         seuil[do] = config['seuil'][do].split(',')
@@ -89,9 +90,9 @@ def on_message(client, userdata, msg):
                 newData[do] = float(data[0][do])
                 with open("AlertPipe.txt", "w") as alertFile:
                     if float(data[0][do]) <= float(seuil[do][0]):
-                        alertFile.write(f"[ALERT] Seuil minimum dépassé -> {do} : {data[0][do]}")
+                        alertFile.write(f"ALERTE de Seuil\n Seuil minimum dépassé -> {do} : {data[0][do]}")
                     elif float(data[0][do]) >= float(seuil[do][1]):
-                        alertFile.write(f"[ALERT] Seuil maximum dépassé -> {do} : {data[0][do]}")
+                        alertFile.write(f"ALERTE de Seuil\n Seuil maximum dépassé -> {do} : {data[0][do]}")
                     else:
                         alertFile.write(f"{do} : {data[0][do]}")
             valeursFinal[data[1]["room"]][str(len(valeursFinal[data[1]["room"]]))] = newData
@@ -104,7 +105,8 @@ client.on_message = on_message
 try:
     client.connect(broker, port, 60)
 except Exception as e:
-    print(f"Erreur lors de la connexion au broker : {e}")
+    with open("AlertPipe.txt", "w") as alertFile:
+       alertFile.write("Erreur!\nLa connection au broker a échouée!")
     exit(1)
 if(len(sys.argv)>1):
     exit(0)
@@ -116,10 +118,11 @@ thread.daemon = True
 thread.start()
 
 client.loop_start()
-
-
 with open("AlertPipe.txt", "w") as alertFile:
-    alertFile.write("Ceci est un message de test.")
+   alertFile.write("start")
+
+
+
 
 try:
     while True:

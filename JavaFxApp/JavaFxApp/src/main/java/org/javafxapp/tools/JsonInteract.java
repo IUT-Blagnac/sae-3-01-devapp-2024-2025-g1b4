@@ -1,16 +1,9 @@
 package org.javafxapp.tools;
 
-import java.io.File;
-import java.io.FileWriter;
-
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 import org.javafxapp.Main;
 import org.json.*;
@@ -19,8 +12,9 @@ public class JsonInteract {
 
     private JSONObject appData;
 
-    private List<String> alRoomData;
-
+    /**
+     * Récupère toutes les données JSon du fichier de l'application
+     */
     public JsonInteract(){
         try {
             String content=Files.readString(Paths.get(Main.appDataPath));
@@ -30,30 +24,35 @@ public class JsonInteract {
         }
     }
 
-
-//    public List<String> getRoomList(){return this.alRoomData;}
-//
-//
-//    public void addRoomToList(String roomName){
-//        this.alRoomData.add(roomName);
-//    }
-
+    /**
+     * S'assure d'écrire le nouveau JSon avec ces modifications dans le fichier
+     */
     public void properClose(){
-//        this.appData.put("roomNames",this.alRoomData);
-
         try {
             Files.writeString(Paths.get(Main.appDataPath),this.appData.toString());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
+    /**
+     * Permet de récupérer les données du JSon a partir du chemin des
+     * données au format comprenant une séparation par un point.
+     *
+     * @param pathToData le chemin des données
+     * @return l'Objet trouvé au bout du chemin
+     */
     public Object get(String pathToData){
-
         return this.getThroughArray(pathToData.split("\\."));
     }
 
+    /**
+     * Permet de récupérer les données du JSon a partir du chemin des
+     * données a partir d'une liste de String contenant les objets du chemin.
+     *
+     * @param paths les objets formant le chemin des données à récupérer
+     * @return l'Objet au bout du chemin
+     */
     public Object getThroughArray(String[] paths){
         JSONObject jsOb=this.appData;
         Object temp=null;
@@ -64,12 +63,6 @@ public class JsonInteract {
             else
                 return temp;
         }
-
         return jsOb;
-    }
-
-    public static void main(String[] args) {
-        JsonInteract jsInt=new JsonInteract();
-        System.out.println(jsInt.get("data.test"));
     }
 }

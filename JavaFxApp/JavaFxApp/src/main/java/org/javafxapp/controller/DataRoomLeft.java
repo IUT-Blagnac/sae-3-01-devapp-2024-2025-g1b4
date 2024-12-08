@@ -9,16 +9,22 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * Classe pour les données de la salle gauche.
+ */
 public class DataRoomLeft {
-    
+
     private Stage fenetreDialogue;
 
+    /**
+     * Constructeur pour les données de la salle gauche.
+     * @param fenetreP Le stage de l'application
+     */
     public DataRoomLeft(Stage fenetreP) {
         this.fenetreDialogue = fenetreP;
 
-        
-
         try {
+            // Charger la vue des données de la salle gauche FXML
             FXMLLoader cLoader = new FXMLLoader(MainMenuViewController.class.getResource("dataRoomLeftView.fxml"));
             BorderPane root = cLoader.load();
 
@@ -35,9 +41,10 @@ public class DataRoomLeft {
         }
     }
 
+    /**
+     * Ouvre les données de la salle.
+     */
     public void openDataRoom() {
         ChooseDataRoom cDataRoom = new ChooseDataRoom(this.fenetreDialogue);
     }
-
-
 }

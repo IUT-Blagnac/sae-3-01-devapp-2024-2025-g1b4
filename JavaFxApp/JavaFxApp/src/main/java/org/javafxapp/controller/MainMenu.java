@@ -16,57 +16,68 @@ import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+
+/**
+ * Classe Main Menu pour l'application. C'est la classe principale qui gère les interactions utilisateur et ouvre diverses fenêtres dans l'application.
+ * Elle gère également la connexion au service back-end python.
+ */
 public class MainMenu extends Application {
+    private Stage appStage; // Le stage de l'application.
+    private Process pythonProcess; // Le processus d'exécution Python.
+    private AtomicBoolean checkingWarnings; // Booléen pour vérifier les alertes.
 
-    private Stage appStage;
-
-    private Process pythonProcess;
-
-    private AtomicBoolean checkingWarnings;
+    /**
+     * Le point de démarrage de l'application. Initialise le menu principal.
+     * @param  stage  la stage de départ pour l'application
+     */
     @Override
     public void start(Stage stage) {
-
         this.checkingWarnings=new AtomicBoolean(false);
         this.appStage=stage;
-
         try {
             FXMLLoader loader = new FXMLLoader(MainMenuViewController.class.getResource("mainMenuView.fxml"));
             BorderPane root = loader.load();
-
             Scene scene = new Scene(root, root.getPrefWidth() + 20, root.getPrefHeight() + 10);
-
             this.appStage.setScene(scene);
             this.appStage.setTitle("Menu");
             MainMenuViewController mMVC = loader.getController();
             mMVC.initContext(this.appStage, this);
-
             mMVC.displayDialog();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    /**
+     * Ouvre la fenêtre de configuration.
+     */
     public void openConfig(){
         ConfigForm conForm=new ConfigForm(this.appStage);
         conForm.doConfigFormDialog();
         this.launchPython();
     }
 
+    /**
+     * Ouvre la fenêtre d'affichage des données des Panneaux Solaires.
+     */
     public void openPanneau() {
         PanneauSolaire panneauSolaire = new PanneauSolaire(this.appStage);
         panneauSolaire.afficherFenetre();
     }
-    
 
+    /**
+     * Ouvre la fenêtre d'affichage des données des salles.
+     */
     public void openDataRoom() {
         ChooseDataRoom cDataRoom = new ChooseDataRoom(this.appStage);
     }
 
+    /**
+     * Lance le script Python en arrière-plan.
+     */
     public void launchPython(){
-
         if(this.pythonProcess!=null)
             this.pythonProcess.destroy();
-
         Thread.startVirtualThread(new Runnable() {
             @Override
             public void run() {
@@ -75,7 +86,6 @@ public class MainMenu extends Application {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-
                 // Wait for the process to finish and check the exit code
                 try {
                     MainMenu.this.pythonProcess.waitFor();
@@ -83,53 +93,60 @@ public class MainMenu extends Application {
                     throw new RuntimeException(e);
                 }
             }
-
         });
-
         this.startCheckingWarnings();
     }
 
+    /**
+     * Commence à vérifier les alertes du service Python.
+     */
     public void startCheckingWarnings() {
         this.checkingWarnings=new AtomicBoolean(true);
         Thread.startVirtualThread(new Runnable() {
             @Override
             public void run() {
                 File warnings=new File("AlertPipe.txt");
+                try {
+                    warnings.createNewFile();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                 while(checkingWarnings.get()){
                     try {
-                        Thread.sleep(100);
-
-                        Scanner warning=new Scanner(warnings).useDelimiter("\\A");
-
-
-
+                        Thread.sleep(200);
+                        Scanner warning=new Scanner(warnings).useDelimiter("\\n");
                         if(warning.hasNext()){
-                            Platform.runLater(() ->{
-                                Notifications.create()
-                                        .title("Erreur")
-                                        .text(warning.next())
-                                        .showWarning();
-                            });
-
+                            String info=warning.next();
+                            if(info.trim().equals("start"))
+                                Platform.runLater(()->{
+                                    Notifications.create()
+                                            .title("Début du Python")
+                                            .text("Le python a bien été lancé!")
+                                            .showInformation();
+                                });
+                            else
+                                Platform.runLater(() -> {
+                                    Notifications.create()
+                                            .title(info)
+                                            .text(warning.next())
+                                            .showWarning();
+                                });
                             PrintWriter pw=new PrintWriter(warnings);
                             pw.print("");
                             pw.close();
                         }
-
-
                     } catch (FileNotFoundException | InterruptedException e) {
                         throw new RuntimeException(e);
                     }
-
-
                 }
             }
-
         });
     }
 
+    /**
+     * Teste la connexion au script Python.
+     */
     public void testConnexion() {
-
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -140,25 +157,25 @@ public class MainMenu extends Application {
                     throw new RuntimeException(e);
                 }
 
-
                 int exit = 1;
-
                 // Wait for the process to finish and check the exit code
                 try {
                     exit=process.waitFor();
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
-
                 if(exit==0)
                     Notifications.create().text("La connexion est un succès ! ").showInformation();
                 else
                     Notifications.create().text("La connexion a échouée!").showError();
             }
         });
-
     }
 
+    /**
+     * Fonction main pour démarrer l'application.
+     * @param args les arguments de la ligne de commande.
+     */
     public static void main2(String[] args) {
         launch();
     }

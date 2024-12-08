@@ -14,8 +14,12 @@ import java.util.Map;
 import java.util.TreeMap;
 import org.json.JSONObject;
 
+/**
+ * Contrôleur de la vue pour le panneau solaire.
+ */
 public class PanneauSolaireViewController {
 
+    // Le graphique à barres à afficher dans la vue.
     @FXML
     private LineChart<String, Number> graphiqueBarres;
 
@@ -35,8 +39,11 @@ public class PanneauSolaireViewController {
         timeline.play(); // Lancer le rafraîchissement automatique
     }
 
-    // Méthode pour charger les données JSON depuis result.json
-    private Map<Integer, Double> chargerDonnees() {
+    /**
+     * Charge les données du panneau solaire depuis le fichier result.json.
+     *
+     * @return un dico des données chargées, triées par heure
+     */    private Map<Integer, Double> chargerDonnees() {
         Map<Integer, Double> donneesTriees = new TreeMap<>();
 
         try {
@@ -64,7 +71,9 @@ public class PanneauSolaireViewController {
         return donneesTriees;
     }
 
-    // Méthode pour mettre à jour le graphique
+    /**
+     * Met à jour le graphique avec les données les plus récentes.
+     */
     private void mettreAJourGraphique() {
         System.out.println("Mise à jour du graphique avec de nouvelles données...");
 

@@ -46,6 +46,12 @@ public class DataRoomLeftViewController {
     private Button appliqueButton;
 
 
+    /**
+     * Initialise le contexte actuel avec un contrôle de scène et une scène d'application.
+     *
+     * @param appStage la scène d'application principale
+     * @param stageControl le contrôle de la scène
+     */
     public void initContext(Stage appStage, DataRoomLeft stageControl) {
         this.dialogController = stageControl;
         this.appStage = appStage;
@@ -89,11 +95,17 @@ public class DataRoomLeftViewController {
         vBox.getChildren().add(checkComboBox);
     }
 
+    /**
+     * Le gestionnaire d'action du bouton de retour.
+     */
     @FXML
     private void retourButton() {
         this.dialogController.openDataRoom();
     }
 
+    /**
+     * Le gestionnaire d'action du bouton d'application.
+     */
     @FXML
     private void onAppliqueButtonClick() {
         // Chercher un CheckComboBox parmi les enfants de vBox
@@ -150,6 +162,12 @@ public class DataRoomLeftViewController {
         }
     }
 
+    /**
+     * Crée un graphique pour un ensemble de données.
+     *
+     * @param data le nom des données
+     * @param dataValues les valeurs des données
+     */
     private void createGraphForData(String data, ArrayList<Integer> dataValues) {
         // Créer les axes pour le graphique
         NumberAxis xAxis = new NumberAxis();
@@ -178,11 +196,19 @@ public class DataRoomLeftViewController {
         vBox2.getChildren().add(lineChart);
     }
 
-
+    /**
+     * Affiche la boîte de dialogue.
+     */
     public void displayDialog() {
         this.appStage.show();
     }
 
+    /**
+     * Cartographie une sélection à une clé JSON correspondante.
+     *
+     * @param selection la sélection à cartographier
+     * @return la clé JSON correspondante
+     */
     private String mapSelectionToJsonKey(String selection) {
         JsonInteract jsInt=new JsonInteract();
         JSONArray chosenData = (JSONArray) jsInt.get("communes.chosenData");
@@ -197,7 +223,13 @@ public class DataRoomLeftViewController {
         }
         return null; 
     }
-    
+
+    /**
+     * Récupère les données par salle spécifique.
+     *
+     * @param nomSalle le nom de la salle
+     * @return la liste des valeurs de données pour cette salle
+     */
     private ArrayList<Integer> dataBySalle(String nomSalle) {
         try {
             // Assurer que valueSelect est bien définie et correspond à la clé dans le JSON
