@@ -21,7 +21,11 @@
                   <Font name="System Bold" size="25.0" />
                </font>
             </Label>
-            <RangeSlider fx:id="slider" />
+            <RangeSlider fx:id="slider">
+               <padding>
+                  <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+               </padding>
+            </RangeSlider>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Label text="Min :">

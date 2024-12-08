@@ -5,14 +5,13 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import net.synedra.validatorfx.Check;
+import net.synedra.validatorfx.Validator;
 import org.ini4j.Wini;
 import org.javafxapp.controller.ConfigForm;
 
@@ -32,10 +31,20 @@ public class ConfigFormViewController {
         this.conFormLoader = configForm;
         this.appStage.setOnCloseRequest(this::closeWindow);
         this.selectedData = new ArrayList<>();
+
+
+        Validator validator=new Validator();
+        validator.createCheck().dependsOn("value",this.tps.textProperty()).withMethod( c -> {
+            String max=c.get("value");
+            if(!max.trim().matches("\\d+") || max.trim().isEmpty())
+                c.error("Not a number");
+        }).immediate().decorates(this.tps);
     }
 
-    public List<String> displayDialog(List<String> data) {
+    public List<String> displayDialog(List<String> data, String tps) {
         this.selectedData = data;
+
+        this.tps.setText(tps);
         if (!this.selectedData.isEmpty()) {
 
             ObservableList<Node> checkBoxes = this.getAllCheckBoxes();
@@ -100,6 +109,9 @@ public class ConfigFormViewController {
 
     @FXML
     VBox selection;
+
+    @FXML
+    TextField tps;
 
     @FXML
     public void doOpenRoom() {

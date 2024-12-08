@@ -20,7 +20,18 @@ public class MainMenuViewController {
     }
 
     public void displayDialog() {
+        ButtonType lancer= new ButtonType("Lancer"),
+                config=new ButtonType("Configurer");
+
+        Alert alert=new Alert(Alert.AlertType.CONFIRMATION,"Voulez-vous accéder au panel de configuration ou lancer l'application avec la configuration actuelle?",lancer,config);
+        alert.showAndWait();
+
         this.appStage.show();
+
+        if(alert.getResult()==config)
+            this.doOpenConfig();
+        else
+            this.mainMenuDialogController.launchPython();
     }
 
     /*

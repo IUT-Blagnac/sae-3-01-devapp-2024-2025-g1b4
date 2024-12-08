@@ -5,12 +5,10 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 import org.javafxapp.tools.StageManagement;
 import org.javafxapp.view.ConfigFormViewController;
 import org.javafxapp.view.SeuilSeterViewController;
 
-import java.util.ArrayList;
 
 public class SeuilSeter {
     private Stage seuilStage;

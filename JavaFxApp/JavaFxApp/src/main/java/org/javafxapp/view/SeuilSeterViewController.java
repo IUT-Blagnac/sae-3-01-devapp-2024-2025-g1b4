@@ -40,18 +40,22 @@ public class SeuilSeterViewController {
         this.slider.setMin(seuils.get(0));
         this.slider.setMax(seuils.get(1));
 
-        this.slider.setLowValue(0);
-        this.slider.setHighValue(100);
+        this.slider.setShowTickMarks(true);
+        this.slider.setMinorTickCount(9);
+        this.slider.setMajorTickUnit((seuils.get(1)-seuils.get(0))/10);
 
-        this.slider.setBlockIncrement(1);
-
+        this.slider.setSnapToTicks(true);
         this.slider.setShowTickLabels(true);
     }
 
     public String displayDialog(String[] data) {
 
+
         this.valueMin.setText(data[0]);
         this.valueMax.setText(data[1]);
+
+        this.slider.setLowValue(Double.parseDouble(data[0]));
+        this.slider.setHighValue(Double.parseDouble(data[1]));
 
         StringConverter<Number> bindingTool=new StringConverter<>() {
             @Override

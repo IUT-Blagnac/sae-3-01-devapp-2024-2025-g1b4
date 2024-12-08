@@ -55,6 +55,7 @@ public class ConfigForm {
 
     public void doConfigFormDialog() {
         JsonInteract jsInt=new JsonInteract();
+
         try{
             this.wini=new Wini(new File((String)jsInt.get("config.winiFilePath")));
 
@@ -78,13 +79,18 @@ public class ConfigForm {
             if(data!=null)
                 this.dataChoice.addAll(Arrays.asList(data.split(",")));
 
+            this.tps=wini.get("donnees","temps");
+
+
+
         }catch(IOException e){
             Alert alert=new Alert(Alert.AlertType.ERROR, "Le fichier de configuration(config.ini) est introuvable!! Vérifiez le chemin(appData.json)!!");
             alert.show();
             e.printStackTrace();
         }
 
-        this.dataChoice=this.cFVM.displayDialog(this.dataChoice);
+        this.dataChoice=this.cFVM.displayDialog(this.dataChoice,this.tps);
+
         if(!this.dataChoice.isEmpty() && !this.roomChoice.isEmpty()) {
             this.alterConfigFile();
             this.rememberChoiceJSon();
@@ -111,8 +117,10 @@ public class ConfigForm {
         String choixSalles=this.roomChoice.toString();
         choixSalles=choixSalles.substring(1,choixSalles.length()-1);
 
+
         this.wini.put("donnees","donnees",choixDonnees.replaceAll("\\s",""));
         this.wini.put("donnees","salles",choixSalles.replaceAll("\\s", ""));
+        this.wini.put("donnees","temps",this.tps.replaceAll("\\s", ""));
 
         Profile.Section section=this.wini.get("seuil");
         section.putAll(this.seuils);
@@ -135,6 +143,8 @@ public class ConfigForm {
     private List<String> roomChoice;
     private List<String> dataChoice;
 
+    private String tps;
+
     private Map<String,String> seuils;
 
     public void getSeuilSelection(List<String> selectedData) {
@@ -145,11 +155,13 @@ public class ConfigForm {
 
         for(String str:selectedData){
 
+
             SeuilSeter seuilSeter=new SeuilSeter(this.configStage,str);
             String prevSeuil=prevSeuils.get(str)==null ? prevSeuils.get(str) : "0,100";
 
             String newSeuil=seuilSeter.displayDialog(prevSeuil.split(","));
             this.seuils.put(str,newSeuil!=null ? newSeuil : prevSeuil);
+
         }
     }
 }
