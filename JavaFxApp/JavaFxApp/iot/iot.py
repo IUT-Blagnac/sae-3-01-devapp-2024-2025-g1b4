@@ -22,7 +22,7 @@ seuil = {}
 valeursFinal = {}
 
 
-if (len(config['seuil']) != len(donnees)):
+if (len(config['seuil']) < len(donnees)):
     print("[WARNING] Seuil manquant dans le fichier de configuration")
 else:
     for do in donnees:
@@ -87,7 +87,7 @@ def on_message(client, userdata, msg):
                 newData = {}
             for do in donnees:
                 newData[do] = float(data[0][do])
-                with os.open("AlertPipe.txt", os.O_WRONLY | os.O_CREAT | os.O_TRUNC,0o644) as alertFile:
+                with open("AlertPipe.txt", "w") as alertFile:
                     if float(data[0][do]) <= float(seuil[do][0]):
                         alertFile.write(f"[ALERT] Seuil minimum dépassé -> {do} : {data[0][do]}")
                     elif float(data[0][do]) >= float(seuil[do][1]):
@@ -116,6 +116,10 @@ thread.daemon = True
 thread.start()
 
 client.loop_start()
+
+
+with open("AlertPipe.txt", "w") as alertFile:
+    alertFile.write("Ceci est un message de test.")
 
 try:
     while True:
