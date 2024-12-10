@@ -48,7 +48,7 @@ public class PanneauSolaireViewController {
 
         try {
             // Lire le fichier JSON
-            String cheminRelatif = "./JavaFxApp/JavaFxApp/result.json";
+            String cheminRelatif = "./result.json";
             System.out.println("Chemin courant (pour result.json) : " + Paths.get(".").toAbsolutePath());
             String content = Files.readString(Paths.get(cheminRelatif));
             JSONObject solarData = new JSONObject(content).getJSONObject("solarpanel");

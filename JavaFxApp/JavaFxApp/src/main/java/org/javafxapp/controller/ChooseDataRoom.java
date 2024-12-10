@@ -54,4 +54,9 @@ public class ChooseDataRoom {
         DataRoomLeft cDRL = new DataRoomLeft(this.fenetreDialogue);
     }
 
+    public void openMainMenu(){
+        MainMenu cMM = new MainMenu();
+        cMM.loadPage(this.fenetreDialogue,false);
+    }
+
 }

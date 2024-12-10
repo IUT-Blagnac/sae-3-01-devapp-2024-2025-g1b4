@@ -22,8 +22,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * Elle gère également la connexion au service back-end python.
  */
 public class MainMenu extends Application {
+
+    public static Process pythonProcess;
+
     private Stage appStage; // Le stage de l'application.
-    private Process pythonProcess; // Le processus d'exécution Python.
     private AtomicBoolean checkingWarnings; // Booléen pour vérifier les alertes.
 
     /**
@@ -33,6 +35,10 @@ public class MainMenu extends Application {
     @Override
     public void start(Stage stage) {
         this.checkingWarnings=new AtomicBoolean(false);
+        this.loadPage(stage, true);
+    }
+
+    public void loadPage(Stage stage,boolean firstLaunch){
         this.appStage=stage;
         try {
             FXMLLoader loader = new FXMLLoader(MainMenuViewController.class.getResource("mainMenuView.fxml"));
@@ -41,8 +47,9 @@ public class MainMenu extends Application {
             this.appStage.setScene(scene);
             this.appStage.setTitle("Menu");
             MainMenuViewController mMVC = loader.getController();
+
             mMVC.initContext(this.appStage, this);
-            mMVC.displayDialog();
+            mMVC.displayDialog(firstLaunch);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -76,19 +83,27 @@ public class MainMenu extends Application {
      * Lance le script Python en arrière-plan.
      */
     public void launchPython(){
-        if(this.pythonProcess!=null)
-            this.pythonProcess.destroy();
+        if(MainMenu.pythonProcess!=null) {
+            MainMenu.pythonProcess.destroyForcibly();
+
+            try {
+                MainMenu.pythonProcess.waitFor();
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
         Thread.startVirtualThread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    MainMenu.this.pythonProcess = Runtime.getRuntime().exec("python ./iot/iot.py");
+                    MainMenu.pythonProcess = Runtime.getRuntime().exec("python ./iot/iot.py");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
                 // Wait for the process to finish and check the exit code
                 try {
-                    MainMenu.this.pythonProcess.waitFor();
+                    MainMenu.pythonProcess.waitFor();
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
@@ -102,10 +117,11 @@ public class MainMenu extends Application {
      */
     public void startCheckingWarnings() {
         this.checkingWarnings=new AtomicBoolean(true);
+
         Thread.startVirtualThread(new Runnable() {
             @Override
             public void run() {
-                File warnings=new File("AlertPipe.txt");
+                File warnings=new File("./iot/AlertPipe.txt");
                 try {
                     warnings.createNewFile();
                 } catch (IOException e) {
