@@ -8,8 +8,9 @@ import time
 import threading
 
 config = configparser.ConfigParser()
-config.read('./iot/config.ini')
+config.read('./config.ini')
 
+broker = config['adress']['broker']
 broker = config['adress']['broker']
 port = config.getint('adress', 'port')
 topics = config['adress']['topics'].split(',')
@@ -78,6 +79,7 @@ def on_message(client, userdata, msg):
         if "solarpanel" not in valeursFinal:
             valeursFinal["solarpanel"] = {}
         else:
+            valeursFinal["solarpanel"][str(len(valeursFinal["solarpanel"]))] = data["currentPower"]["power"]
             valeursFinal["solarpanel"][str(len(valeursFinal["solarpanel"]))] = data["currentPower"]["power"]
     elif (newMsg == 'AM107'):
         if (data[1]["room"] in salles):

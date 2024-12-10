@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import org.controlsfx.control.CheckComboBox;
+import org.controlsfx.control.Notifications;
 import org.javafxapp.controller.DataRoomLeft;
 import org.javafxapp.tools.JsonInteract;
 import org.json.JSONArray;
@@ -150,7 +151,10 @@ public class DataRoomLeftViewController {
                 System.out.println("Données pour la salle " + selectedSalle + " : " + dataValues);
 
                 if (dataValues == null || dataValues.isEmpty()) {
-                    System.out.println("Pas de données pour la salle : " + selectedSalle);
+                    Notifications.create()
+                            .title("Salle "+selectedSalle)
+                            .text("Il n'y a pas encore de données pour  "+data)
+                            .showWarning();
                     continue;
                 }
 

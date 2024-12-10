@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.controlsfx.control.CheckComboBox;
+import org.controlsfx.control.Notifications;
 import org.javafxapp.controller.SallesAvecDonnee;
 import org.javafxapp.tools.JsonInteract;
 import org.json.JSONArray;
@@ -53,7 +54,13 @@ public class SallesAvecDonneeViewController {
     @FXML
     private Button appliqueButton;
 
+    private JSONArray chosenData;
 
+    private JSONObject traduction;
+
+    private JSONArray salles;
+
+    private JsonInteract jsInt;
 
     public void initContext(Stage appStage, SallesAvecDonnee stageControl) {
         this.dialogController = stageControl;
@@ -62,11 +69,9 @@ public class SallesAvecDonneeViewController {
 
         appliqueButton.setDisable(true);
 
-        JsonInteract jsInt = new JsonInteract();
-        JSONArray chosenData = (JSONArray) jsInt.get("communes.chosenData");
-        JSONObject traduction = (JSONObject) jsInt.get("traduction");
-        JSONArray salles = (JSONArray) jsInt.get("communes.chosenRooms");
+        this.jsInt = new JsonInteract();
 
+        refreshData();
 
         lineChart.setTitle("Graphique des Salles");
         lineChart.getXAxis().setLabel("Temps");
@@ -110,6 +115,12 @@ public class SallesAvecDonneeViewController {
     public void displayDialog() {
         this.appStage.show();
     }
+
+    private void refreshData() {
+        this.chosenData = (JSONArray) this.jsInt.get("communes.chosenData");
+        this.traduction = (JSONObject) this.jsInt.get("traduction");
+        this.salles = (JSONArray) this.jsInt.get("communes.chosenRooms");
+    }
     
     private String getRealNameFromTranslated(String translated, JSONArray chosenData, JSONObject traduction) {
         for (Object item : chosenData) {
@@ -129,6 +140,9 @@ public class SallesAvecDonneeViewController {
 
     @FXML
     private void appliqueButton() {
+
+        refreshData();
+
         ObservableList<String> selectedItems = checkComboBox.getCheckModel().getCheckedItems();
 
         if (!this.firstClick) {
@@ -153,20 +167,37 @@ public class SallesAvecDonneeViewController {
             String cheminRelatif = (String)jsInt.get("communes.pathResultJson");
             String content = Files.readString(Paths.get(cheminRelatif));
 
-            JSONObject dataParSalee = new JSONObject(content).getJSONObject(nomSalle);
 
-            ArrayList donnePreciseParSalle = new ArrayList<>();
+            JSONObject myObject = new JSONObject(content);
+            Boolean roomInFile =  myObject.has(nomSalle);
 
-            for (String key : dataParSalee.keySet()) {
+            if (roomInFile) {
+                JSONObject dataParSalee = new JSONObject(content).getJSONObject(nomSalle);
 
-                JSONObject roomData = dataParSalee.getJSONObject(key);
-                
-                int value = roomData.getInt(this.valueSelect);
-                donnePreciseParSalle.add(value);
+                ArrayList donnePreciseParSalle = new ArrayList<>();
+
+                for (String key : dataParSalee.keySet()) {
+
+                    JSONObject roomData = dataParSalee.getJSONObject(key);
+
+                    if (roomData.has(this.valueSelect)) {
+                        int value = roomData.getInt(this.valueSelect);
+                        donnePreciseParSalle.add(value);
+                    } else {
+                        Notifications.create()
+                                .title("Salle "+nomSalle)
+                                .text("Il n'y a pas encore les données pour "+this.valueSelect)
+                                .showWarning();
+                    }
+                }
+                return donnePreciseParSalle;
+
+            } else {
+                Notifications.create()
+                        .title("Données salle")
+                        .text("Il n'y a pas encore la salle "+nomSalle)
+                        .showWarning();
             }
-
-            return donnePreciseParSalle;
-
         } catch (IOException e) {
             System.out.println("Erreur : Impossible de lire le fichier result.json.");
             e.printStackTrace();

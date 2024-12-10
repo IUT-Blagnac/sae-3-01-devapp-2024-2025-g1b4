@@ -52,4 +52,13 @@ public class ChooseDataRoomViewController {
     public void boutonDroit() {
         this.dialogController.openSalleAvecDonnee();
     }
+
+    /**
+     * Action lors du clic sur le bouton retour.
+     * Ouvre le menu principal.
+     */
+    @FXML
+    public void boutonRetour() {
+        this.dialogController.openMainMenu();
+    }
 }
