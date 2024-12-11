@@ -94,7 +94,7 @@ Note : 0/3
 ==== Evaluation ODJ et CR semaine 49
 Aucun lien dans le Github, travail non fait.
 Note : 0/3
-
+Appel offre : 11,84/20
 === Evaluation bi-hebdomadaire des sprints  
 
 ifdef::env-github[]
