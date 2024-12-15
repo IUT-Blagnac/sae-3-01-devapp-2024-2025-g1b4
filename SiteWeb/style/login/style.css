@@ -112,24 +112,6 @@ body {
     text-decoration: underline;
 }
 
-/* Bouton de connexion */
-.dashboard-btn {
-    background-color: #7193BE;
-    color: #ffffff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    width: 200px;
-    transition: background-color 0.3s ease;
-    margin-top: 15px;
-}
-
-.dashboard-btn:hover {
-    background-color: #0c4fa6;
-}
-
 
 
 
