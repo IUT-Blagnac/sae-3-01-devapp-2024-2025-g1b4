@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carte Interactive</title>
-    <link rel="stylesheet" href="style/<?= basename(__FILE__, '.php'); ?>/NosBoutiquesCss.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style/nosBoutiques/NosBoutiquesCss.css">
+    <link rel="stylesheet" href="./style/header/style.css">
 </head>
 <body>
 
