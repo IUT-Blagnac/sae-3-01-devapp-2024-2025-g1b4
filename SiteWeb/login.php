@@ -10,15 +10,21 @@
 	<body>
 		<div class="login-container">
 			<h1>Connexion</h1>
-			<form action="submit_login.php" method="POST" class="login-form">
+			<form action="./traitements/traitement_login.php" method="POST" class="login-form">
 				<div class="form-group">
-					<input type="email" id="email" name="email" placeholder="E-mail ou numéro de téléphone" required>
+					<?php
+						if (isset($_COOKIE['client_email'])) {
+							echo '<input type="email" id="email" name="email" placeholder="E-mail ou numéro de téléphone" value="' . $_COOKIE['client_email'] . '" required>';
+						} else {
+							echo '<input type="email" id="email" name="email" placeholder="E-mail ou numéro de téléphone" required>';
+						}
+					?>
 				</div>
 				<div class="form-group">
 					<input type="password" id="password" name="password" placeholder="Mot de passe" required>
 				</div>
 				<div class="form-group remember-me">
-                <input type="checkbox" id="remember-me" name="remember-me">
+                <input type="checkbox" id="remember-me" name="remember-me" value>
                 <label for="remember-me">Se souvenir de moi</label>
             	</div>
            		<button type="submit" class="login-btn">Se connecter</button>
@@ -27,6 +33,7 @@
 				</p>
 			</form>
 		</div>
+		<button class="dashboard-btn" type="button" onclick="window.location.href='admin.php'">Accéder au dashboard</button>
 	</body>
 </html>
 

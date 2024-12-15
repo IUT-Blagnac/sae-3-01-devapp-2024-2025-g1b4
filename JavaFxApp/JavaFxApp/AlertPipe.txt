@@ -1,2 +1,1 @@
-ALERTE de Seuil
- Seuil maximum dépassé -> co2 : 2196
+infrared : 3

@@ -1,0 +1,140 @@
+.main{
+    background-color: #e4e9ee;
+    height: 89vh;
+    display: flex;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.infoSpace {
+    display: flex;
+    align-items: flex-start;
+    background: #c7d2dc;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 70vw;
+    padding: 20px;
+    justify-content: center;
+    margin: auto;
+}
+
+.info img{
+    width: 1vw;
+    height: 2vh;
+}
+
+.info {
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.infoDiv {
+    margin: 10px 0;
+}
+
+
+#title h1 {
+    font-size: 1.8rem;
+    margin: 0;
+    color: #333;
+}
+
+#avis {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.suppAvis {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+#note {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+#prix {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+
+.ajouter {
+    background-color: #6988af; /* Couleur bleu-gris */
+    color: #fff; /* Texte blanc */
+    padding: 10px 20px; /* Espacement interne */
+    font-size: 1rem; /* Taille du texte */
+    font-weight: bold; /* Texte en gras */
+    border: 2px solid #6988af; /* Même bordure que le champ */
+    border-radius: 0 5px 5px 0;
+    cursor: pointer; /* Curseur pointer */
+    transition: background-color 0.3s ease; /* Animation au survol */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Ombre légère */
+}
+
+.ajouter:hover {
+    background-color: #587aa4; /* Couleur plus sombre au survol */
+    border-color: #587aa4;
+
+}
+
+
+
+#description {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+    margin-top: 20px;
+}
+
+.ajout {
+    display: flex;
+    align-items: center;
+    gap:0; /* Espacement entre les éléments */
+    margin-top: 15px;
+}
+
+#qte {
+    width: 3vw; /* Taille du champ */
+    padding: 10px; /* Espacement interne */
+    font-size: 1rem;
+    border: 2px solid #6988af; /* Couleur assortie au bouton */
+    border-radius: 5px 0 0 5px; /* Arrondi uniquement à gauche */
+    outline: none; /* Supprime le contour par défaut */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    text-align: center; /* Alignement du texte */
+    color: #333;
+} 
+
+select {
+    width: 100px; /* Largeur fixe */
+    padding: 8px 10px; /* Espacement intérieur */
+    font-size: 1rem; /* Taille du texte */
+    border: 2px solid #6988af; /* Bordure bleu-gris */
+    border-radius: 5px; /* Coins arrondis */
+    background-color: #f8f9fa; /* Couleur de fond légère */
+    color: #333; /* Couleur du texte */
+    cursor: pointer;
+    outline: none; /* Supprime le contour */
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+select:hover {
+    background-color: #e6f0ff; /* Couleur de fond au survol */
+    border-color: #587aa4; /* Bordure plus sombre au survol */
+}
+
+select:focus {
+    border-color: #587aa4; /* Met en valeur le focus */
+    box-shadow: 0 0 5px rgba(88, 122, 164, 0.7); /* Ombre en focus */
+}
