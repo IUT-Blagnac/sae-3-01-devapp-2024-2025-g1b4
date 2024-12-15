@@ -1,0 +1,88 @@
+/* style.css de admin.php */
+
+/* Corps de la page */
+body {
+    background-color: rgba(228, 233, 238, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* min-height: 100vh; */
+}
+
+/* Conteneur des carrés */
+.square-container1 {
+    display: flex; /* Active Flexbox */
+    justify-content: space-between; /* Espace égal entre les carrés */
+    align-items: center; /* Aligne les carrés verticalement */
+    margin: 10px auto; /* Centre le conteneur dans la page */
+    max-width: 80%; /* Limite la largeur du conteneur */
+    padding-top: 40px;   
+}
+
+/* Conteneur des carrés */
+.square-container2 {
+    display: flex; /* Active Flexbox */
+    justify-content: space-between; /* Espace égal entre les carrés */
+    align-items: center; /* Aligne les carrés verticalement */
+    margin: 10px auto; /* Centre le conteneur dans la page */
+    max-width: 80%; /* Limite la largeur du conteneur */ 
+}
+
+/* Styles pour chaque carré */
+.square {
+    flex: 1; /* Les carrés occupent des parts égales */
+    height: 10vw; /* La hauteur est basée sur 30% de la largeur de la fenêtre */
+    width: 10vw;  /* La largeur est basée sur 30% de la largeur de la fenêtre */
+    max-height: 150px; /* Taille maximale */
+    max-width: 150px;  /* Taille maximale */
+    min-height: 20px; /* Taille minimale */
+    min-width: 20px;  /* Taille minimale */
+    background-color: #ffffff; /* Bleu clair */
+    margin: 0 10px; /* Espace horizontal entre les carrés */
+    cursor: pointer; /* Change le pointeur en main lors du survol */
+    transition: transform 0.3s ease-in-out; /* Animation de transformation */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+}
+
+/* Ajoute l'animation au survol */
+.square:hover {
+    transform: scale(1.05); /* Agrandit légèrement le carré au survol */
+}
+
+.squareAdd {
+    flex: 1; /* Les carrés occupent des parts égales */
+    height: 10vw; /* La hauteur est basée sur 30% de la largeur de la fenêtre */
+    width: 10vw;  /* La largeur est basée sur 30% de la largeur de la fenêtre */
+    max-height: 150px; /* Taille maximale */
+    max-width: 150px;  /* Taille maximale */
+    min-height: 20px; /* Taille minimale */
+    min-width: 20px;  /* Taille minimale */
+    background-color: rgba(160, 160, 160, 0.1); /* Couleur de fond avec transparence */
+    margin: 0 10px; /* Espace horizontal entre les carrés */
+    position: relative; /* Permet de positionner l'image par rapport au carré */
+    cursor: pointer; /* Change le pointeur en main lors du survol */
+    transition: transform 0.3s ease-in-out; /* Animation de transformation */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+}
+
+/* Ajoute l'animation au survol */
+.squareAdd:hover {
+    transform: scale(1.05); /* Agrandit légèrement le carré au survol */
+}
+
+/* Styles pour l'image au-dessus du carré */
+.squareAdd-img {
+    position: absolute; /* Positionne l'image par rapport à .squareAdd */
+    top: 50%; /* Centrer l'image verticalement */
+    left: 50%; /* Centrer l'image horizontalement */
+    transform: translate(-50%, -50%); /* Décale l'image pour un centrage parfait */
+    max-width: 70%; /* Ajustez la taille de l'image si nécessaire */
+    max-height: 70%; /* Ajustez la taille de l'image si nécessaire */
+}
+
+
+
+
+
+
