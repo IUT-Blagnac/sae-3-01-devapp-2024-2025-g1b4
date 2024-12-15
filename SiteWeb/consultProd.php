@@ -29,7 +29,7 @@ $tailles = $req->fetchAll();
 $req = $pdo->prepare("SELECT * FROM VariantArticle WHERE Produit_idProduit=:idProd");
 $req->execute(["idProd" => $_GET["idProduit"]]);
 
-$variants=$req->fetchAll();
+$variants = $req->fetchAll();
 
 // on prépare la requête
 $statement = $pdo->prepare('CALL getAvgAvis(:idProd, @avg, @count)');
@@ -53,8 +53,13 @@ $avisProd["avg"] = round($avisProd["avg"] * 2) / 2;
 
 <body>
 
-    <div class="main">
+    
+<div class="stockAlert">
+    <h1 id="rupture">Rupture de Stock!!<h1>
+    <h1 id="stockBas">Stock très faible! Moins de 5 exemplaires restants!</h1>
+</div>
 
+    <div class="main">
         <div class="infoSpace">
             <div class="img" id="img">
                 <img src="<?= $pathToImg ?>" alt="">
@@ -89,6 +94,7 @@ $avisProd["avg"] = round($avisProd["avg"] * 2) / 2;
 
                 <form action="traitements/traitement_ajoutPanier.php" method="get">
                     <input type="hidden" name="idProd" value="<?= $_GET['idProduit'] ?>" />
+                    <input type="hidden" name="isAvailable" id="isAvailable" value="oui"/>
                     <select name="couleur" id="color" onChange="updateStock()">
                         <?php
                         foreach ($colors as $color) {
@@ -98,7 +104,7 @@ $avisProd["avg"] = round($avisProd["avg"] * 2) / 2;
                         }
                         ?>
                     </select>
-                    <select name="taille" id="taille" onChange="updateStock()">
+                    <select name="taille" id="taille" onChange='updateStock()'>
 
                         <?php
                         foreach ($tailles as $taille) {
@@ -114,23 +120,65 @@ $avisProd["avg"] = round($avisProd["avg"] * 2) / 2;
                         <input type="number" name="qte" id="qte" min="1" value="1" />
                         <input class="ajouter" type="submit" value="Ajouter au panier" />
                     </div>
+                    <br><br>
+                    <div id="stockDisplay">Stock disponible : --</div>
                 </form>
             </div>
         </div>
     </div>
 
+
     <script>
-        var variant=<?= $variants?>;
+        <?php
+        echo 'var variant=' . json_encode($variants) . ';';
+        ?>
 
-        function updateStock(){
-            var e = document.getElementById("taille");
-            var taille = e.options[e.selectedIndex].value;
 
-            var e = document.getElementById("color");
-            var couleur = e.options[e.selectedIndex].value;
-            
-            
+        function updateStock() {
+
+            var eTaille = document.getElementById("taille");
+            var taille = eTaille.options[eTaille.selectedIndex].value;
+
+            var eCouleur = document.getElementById("color");
+            var couleur = eCouleur.options[eCouleur.selectedIndex].value;
+
+            // Parcourir le tableau des variantes pour trouver la correspondance
+            var stockTrouve = false; // Indicateur si on trouve le stock
+            for (var i = 0; i < variant.length; i++) {
+                if (
+                    variant[i]["Couleur_idCouleur"] == couleur &&
+                    variant[i]["Taille_idTaille"] == taille
+                ) {
+                    // Exemple : mise à jour d'un champ HTML
+                    document.getElementById("stockDisplay").innerText =
+                        "Stock disponible : " + variant[i]["stock"];
+
+
+
+                    if(variant[i]['stock']==0){
+                        document.getElementById("isAvailable").value="non";
+                        document.getElementById("rupture").hidden=false;
+                        document.getElementById("stockBas").hidden=true;
+                    }else{
+                        if(variant[i]["stock"]<5)
+                            document.getElementById("stockBas").hidden=false;
+                        else
+                            document.getElementById("stockBas").hidden=true;
+
+                        document.getElementById("isAvailable").value="oui";
+                        document.getElementById("rupture").hidden=true;
+                    }
+                    stockTrouve = true;
+                    break; 
+                }
+            }
+
+            if (!stockTrouve) {
+                document.getElementById("stockDisplay").innerText = "Stock non disponible";
+            }
         }
+
+        updateStock();
     </script>
 
 
