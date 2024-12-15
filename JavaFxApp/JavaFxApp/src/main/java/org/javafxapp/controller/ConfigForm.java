@@ -3,13 +3,10 @@ package org.javafxapp.controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import javafx.util.Pair;
 import org.ini4j.Profile;
 import org.ini4j.Wini;
 import org.javafxapp.tools.JsonInteract;

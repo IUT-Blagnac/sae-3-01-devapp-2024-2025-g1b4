@@ -121,7 +121,7 @@ public class MainMenu extends Application {
         Thread.startVirtualThread(new Runnable() {
             @Override
             public void run() {
-                File warnings=new File("./iot/AlertPipe.txt");
+                File warnings=new File("./AlertPipe.txt");
                 try {
                     warnings.createNewFile();
                 } catch (IOException e) {
@@ -130,7 +130,7 @@ public class MainMenu extends Application {
                 while(checkingWarnings.get()){
                     try {
                         Thread.sleep(200);
-                        Scanner warning=new Scanner(warnings).useDelimiter("\\n");
+                        Scanner warning=new Scanner(warnings).useDelimiter(".");
                         if(warning.hasNext()){
                             String info=warning.next();
                             if(info.trim().equals("start"))
