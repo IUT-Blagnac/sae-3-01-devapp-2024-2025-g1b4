@@ -56,7 +56,6 @@ public class JsonInteract {
     public Object getThroughArray(String[] paths){
         JSONObject jsOb=this.appData;
         Object temp=null;
-
         for(String str:paths){
             temp=jsOb.get(str);
             if(temp instanceof JSONObject)

@@ -9,8 +9,7 @@
   <script src="script.js"></script>
 </head>
 <body>
-
-    <?php include './components/header.php';     ?>
+    <?php include './components/header.php'; ?>
 
     <div class="panier_center">
 
