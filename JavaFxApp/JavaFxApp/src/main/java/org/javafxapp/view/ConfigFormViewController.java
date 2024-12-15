@@ -42,7 +42,6 @@ public class ConfigFormViewController {
         this.appStage.setOnCloseRequest(this::closeWindow);
         this.selectedData = new ArrayList<>();
 
-
         // Création et configuration du validateur des données.
         Validator validator=new Validator();
         validator.createCheck().dependsOn("value",this.tps.textProperty()).withMethod( c -> {

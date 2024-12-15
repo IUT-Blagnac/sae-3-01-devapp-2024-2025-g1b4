@@ -8,8 +8,9 @@ import time
 import threading
 
 config = configparser.ConfigParser()
-config.read('./iot/config.ini')
+config.read('./config.ini')
 
+broker = config['adress']['broker']
 broker = config['adress']['broker']
 port = config.getint('adress', 'port')
 topics = config['adress']['topics'].split(',')
@@ -21,8 +22,10 @@ temps = int(config['donnees']['temps'])
 seuil = {}
 valeursFinal = {}
 
+
 if (len(config['seuil']) < len(donnees)):
-    print("[WARNING] Seuil manquant dans le fichier de configuration")
+    with open("AlertPipe.txt", "w") as alertFile:
+        alertFile.write("[WARNING] Seuil manquant dans le fichier de configuration")
 else:
     for do in donnees:
         seuil[do] = config['seuil'][do].split(',')
@@ -47,18 +50,16 @@ def load_data():
     if not os.path.exists(file_path):
         # Si le fichier n'existe pas, le créer avec une structure vide (par exemple, un dictionnaire vide)
         with open(file_path, 'w', encoding='utf-8') as fichier:
-            json.dump({}, fichier, indent=4,
-                      ensure_ascii=False)  # Créer un fichier JSON vide (ou avec un contenu initial)
-
+            json.dump({}, fichier, indent=4, ensure_ascii=False)  # Créer un fichier JSON vide (ou avec un contenu initial)
+            
         print(f"Le fichier {file_path} a été créé.")
         valeursFinal = {}
     else:
         fd = os.open(file_path, os.O_RDONLY)  # Utilisation de O_RDONLY pour la lecture
-        # Convertir le descripteur de fichier en un objet fichier
+        # Convertir le descripteur de fichier en un objet fichier 
         with os.fdopen(fd, 'r', encoding='utf-8') as fichier:
-            # Charger les données JSON du fichier
+            # Charger les données JSON du fichier 
             valeursFinal = json.load(fichier)
-
 
 def on_connect(client, userdata, flags, rc):
     print(f"Connecté avec le code de résultat {rc}")
@@ -77,25 +78,26 @@ def on_message(client, userdata, msg):
         print(f"{data["lastUpdateTime"]}\nEnergie : {data["currentPower"]["power"]}")
         if "solarpanel" not in valeursFinal:
             valeursFinal["solarpanel"] = {}
-        valeursFinal["solarpanel"][str(len(valeursFinal["solarpanel"]))] = data["currentPower"]["power"]
+        else:
+            valeursFinal["solarpanel"][str(len(valeursFinal["solarpanel"]))] = data["currentPower"]["power"]
+            valeursFinal["solarpanel"][str(len(valeursFinal["solarpanel"]))] = data["currentPower"]["power"]
     elif (newMsg == 'AM107'):
         if (data[1]["room"] in salles):
             print("----------------------------------")
             print(f"Salle -> {data[1]["room"]}")
-            newData = {}
             if data[1]["room"] not in valeursFinal:
                 valeursFinal[data[1]["room"]] = {}
+                newData = {}
             for do in donnees:
                 newData[do] = float(data[0][do])
                 with open("AlertPipe.txt", "w") as alertFile:
                     if float(data[0][do]) <= float(seuil[do][0]):
-                        alertFile.write(f"[ALERT] Seuil minimum dépassé -> {do} : {data[0][do]}")
+                        alertFile.write(f"ALERTE de Seuil\n Seuil minimum dépassé -> {do} : {data[0][do]}")
                     elif float(data[0][do]) >= float(seuil[do][1]):
-                        alertFile.write(f"[ALERT] Seuil maximum dépassé -> {do} : {data[0][do]}")
+                        alertFile.write(f"ALERTE de Seuil\n Seuil maximum dépassé -> {do} : {data[0][do]}")
                     else:
                         alertFile.write(f"{do} : {data[0][do]}")
             valeursFinal[data[1]["room"]][str(len(valeursFinal[data[1]["room"]]))] = newData
-
 
 client = mqtt.Client()
 
@@ -106,10 +108,11 @@ try:
     client.connect(broker, port, 60)
 except Exception as e:
     with open("AlertPipe.txt", "w") as alertFile:
-        alertFile.write("Alert! \\nLa connection au broker a échouée!")
+       alertFile.write("Erreur!\nLa connection au broker a échouée!")
     exit(1)
-if (len(sys.argv) > 1):
+if(len(sys.argv)>1):
     exit(0)
+
 
 # Création d'un nouveau thread
 thread = threading.Thread(target=afficher_valeurs_final)
@@ -118,7 +121,10 @@ thread.start()
 
 client.loop_start()
 with open("AlertPipe.txt", "w") as alertFile:
-    alertFile.write("start")
+   alertFile.write("start")
+
+
+
 
 try:
     while True:
