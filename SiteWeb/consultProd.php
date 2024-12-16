@@ -6,7 +6,7 @@ $pathToImg = "./assets/accueil/velo_demo.png";
 $imgs = "./assets/" . basename($_SERVER["PHP_SELF"], '.php') . "/";
 
 if (!isset($_GET["idProduit"]))
-    header("Location: " . ($_GET["origin"] ?? "index.php"));
+    header("Location: " . ($_GET["origin"] ?? "articles.php"));
 
 require_once './components/bd.php';
 
@@ -96,6 +96,7 @@ $avisProd["avg"] = round($avisProd["avg"] * 2) / 2;
                     <input type="hidden" name="idProd" value="<?= $_GET['idProduit'] ?>" />
                     <input type="hidden" name="isAvailable" id="isAvailable" value="oui"/>
                     <select name="couleur" id="color" onChange="updateStock()">
+                        <!-- Ici se trouve la sélection de la couleur du produit -->
                         <?php
                         foreach ($colors as $color) {
                         ?>
@@ -149,6 +150,7 @@ $avisProd["avg"] = round($avisProd["avg"] * 2) / 2;
                     variant[i]["Couleur_idCouleur"] == couleur &&
                     variant[i]["Taille_idTaille"] == taille
                 ) {
+
                     // Exemple : mise à jour d'un champ HTML
                     document.getElementById("stockDisplay").innerText =
                         "Stock disponible : " + variant[i]["stock"];
