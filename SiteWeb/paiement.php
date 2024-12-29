@@ -1,8 +1,11 @@
 <?php
-include './components/header.php';
-include './components/bd.php';
+    session_start();
+    include './components/bd.php';
+    if (!isset($_SESSION['client_email'])) {
+        header("Location: login.php?msg=" . urlencode("Vous devez vous connecter d'abord!"));
+    }
+    include './components/header.php';
 ?>
-
 <body>
     <div class=main-container>
         <div class="main-container-left">
