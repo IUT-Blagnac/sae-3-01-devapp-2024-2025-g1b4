@@ -5,7 +5,8 @@
 :imgPath: ./../image/
 
 = Cahier De Recette - La Roue Tourne
-image:{imgPath}logo_univ.png[image,width=97,height=137]
+
+image:{imgPath}logo_univ.png[image,width=250,height=150]
 
 Université de Toulouse
 
@@ -13,7 +14,7 @@ IUT de Blagnac
 
 Département Informatique
 
-SAE 2.05
+SAE 3.3
 
 ifdef::env-github[]
 ++++
@@ -24,18 +25,18 @@ ifdef::env-github[]
 endif::[]
 
 ifndef::env-github[]
-image::{img}image_docu.png[Image de document, 350, align=center]
+image::{imgPath}image_docu.png[Image de document, 350, align=center]
 endif::[]
 
 ____
-*_Nom : BOULOUIHA Yassir, HANKI Wissal, DELAPLAGNE Titouan, FIGUERAS Clara_*
+*_Nom : ARGUELLES Alexian, ABAYEV Amina, DELAPLAGNE Titouan, GADBIN Hugo_*
 ____
 
-Version 2.1
+Version 1.0
 
-À destination de l'entreprise DailyBank
+À destination de l'entreprise La Roue Tourne
 
-Créé pour : Philippe Gaconnet et Yahn Formanczac
+Créé pour : 
  
 
 
