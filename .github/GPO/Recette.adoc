@@ -138,6 +138,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 ==== Filtrage et Tri des Produits
 ===== 4.1 US: Filtrer les produits par marques ( could )
+
 ===== 4.2 US: Filtrer les produits
 
 [cols="3,2,2,2", options="header"]
@@ -150,14 +151,14 @@ Ordinateur sous Windows ou OS équivalent.
 | Succès
 
 | Appliquer un filtre sans aucun produit correspondant
-| Aucun produit n'est affiché après l'application du filtre
+| Aucun produit n'est affiché après l'application du filtre et un message s'affiche
 | Filtre appliqué sans produits correspondants dans la base de données
 | Succès
 |====
 
 ===== 4.3 US: Trier par catégorie
 
-[cols="3,2,2,2", options="header"]
+[cols="4", options="header"]
 |====
 | Action | Comportement attendu | Pré-conditions | Résultat
 
@@ -166,8 +167,13 @@ Ordinateur sous Windows ou OS équivalent.
 | Produits disponibles dans plusieurs catégories
 | Succès
 
+| Sélectionner plusieurs catégories spécifiques pour trier les produits
+| Les produits des catégories choisies sont affichés
+| Produits disponibles dans plusieurs catégories
+| Succès
+
 | Sélectionner une catégorie sans produits
-| Aucun produit n'est affiché pour la catégorie sélectionnée
+| Aucun produit n'est affiché pour la catégorie sélectionnée et un message s'affiche
 | Catégorie sélectionnée sans produits disponibles
 | Succès
 |====
