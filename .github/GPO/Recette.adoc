@@ -192,7 +192,7 @@ Ordinateur sous Windows ou OS équivalent.
 | Choisir une fourchette de prix où aucun produit n'est disponible
 | Aucun produit n'est affiché après l'application du filtre
 | Fourchette de prix sans produits correspondants
-| Échec
+| Succès
 |====
 
 === Gestion du Stock
