@@ -1,4 +1,4 @@
-:toc: preamble
+:toc: macro
 :toc-title: Sommaire
 :toclevels: 4
 // Variables
@@ -19,13 +19,13 @@ SAE 3.3
 ifdef::env-github[]
 ++++
 <p align="center">
-  <img width="600" height="600" src="../media/image_docu.png">
+  <img width="500" height="500" src="../image/cahier-de-recette.png">
 </p>
 ++++
 endif::[]
 
 ifndef::env-github[]
-image::{imgPath}image_docu.png[Image de document, 350, align=center]
+image::{imgPath}cahier-de-recette.png[Image de document, 250, align=center]
 endif::[]
 
 ____
@@ -37,9 +37,15 @@ Version 1.0
 À destination de l'entreprise La Roue Tourne
 
 Créé pour : 
- 
 
 
+
+___
+
+
+
+
+toc::[]
 
 == I. Introduction
 === 1. Objet :
