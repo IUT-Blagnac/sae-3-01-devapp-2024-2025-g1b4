@@ -79,32 +79,25 @@ Ordinateur sous Windows ou OS équivalent.
 
 == III. Cas de Test par User Story
 
-[cols="2,3,2,2", options="header"]
+[cols="4", options="header"]
 |====
-| Cas de test | Titre | Objectif | Description du Test
+| Action | Comportement attendu | Pré-conditions | Résultat
 
-a| Test-01-04-01
-a| Création de compte utilisateur
-a| Vérifier la possibilité de créer un compte sur le site
+| Cliquer sur le lien "S'inscrire"
+| Le formulaire d'inscription doit s'afficher.
+| Aucun compte utilisateur connecté.
+| Succès
 
-5+|
-^| Action ^| Comportement attendu ^| Pré-conditions ^| Résultat
+| Remplir le formulaire d'inscription et soumettre
+| Un nouveau compte utilisateur est créé, et l'utilisateur est redirigé vers la page d'accueil ou son tableau de bord.
+| Tous les champs du formulaire sont remplis correctement.
+| Succès
 
-^| Cliquer sur le lien "S'inscrire"
-^| Le formulaire d'inscription doit s'afficher
-^| Aucun compte utilisateur connecté
-^| Succès
-
-^| Remplir le formulaire d'inscription et soumettre
-^| Un nouveau compte utilisateur est créé, et l'utilisateur est redirigé vers la page d'accueil ou son tableau de bord
-^| Tous les champs du formulaire sont remplis correctement
-^| Succès
-
-^| Recevoir un email de confirmation
-^| Un email de confirmation est envoyé à l'adresse indiquée lors de l'inscription
-^| Adresse email valide fournie lors de l'inscription
-^| Succès
-
+| Recevoir un email de confirmation
+| Un email de confirmation est envoyé à l'adresse indiquée lors de l'inscription.
+| Adresse email valide fournie lors de l'inscription.
+| Succès
 |====
+
 
 
