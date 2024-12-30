@@ -79,6 +79,8 @@ Ordinateur sous Windows ou OS équivalent.
 
 == III. Cas de Test par User Story
 
+=== 1. US: Créer un compte utilisateur
+
 [cols="4", options="header"]
 |====
 | Action | Comportement attendu | Pré-conditions | Résultat
@@ -99,5 +101,203 @@ Ordinateur sous Windows ou OS équivalent.
 | Succès
 |====
 
+=== 2. US: Filtrer les produits par marques
+
+.Filtrer les produits par marques (US: Filtrer les produits par marques)
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Sélectionner une marque dans le filtre
+| Seuls les produits de la marque sélectionnée sont affichés
+| Produits de différentes marques disponibles sur le site
+| Succès
+
+| Sélectionner une marque non disponible
+| Aucun produit n'est affiché
+| Marque sélectionnée absente dans la base de données
+| Échec
+|====
+
+=== 3. US: Voir le stock disponible
+
+.Voir le stock disponible (US: Voir le stock disponible)
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Consulter la page d'un produit
+| Le stock disponible est affiché sur la page du produit
+| Produits avec des informations de stock
+| Succès
+
+| Consulter un produit sans stock
+| Message 'Stock épuisé' affiché
+| Produit sans stock
+| Succès
+|====
+
+
+
+=== 4. US: Définir les paliers de stocks par produit
+
+.Définir les paliers de stocks par produit (US: Définir les paliers de stocks par produit)
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Régler les paliers de stock dans les paramètres du produit
+| Les alertes de stock sont générées lorsque le stock atteint le palier défini
+| Accès administrateur pour la gestion des stocks
+| Succès
+
+| Régler un palier de stock incorrect
+| Aucune alerte générée même si le stock est insuffisant
+| Palier défini en dessous du stock actuel sans intention
+| Échec
+|====
+
+=== 5. US: Choix du paiement
+
+.Choix du paiement (US: Choix du paiement)
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Sélectionner une méthode de paiement lors de la finalisation de l'achat
+| Le paiement est traité selon la méthode choisie
+| Produits dans le panier et utilisateur prêt à payer
+| Succès
+
+| Essayer d'utiliser une méthode de paiement désactivée
+| Message d'erreur affiché indiquant la méthode non disponible
+| Méthode de paiement non disponible sélectionnée
+| Échec
+|====
+
+=== 6. US: Filtrer les produits
+
+.Filtrer les produits (US: Filtrer les produits)
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Appliquer des filtres multiples sur les produits
+| Seuls les produits correspondant aux critères sélectionnés sont affichés
+| Plusieurs filtres disponibles (prix, catégorie, etc.)
+| Succès
+
+| Appliquer un filtre sans aucun produit correspondant
+| Aucun produit n'est affiché après l'application du filtre
+| Filtre appliqué sans produits correspondants dans la base de données
+| Échec
+|====
+
+=== 7. US: Trier par catégorie
+
+.Trier par catégorie (US: Trier par catégorie)
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Sélectionner une catégorie spécifique pour trier les produits
+| Les produits de la catégorie choisie sont affichés
+| Produits disponibles dans plusieurs catégories
+| Succès
+
+| Sélectionner une catégorie sans produits
+| Aucun produit n'est affiché pour la catégorie sélectionnée
+| Catégorie sélectionnée sans produits disponibles
+| Échec
+|====
+
+=== 8. US: Ajouter un nouvel article
+
+.Ajouter un nouvel article (US: Ajouter un nouvel article)
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Remplir le formulaire d'ajout d'un nouveau produit et soumettre
+| Le produit est ajouté à la base de données et affiché sur le site
+| Accès administrateur pour ajouter des produits
+| Succès
+
+| Soumettre un formulaire d'ajout de produit incomplet
+| Message d'erreur indiquant les champs manquants
+| Champs obligatoires non remplis
+| Échec
+|====
+
+=== 9. US: Sélection de couleur du produit
+
+.Sélection de couleur du produit (US: Sélection de couleur du produit)
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Choisir une couleur pour un produit spécifique
+| Le produit est affiché avec la couleur choisie
+| Produit disponible en plusieurs couleurs
+| Succès
+
+| Choisir une couleur non disponible pour le produit
+| Message d'erreur ou indication que la couleur n'est pas disponible
+| Couleur non disponible pour le produit sélectionné
+| Échec
+|====
+
+=== 10. US: Avis utilisateurs
+.Avis utilisateurs (US: Avis utilisateurs)
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Laisser un avis sur un produit
+| L'avis est ajouté au produit et visible pour les autres utilisateurs
+| Utilisateur connecté et ayant acheté le produit
+| Succès
+
+| Laisser un avis sans être connecté
+| Message d'erreur demandant de se connecter
+| Utilisateur non connecté
+| Échec
+|====
+
+=== 10. US: Implémentations d'offres en lot
+
+.Implémentations d'offres en lot (US: Implémentations d'offres en lot)
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Sélectionner une offre en lot à l'achat
+| Le prix total reflète la réduction de l'offre en lot
+| Offres en lot définies pour certains produits
+| Succès
+
+| Sélectionner une offre en lot non applicable
+| Message d'erreur indiquant que l'offre en lot n'est pas applicable
+| Produits sélectionnés ne faisant pas partie de l'offre en lot
+| Échec
+|====
+
+=== 11. US: Implémentations d'offres en lot
+
+.Filtrer par prix (US: Filtrer par prix)
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Choisir une fourchette de prix dans les options de filtrage
+| Seuls les produits dont le prix se situe dans la fourchette sélectionnée sont affichés
+| Produits avec différentes gammes de prix disponibles
+| Succès
+
+| Choisir une fourchette de prix où aucun produit n'est disponible
+| Aucun produit n'est affiché après l'application du filtre
+| Fourchette de prix sans produits correspondants
+| Échec
+|====
 
 
