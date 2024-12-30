@@ -1,13 +1,41 @@
-= Cahier De Recette - La Roue Tourne
-:toc:
+:toc: preamble
 :toc-title: Sommaire
+:toclevels: 4
+// Variables
+:imgPath: ./../image/
 
-:Entreprise: La Roue Tourne
-:Equipe:  G1B4
+= Cahier De Recette - La Roue Tourne
+image:{imgPath}logo_univ.png[image,width=97,height=137]
 
-Créé par : ABAYEV Amina
-Créé pour :  SAE S3.01
+Université de Toulouse
 
+IUT de Blagnac
+
+Département Informatique
+
+SAE 2.05
+
+ifdef::env-github[]
+++++
+<p align="center">
+  <img width="600" height="600" src="../media/image_docu.png">
+</p>
+++++
+endif::[]
+
+ifndef::env-github[]
+image::{img}image_docu.png[Image de document, 350, align=center]
+endif::[]
+
+____
+*_Nom : BOULOUIHA Yassir, HANKI Wissal, DELAPLAGNE Titouan, FIGUERAS Clara_*
+____
+
+Version 2.1
+
+À destination de l'entreprise DailyBank
+
+Créé pour : Philippe Gaconnet et Yahn Formanczac
  
 
 
