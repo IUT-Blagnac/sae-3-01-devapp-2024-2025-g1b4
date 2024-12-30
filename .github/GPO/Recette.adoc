@@ -135,6 +135,7 @@ Ordinateur sous Windows ou OS équivalent.
 | Les produits correspondant aux termes de recherche sont affichés
 | Termes de recherche valides entrés
 | Echec
+|====
 
 ===== 3.3 US: Ajouter un nouvel article
 
