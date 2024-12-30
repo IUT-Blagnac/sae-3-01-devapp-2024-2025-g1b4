@@ -116,6 +116,26 @@ Ordinateur sous Windows ou OS équivalent.
 ==== Consultation et Interaction avec les Produits
 ===== 3.1 US: Consulter un produit
 ===== 3.2 US: Consulter la liste des produits
+
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Accéder à la page de liste de produits
+| La liste complète des produits disponibles est affichée
+| Base de données contenant des produits
+| Succès
+
+| Utiliser la pagination pour naviguer entre les pages de produits
+| Chaque page de la pagination montre un ensemble distinct de produits
+| Plusieurs pages de produits disponibles
+| Succès
+
+| Rechercher un produit spécifique via la barre de recherche sur la page de liste
+| Les produits correspondant aux termes de recherche sont affichés
+| Termes de recherche valides entrés
+| Echec
+
 ===== 3.3 US: Ajouter un nouvel article
 
 [cols="3,2,2,2", options="header"]
