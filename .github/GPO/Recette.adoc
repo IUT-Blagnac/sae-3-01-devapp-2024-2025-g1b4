@@ -79,14 +79,32 @@ Ordinateur sous Windows ou OS équivalent.
 
 == III. Cas de Test par User Story
 
-[cols="1,1,1,1,1", options="header"]
+[cols="2,3,2,2", options="header"]
 |====
-| Cas de test | Titre | Objectif | Pré-conditions | Résultat
+| Cas de test | Titre | Objectif | Description du Test
 
-| Test-01
-| Filtrage par marque
-| Vérifier que le filtrage par marque fonctionne correctement
-| Plusieurs marques disponibles sur le site
-| Les produits de la marque sélectionnée doivent être affichés correctement
+a| Test-01-04-01
+a| Création de compte utilisateur
+a| Vérifier la possibilité de créer un compte sur le site
+
+5+|
+^| Action ^| Comportement attendu ^| Pré-conditions ^| Résultat
+
+^| Cliquer sur le lien "S'inscrire"
+^| Le formulaire d'inscription doit s'afficher
+^| Aucun compte utilisateur connecté
+^| Succès
+
+^| Remplir le formulaire d'inscription et soumettre
+^| Un nouveau compte utilisateur est créé, et l'utilisateur est redirigé vers la page d'accueil ou son tableau de bord
+^| Tous les champs du formulaire sont remplis correctement
+^| Succès
+
+^| Recevoir un email de confirmation
+^| Un email de confirmation est envoyé à l'adresse indiquée lors de l'inscription
+^| Adresse email valide fournie lors de l'inscription
+^| Succès
+
 |====
+
 
