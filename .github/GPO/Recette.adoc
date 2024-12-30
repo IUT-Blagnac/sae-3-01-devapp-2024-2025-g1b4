@@ -10,94 +10,37 @@ Créé pour :  [Projet universitaire/professionnel]
 
 == I. Introduction
 === 1. Objet :
-[.text-justify]
-Ce document est conçu pour documenter et guider les tests des fonctionnalités développées pour le site e-commerce de "La Roue Tourne". Il vise à assurer que toutes les fonctionnalités livrées répondent aux besoins exprimés dans les User Stories du backlog produit.
+Ce document est conçu pour documenter et guider les tests des fonctionnalités développées pour le site e-commerce de "La Roue Tourne".
 
 == II. Pre-Requis :
-[.text-justify]
 Description des outils et des environnements nécessaires à l'exécution des tests.
 
-=== 1. Éléments à tester :
-[.text-justify]
-Chaque fonctionnalité listée dans le backlog produit et spécifiée dans les issues de GitHub.
-
-=== 2. Environnement de test :
-[.text-justify]
-Détails de l'environnement technique (par exemple, serveurs, configurations, versions des logiciels).
-
 == III. Cas de test :
-=== 1. Gestion des produits :
-==== 1.1 Ajout, consultation et gestion des produits :
+=== 1. Ajout, consultation et gestion des produits :
+[cols="1,1"]
+|===
+| Cas de test | Titre du test
+| Objectif | Description précise de ce que le test vise à vérifier
 
-|====
->|Cas de test |Titre du test
->|Objectif |Description précise de ce que le test vise à vérifier.
-
-5+|
-^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|Prod_Add_01 ^|Ajouter un nouvel article via l'interface admin. ^|Le produit est ajouté à la base de données et apparaît sur le site. ^|Admin connecté et en mode édition. ^|Succès/Échec
-^|Prod_Modify_01 ^|Modifier les informations d'un produit. ^|Les modifications sont correctement enregistrées et visibles sur le site. ^|Produit existant sélectionné. ^|Succès/Échec
-^|Prod_Delete_01 ^|Supprimer un produit. ^|Le produit est retiré de la base de données et n'apparaît plus sur le site. ^|Produit existant sélectionné. ^|Succès/Échec
-^|Prod_View_01 ^|Consulter un produit. ^|Les détails du produit sont affichés correctement. ^|Produit existant sélectionné. ^|Succès/Échec
-^|Prod_List_01 ^|Consulter la liste des produits. ^|La liste complète des produits est affichée correctement. ^|Aucune. ^|Succès/Échec
-5+|
-
-==== 1.2 Filtrage et recherche de produits :
-
-|====
->|Cas de test |Titre du test
->|Objectif |Description précise de ce que le test vise à vérifier.
-
-5+|
-^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|Filter_Brand_01 ^|Filtrer les produits par marques. ^|Seuls les produits de la marque sélectionnée doivent être affichés. ^|Produits de différentes marques disponibles. ^|Succès/Échec
-^|Filter_Category_01 ^|Trier par catégorie. ^|Seuls les produits de la catégorie sélectionnée sont affichés. ^|Produits disponibles dans plusieurs catégories. ^|Succès/Échec
-^|Filter_Price_01 ^|Filtrer par prix. ^|Produits dans la fourchette de prix sélectionnée sont affichés. ^|Produits avec différents prix disponibles. ^|Succès/Échec
-5+|
+| Filter_Brand_01 | Filtrer les produits par marques.
+| Seuls les produits de la marque sélectionnée doivent être affichés. | Produits de différentes marques disponibles.
+| Filter_Category_01 | Trier par catégorie.
+| Seuls les produits de la catégorie sélectionnée sont affichés. | Produits disponibles dans plusieurs catégories.
+| Filter_Price_01 | Filtrer par prix.
+| Produits dans la fourchette de prix sélectionnée sont affichés. | Produits avec différents prix disponibles.
+|===
 
 === 2. Gestion du compte utilisateur :
 ==== 2.1 Création et gestion des comptes :
+[cols="1,1"]
+|===
+| Cas de test | Titre du test
+| Objectif | Description précise de ce que le test vise à vérifier
 
-|====
->|Cas de test |Titre du test
->|Objectif |Description précise de ce que le test vise à vérifier.
-
-5+|
-^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|Acc_Create_01 ^|Créer un compte utilisateur. ^|Le compte est créé et l'utilisateur peut se connecter. ^|Aucune. ^|Succès/Échec
-^|Acc_Admin_01 ^|Créer un compte administrateur. ^|Le compte admin est créé avec les privilèges appropriés. ^|Aucune. ^|Succès/Échec
-^|Acc_Obligation_01 ^|Obligation de créer un compte avant de pouvoir procéder au paiement. ^|Le système exige la création d'un compte avant le paiement. ^|Aucun compte et tentative de paiement. ^|Succès/Échec
-5+|
-
-==== 2.2 Connexion et déconnexion :
-
-|====
->|Cas de test |Titre du test
->|Objectif |Description précise de ce que le test vise à vérifier.
-
-5+|
-^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|Login_01 ^|Se connecter. ^|L'utilisateur est capable de se connecter avec ses identifiants. ^|Compte existant. ^|Succès/Échec
-^|Stay_Logged_01 ^|Rester connecter. ^|L'utilisateur reste connecté même après avoir fermé le navigateur. ^|Compte existant et option activée. ^|Succès/Échec
-^|Logout_01 ^|Se déconnecter. ^|L'utilisateur est déconnecté du système. ^|Utilisateur connecté. ^|Succès/Échec
-5+|
-
-=== 3. Transactions et paiements :
-==== 3.1 Gestion des transactions :
-
-|====
->|Cas de test |Titre du test
->|Objectif |Description précise de ce que le test vise à vérifier.
-
-5+|
-^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
-^|Payment_Choice_01 ^|Choix du paiement. ^|L'utilisateur peut sélectionner parmi plusieurs méthodes de paiement. ^|Aucune. ^|Succès/Échec
-5+|
-
-== IV. Résumé des tests :
-[.text-justify]
-Statistiques générales sur les tests réalisés, le taux de réussite, les problèmes rencontrés et les risques identifiés.
-
-== V. Conclusion :
-[.text-justify]
-Évaluation finale de la capacité du site à répondre aux besoins des utilisateurs finaux basée sur les résultats des tests.
+| Login_01 | Se connecter.
+| L'utilisateur est capable de se connecter avec ses identifiants. | Compte existant.
+| Stay_Logged_01 | Rester connecter.
+| L'utilisateur reste connecté même après avoir fermé le navigateur. | Compte existant et option activée.
+| Logout_01 | Se déconnecter.
+| L'utilisateur est déconnecté du système. | Utilisateur connecté.
+|===
