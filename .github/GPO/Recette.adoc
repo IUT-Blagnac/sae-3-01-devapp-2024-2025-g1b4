@@ -76,72 +76,16 @@ Les éléments testés concernent les Use-Cases spécifiés dans la *documentati
 Ordinateur sous Windows ou OS équivalent.
 
 
-== Cas de Test par User Story
+== III. Cas de Test par User Story
 
-[cols="1,1,1,2", options="header"]
-|===
-| US
-| Cas de Test
-| Titre du Test
-| Objectif & Description du Test
+[cols="1,1,1,1,1", options="header"]
+|====
+| Cas de test | Titre | Objectif | Pré-conditions | Résultat
 
-| Filtrer les produits par marques
 | Test-01
-| Filtrage par Marque
-| *Objectif*: Vérifier le filtrage des produits par marque spécifique. +
-*Description*: S'assurer que l'utilisateur peut filtrer les produits et voir uniquement ceux de la marque sélectionnée.
+| Filtrage par marque
+| Vérifier que le filtrage par marque fonctionne correctement
+| Plusieurs marques disponibles sur le site
+| Les produits de la marque sélectionnée doivent être affichés correctement
+|====
 
-| Voir le stock disponible
-| Test-02
-| Visualisation du Stock
-| *Objectif*: Confirmer la visibilité du stock disponible pour chaque produit. +
-*Description*: Vérifier que le stock actuel de chaque produit est correctement affiché sur sa page de détails.
-
-| Définir les paliers de stocks par produit
-| Test-03
-| Définition des Paliers de Stock
-| *Objectif*: Assurer que les paliers de stock sont correctement définis et gérés. +
-*Description*: Tester la fonctionnalité de réglage des paliers de stock pour automatiser les commandes ou alertes de réapprovisionnement.
-
-| Choix du paiement
-| Test-04
-| Options de Paiement
-| *Objectif*: Tester l'efficacité et la sécurité des différentes options de paiement disponibles. +
-*Description*: Vérifier que toutes les méthodes de paiement fonctionnent correctement sans erreur et sont sécurisées.
-
-| Filtrer les produits
-| Test-05
-| Filtrage Global des Produits
-| *Objectif*: Examiner la capacité du système à filtrer les produits selon divers critères (prix, taille, couleur). +
-*Description*: S'assurer que les filtres appliqués retournent les résultats attendus et améliorent l'expérience utilisateur.
-
-| Trier par catégorie
-| Test-06
-| Tri par Catégorie
-| *Objectif*: Vérifier que le tri des produits par catégorie est fonctionnel et précis. +
-*Description*: Confirmer que l'utilisateur peut sélectionner une catégorie et voir tous les produits correspondants.
-
-| Ajouter un nouvel article
-| Test-07
-| Ajout de Produit
-| *Objectif*: Tester le processus d'ajout d'un nouvel article par un administrateur. +
-*Description*: Vérifier que le formulaire d'ajout de produit fonctionne correctement et que le produit apparaît sur le site avec toutes les informations correctes.
-
-| Sélection de couleur du produit
-| Test-08
-| Choix de Couleur
-| *Objectif*: Assurer que les utilisateurs peuvent sélectionner des options de couleur pour les produits. +
-*Description*: Tester les sélecteurs de couleur sur les pages de produits pour s'assurer qu'ils reflètent les options disponibles.
-
-| Avis utilisateurs
-| Test-09
-| Soumission d'Avis
-| *Objectif*: Permettre aux utilisateurs de laisser des avis sur les produits. +
-*Description*: Vérifier que les avis peuvent être ajoutés, affichés correctement, et influencer la notation des produits.
-
-| Implémentations d'offres en lot
-| Test-10
-| Offres Groupées
-| *Objectif*: Tester les fonctionnalités des offres en lot. +
-*Description*: S'assurer que les offres groupées sont appliquées correctement lors de l'achat de produits combinés.
-|===
