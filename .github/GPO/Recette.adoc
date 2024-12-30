@@ -1,46 +1,356 @@
-= Cahier De Recette - La Roue Tourne E-commerce
+: = Cahier De Recette - DailyBankApp
 :toc:
 :toc-title: Sommaire
 
-:Entreprise: La Roue Tourne
-:Equipe:  [Votre équipe]
+:Entreprise: DailyBank
+:Equipe:  3B3
 
-Créé par : [Votre nom]
-Créé pour :  [Projet universitaire/professionnel]
+Créé par : ABAYEV Amina
+Créé pour :  SAE S2.01
+
+ 
+
+
 
 == I. Introduction
 === 1. Objet :
-Ce document est conçu pour documenter et guider les tests des fonctionnalités développées pour le site e-commerce de "La Roue Tourne".
+[.text-justify]
+Ce document a été produit dans le cadre d'un projet d'élaboration d'une application bancaire pour pour DailyBank. Il sert de guide pour l'exécution des tests fonctionnels et assure que l'application répond à toutes les exigences spécifiées.
+
 
 == II. Pre-Requis :
-Description des outils et des environnements nécessaires à l'exécution des tests.
+[.text-justify]
+L'exécution des tests spécifiés au chapitre suivant requiert :
+
+**Environnement de Développement** :
+
+- Java Development Kit (JDK) installé (version 8 ou supérieure).
+- IDE Java (Eclipse, IntelliJ IDEA, NetBeans, etc.) configuré pour le projet.
+
+**Base de Données** :
+
+- Une base de données Oracle configurée et accessible.
+- Scripts de création des tables et des données de test exécutés.
+
+**Dépendances** :
+
+- Les bibliothèques externes requises (JavaFX, Hibernate, JDBC) doivent être disponibles et configurées dans le projet.
+
+
+=== 1. Éléments à tester :
+[.text-justify]
+Les éléments testés concernent les Use-Cases spécifiés dans la *documentation technique.
+
+
+=== 2. Environnement de test :
+[.text-justify]
+Ordinateur sous Windows ou OS équivalent.
+
+
 
 == III. Cas de test :
-=== 1. Ajout, consultation et gestion des produits :
-[cols="1,1"]
-|===
-| Cas de test | Titre du test
-| Objectif | Description précise de ce que le test vise à vérifier
+=== 1. Fonctionnalités des guichetiers :
+==== 1.1 Gestion des clients :
 
-| Filter_Brand_01 | Filtrer les produits par marques.
-| Seuls les produits de la marque sélectionnée doivent être affichés. | Produits de différentes marques disponibles.
-| Filter_Category_01 | Trier par catégorie.
-| Seuls les produits de la catégorie sélectionnée sont affichés. | Produits disponibles dans plusieurs catégories.
-| Filter_Price_01 | Filtrer par prix.
-| Produits dans la fourchette de prix sélectionnée sont affichés. | Produits avec différents prix disponibles.
-|===
+|====
 
-=== 2. Gestion du compte utilisateur :
-==== 2.1 Création et gestion des comptes :
-[cols="1,1"]
-|===
-| Cas de test | Titre du test
-| Objectif | Description précise de ce que le test vise à vérifier
+>|Cas de test 4+|Test-01-01-01
+>|Titre 4+|Création d'un nouveau client
+>|Objectif 4+| Vérifier qu'il est possible de créer un nouveau client
 
-| Login_01 | Se connecter.
-| L'utilisateur est capable de se connecter avec ses identifiants. | Compte existant.
-| Stay_Logged_01 | Rester connecter.
-| L'utilisateur reste connecté même après avoir fermé le navigateur. | Compte existant et option activée.
-| Logout_01 | Se déconnecter.
-| L'utilisateur est déconnecté du système. | Utilisateur connecté.
-|===
+5+|
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.1 ^|Cliquer sur le bouton "Nouveau client". ^|La fenêtre de création des clients s'ouvre. ^| aucune ^|OK
+^|All_G_C.2 ^|Compléter les champs spécifiés et valider. ^|Un nouveau client est créé. ^|aucune ^|OK
+^|All_G_C.3 ^|Compléter les champs spécifiés sans valider. ^|Un nouveau client n'est pas créé. ^|aucune ^|NO
+
+
+5+|
+
+|====
+
+
+|====
+
+>|Cas de test 4+|Test-01-01-02
+>|Titre 4+|Modification d'un client
+>|Objectif 4+| Vérifier qu'il est possible de modifier un client
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_C.4 ^|Cliquer sur le bouton "Modifier client". ^|La fenêtre de modification des données du clients s'ouvre. ^|Le client est sélectionné ^|OK
+^|All_G_C.5 ^|Modifier les champs souhaités et confirmer. ^|Retour sur les informations du client. Le client est modifié. ^|La fenêtre modifier client est active ^|OK
+^|All_G_C.6 ^|Modifier les champs souhaités et annuler. ^|Retour sur les informations du client. Le client est inchangé. ^|La fenêtre modifier client est active ^|OK
+
+|====
+
+
+==== 1.2 Gestion des comptes bancaires :
+
+
+|====
+
+>|Cas de test 4+|Test-01-02-01
+>|Titre 4+|Consultation d'un compte
+>|Objectif 4+| Vérifier qu'il est possible de consulter un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_CB.1 ^|Cliquer sur le bouton "Comptes client". ^|La page des comptes du client s’affiche. ^|Un client actif est sélectionné ^|OK
+^|All_G_CB.2 ^|Sélectionner le bouton "Voir opérations". ^|La page des opérations du compte s’affiche. ^|Un compte actif est sélectionné ^|OK
+...
+
+|====
+
+|====
+
+>|Cas de test 4+|Test-01-02-02
+>|Titre 4+|Création d'un compte
+>|Objectif 4+| Vérifier qu'il est possible de créer un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_CB.3 ^|Cliquer sur le bouton "Nouveau compte". ^|La fenêtre de création des comptes s'ouvre. ^|aucune ^|OK
+^|All_G_CB.4 ^|Compléter les champs spécifiés et valider. ^|Un nouveau compte est créé. ^|aucune ^|OK
+...
+
+|====
+
+|====
+
+>|Cas de test 4+|Test-01-02-03
+>|Titre 4+|Clôturer un compte
+>|Objectif 4+| Vérifier qu'il est possible de clôturer un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_CB.5 ^|Cliquer sur le bouton "Clôturer un compte". ^|Un compte est clôturé. ^|Le compte a un solde egale à 0 ^|OK
+...
+
+|====
+
+
+==== 1.3 Gestion des opérations :
+
+|====
+
+>|Cas de test 4+|Test-01-03-01
+>|Titre 4+|Débiter un compte
+>|Objectif 4+| Vérifier qu'il est possible de débiter un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_COP.1 ^|Cliquer sur le bouton "Enregistrer Débit". ^|La page des débit du compte s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|All_G_COP.2  ^|Rentrer un montant 50 dans le champ "Montant". ^|Le nouveau solde est +50euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le compte sélectionné a un solde de +100 euros
+ ^|OK
+^|All_G_COP.3  ^|Rentrer un montant 150 dans le champ "Montant". ^|Le nouveau solde est -50 euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le compte sélectionné a un solde de +100 euros, le découvert
+autorisé est de -100 euros.
+ ^|OK
+^|All_G_COP.4  ^|Rentrer un montant 250 dans le champ "Montant". ^|Blocage ! + pop-up ^| Le compte sélectionné a un solde de +100 euros, le découvert
+autorisé est de -100 euros.
+ ^|OK
+  
+ 
+
+|====
+
+|====
+
+>|Cas de test 4+|Test-01-03-02
+>|Titre 4+|Créditer un compte
+>|Objectif 4+| Vérifier qu'il est possible de créditer un compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_COP.5 ^|Cliquer sur le bouton "Enregistrer Crédit". ^|La page des crédits du compte s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|All_G_COP.6  ^|Rentrer un montant 50 dans le champ "Montant". ^|Le nouveau solde est +150euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le compte sélectionné a un solde de +100 euros
+ ^|OK
+^|All_G_COP.7  ^|Rentrer un montant 150 dans le champ "Montant". ^|Le nouveau solde est +250 euros. On a créé une nouvelle opération dans la liste des opérations avec le bon montant et la bonne date ^| Le compte sélectionné a un solde de +100 euros
+
+ ^|OK
+  
+
+|====
+
+|====
+
+>|Cas de test 4+|Test-01-03-03
+>|Titre 4+|Effectuer un virement de compte à compte
+>|Objectif 4+| Vérifier qu'il est possible d'effectuer un virement de compte à compte
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|All_G_COP.8 ^|Cliquer sur le bouton "Effectuer un virement". ^|La page des comptes s’affiche. ^| Un compte actif est sélectionné ^|OK
+^|All_G_COP.9  ^|Rentrer un montant 50 dans le champ "Montant". ^|Sélectionner un autre compte actif ^| Le second compte sélectionné sera crédité de +50 euros^|OK
+ 
+
+|====
+
+==== 1.4 Gestion Prélèvement
+
+|====
+>|Cas de test 4+|Test-01-04-01
+>|Titre 4+|Créer un prélèvement
+>|Objectif 4+| Vérifier qu'il est possible de créer un nouveau prélèvement
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_P.1    ^|Sélectionner le bouton "Ajouter prélèvement"  ^|La fenêtre d'ajout de prélèvement s'ouvre. ^|aucune ^|NO
+^|C_G_P.2	 ^|Compléter les champs spécifiés et valider. ^|Un nouveau prélèvement est ajouté. ^|Le solde du compte est supérieur au prélèvement et le compte n'est pas cloturé ^|NO
+5+|
+
+|====
+|====
+>|Cas de test 4+|Test-01-04-02
+>|Titre 4+|Consulter un prélèvement
+>|Objectif 4+| Vérifier qu'il est possible de consulter les détails d'un prélèvement
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_P.3    ^|Sélectionner le bouton "Consulter prélèvement"  ^|La fenêtre de consultation de prélèvement s'ouvre. ^|Séléctionner un prélèvement ^|OK
+5+|
+
+|====
+|====
+>|Cas de test 4+|Test-01-04-03
+>|Titre 4+|Mettre à jour un prélèvement
+>|Objectif 4+| Vérifier qu'il est possible de modifier les informations d'un prélèvement
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_P.4    ^|Sélectionner le bouton "Modifier prélèvement"  ^|La fenêtre de modification de prélèvement s'ouvre. ^|Séléctionner un prélèvement ^|OK
+^|C_G_P.5   ^|Modifier les informations et valider  ^|Les informations du prélèvement ont bien été modifiées. ^|le montant du prélèvement est inférieur au solde du compte ^|OK
+5+|
+
+|====
+|====
+>|Cas de test 4+|Test-01-04-04
+>|Titre 4+|Supprimer un prélèvement
+>|Objectif 4+| Vérifier qu'il est possible de supprimer un prélèvement
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_P.6    ^|Sélectionner le bouton "Supprimer prélèvement"  ^|La fenêtre de suppression de prélèvement s'ouvre. ^|Séléctionner un prélèvement ^|NO
+^|C_G_P.7   ^|Cliquer sur le bouton "Valider"  ^|Le prélèvement a été supprimé. ^|aucune ^|NO
+5+|
+
+|====
+
+
+=== 2. Fonctionnalités des chefs d'agence :
+[.text-justify]
+Les chefs d'agence ont accès aux mêmes fonctionnalités que les guichetiers, ainsi que d'autres qui leur sont réservées.
+
+==== 2.1 Gestion des clients :
+
+|====
+
+>|Cas de test 4+|Test-02-01-02
+>|Titre 4+|Ajouter des nouveaux employés
+>|Objectif 4+| Vérifier qu'il est possible d'ajouter de nouveaux employés
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.1    ^|Sélectionner le bouton "Ajouter employé"  ^|La fenêtre d'ajout d'employé s'ouvre. ^| aucune ^|OK
+^|C_G_C.2	 ^|Compléter les champs spécifiés et valider. ^|Un nouveau employé est ajouté. ^|aucune ^|OK
+
+5+|
+
+|====
+
+|====
+
+>|Cas de test 4+|Test-02-01-02
+>|Titre 4+|Consulter les employés
+>|Objectif 4+| Vérifier qu'il est possible de consulter les employés
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.3    ^|Sélectionner le bouton "Consulter"  ^|La fenêtre concernant l'employé s'ouvre. ^| Séléctionner un employé ^|OK
+
+5+|
+
+|====
+
+|====
+
+>|Cas de test 4+|Test-02-01-03
+>|Titre 4+|Modifier les informations d'un employé
+>|Objectif 4+| Vérifier qu'il est possible de modifier les informations d'un employé
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.4    ^|Sélectionner le bouton "Modifier"  ^|La fenêtre permetant la modification de l'employé s'ouvre. ^| Séléctionner un employé ^|OK
+^|C_G_C.5   ^|Modifier les informations et valider  ^|Les informations de l'employé ont bien été modifiées ^| aucune ^|OK
+
+
+5+|
+
+|====
+
+|====
+
+
+>|Cas de test 4+|Test-02-01-04
+>|Titre 4+|Supprimer un employé
+>|Objectif 4+| Vérifier qu'il est possible de supprimer un employé
+
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_C.6    ^|Sélectionner le bouton "Supprimer"  ^|La fenêtre permetant de selectionner un employé s'ouvre. ^| Séléctionner un employé ^|OK
+^|C_G_C.7   ^|Cliquer sur le bouton "Valider"  ^|L'employé a été supprimé ^| aucune ^|OK
+
+
+5+|
+
+|====
+
+==== 2.2 Gestion des opérations :
+
+|====
+>|Cas de test 4+|Test-02-02-01
+>|Titre 4+|Débit exceptionnel
+>|Objectif 4+| Vérifier qu'il est possible de réaliser un débit exceptionnel
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_O.1    ^|Sélectionner l'option "Débit exceptionnel"  ^|La fenêtre de débit exceptionnel s'ouvre. ^| aucune ^|OK
+^|C_G_O.2   ^|Compléter les champs requis et valider  ^|Le débit exceptionnel est réalisé. ^|Le débit ne doit pas etre supérieur au solde du compte ^|OK
+5+|
+
+|====
+|====
+>|Cas de test 4+|Test-02-02-02
+>|Titre 4+|Simuler emprunt
+>|Objectif 4+| Vérifier qu'il est possible de simuler un emprunt
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_O.3    ^|Sélectionner l'option "Simuler emprunt"  ^|La fenêtre de simulation d'emprunt s'ouvre. ^| aucune ^|OK
+^|C_G_O.4   ^|Compléter les champs requis et valider  ^|Les résultats de la simulation d'emprunt sont affichés. ^|aucune ^|OK
+5+|
+
+|====
+|====
+>|Cas de test 4+|Test-02-02-03
+>|Titre 4+|Simuler assurance
+>|Objectif 4+| Vérifier qu'il est possible de simuler une assurance
+5+|
+
+^|ID ^|Action ^|Comportement attendu ^|Pré-conditions ^|Résultat
+^|C_G_O.5    ^|Sélectionner l'option "Simuler assurance"  ^|La fenêtre de simulation d'assurance s'ouvre. ^| aucune ^|OK
+^|C_G_O.6   ^|Compléter les champs requis et valider  ^|Les résultats de la simulation d'assurance sont affichés. ^|aucune ^|OK
+5+|
+
+|====
