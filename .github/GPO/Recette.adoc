@@ -79,7 +79,6 @@ Ordinateur sous Windows ou OS équivalent.
 
 == III. Cas de Test par User Story
 
-= Organisations des User Stories pour le Site E-commerce
 
 === Gestion de Compte Utilisateur
 ==== Créer un compte utilisateur
