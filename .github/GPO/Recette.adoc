@@ -111,12 +111,94 @@ Ordinateur sous Windows ou OS équivalent.
 |====
 
 ===== 1.2 US: Créer un compte administrateur
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Accéder à la page de profil en tant qu'owner
+| La liste des utilisateurs avec leurs rôles actuels est affichée
+| Administrateur connecté avec le rôle "owner"
+| Succès
+
+| Modifier le rôle d'un utilisateur via une interface dédiée (ex. menu déroulant ou bouton)
+| Le rôle de l'utilisateur sélectionné est mis à jour avec succès
+| Rôle "owner" et utilisateur existant
+| Succès
+
+| Tenter de modifier le rôle d'un utilisateur sans disposer du rôle "owner"
+| L'option de modification de rôle est désactivée ou non accessible
+| Administrateur connecté sans rôle "owner"
+| Attendu
+
+| Vérifier le rôle modifié d'un utilisateur
+| Les modifications de rôle sont enregistrées et reflétées immédiatement dans la liste des utilisateurs
+| Rôle modifié avec succès
+| Succès
+|====
 
 ==== Authentification et Session
 ===== 2.1 US: Se connecter
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Accéder à la page de connexion via le bouton "Se connecter"
+| Le client est redirigé vers la page de connexion
+| Client non connecté
+| Succès
+
+| Remplir le formulaire de connexion avec des informations valides (email et mot de passe) et soumettre
+| Le client est connecté et redirigé vers son espace personnel
+| Compte utilisateur existant avec des informations valides
+| Succès
+
+| Remplir le formulaire de connexion avec des informations invalides (email ou mot de passe incorrects)
+| Un message d'erreur informe le client que les informations sont incorrectes
+| Informations invalides fournies
+| Attendu
+
+| Consulter l'espace personnel après connexion
+| Le client a accès à ses données personnelles, ses commandes passées, et ses informations de compte
+| Client connecté
+| Succès
+|====
 ===== 2.2 US: Se déconnecter
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Cliquer sur le bouton "Déconnexion"
+| L'utilisateur est immédiatement déconnecté et redirigé vers la page d'accueil
+| Utilisateur connecté
+| Succès
+
+| Vérifier la présence du bouton "Déconnexion" sur différentes pages
+| Le bouton "Déconnexion" est accessible sur toutes les pages du site
+| Utilisateur connecté et naviguant sur différentes pages
+| Succès
+
+|====
 ===== 2.3 US: Rester connecté
 ===== 2.4 US: Obligation de créer un compte avant de pouvoir procéder au paiement
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Tenter de passer une commande sans être connecté
+| Un message clair informe le client qu'il doit créer un compte ou se connecter avant de poursuivre
+| Client non connecté
+| Succès
+
+| Cliquer sur le lien ou bouton "Créer un compte" dans le message d'information
+| Le client est redirigé vers la page de création de compte
+| Client non connecté
+| Succès
+
+| Tenter de passer une commande après avoir créé un compte et s'être connecté
+| Le processus de paiement se déroule normalement
+| Client connecté
+| Succès
+|====
 
 === Gestion de Produits
 ==== Consultation et Interaction avec les Produits
