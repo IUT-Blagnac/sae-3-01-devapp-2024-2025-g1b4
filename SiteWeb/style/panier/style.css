@@ -49,13 +49,21 @@ body {
 }
 
 .btn_achat {
-    background-color: #8cbbf0;
+    background-color: #7193BE;
     color: #fff;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+}
+
+.btn_achat:hover {
+    background-color: #0c4fa6;
+}
+
+.btn_achat:active {
+    background-color: #000000;
 }
 
 .recapitulatif_wrapper {
@@ -91,7 +99,7 @@ body {
 
 .btn_commande {
     width: 100%;
-    background-color: #5d96ea;
+    background-color: #7193BE;
     color: #fff;
     padding: 10px 0;
     border: none;
@@ -99,4 +107,12 @@ body {
     cursor: pointer;
     font-size: 16px;
     margin-top: 20px;
+}
+
+.btn_commande:hover {
+    background-color: #0c4fa6;
+}
+
+.btn_commande:active {
+    background-color: #000000;
 }

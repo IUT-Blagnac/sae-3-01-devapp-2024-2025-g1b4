@@ -17,7 +17,6 @@
         <div class="panier_wrapper">
           <h1>Panier</h1>
           <div class="panier_empty">
-              <img src="./assets/accueil/Panier.png" alt="Panier vide" class="panier_icon">
               <p>Votre panier est vide</p>
               <button class="btn_achat" onclick="window.location.href='index.php'">Continuer mes achats</button>
           </div>
@@ -30,7 +29,7 @@
             <li>Livraison <span>voir à l'étape suivante</span></li>
             <li class="total">Total TVA incluse <span>0€</span></li>
           </ul>
-          <button class="btn_commande">Poursuivre la commande</button>
+          <button class="btn_commande" onclick="window.location.href='paiement.php'">Poursuivre la commande</button>
         </aside>
       </div>
     </div>

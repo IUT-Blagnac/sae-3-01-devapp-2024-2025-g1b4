@@ -1,0 +1,250 @@
+body {
+    background-color: rgba(228, 233, 238, 1);
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.main-container {
+    display: flex;
+    justify-content: space-between; /* Sépare les colonnes */
+    align-items: flex-start; /* Aligne les éléments en haut */
+    width: 100%; /* S'assure que le conteneur occupe toute la largeur */
+    padding-top: 2%;
+    background-color: #f5f5f5;
+    border: 1px solid #dadada;
+}
+
+.main-container-left{
+    width: 50%;     
+    background-color: white;
+    margin-left: 10%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2%;
+}
+
+
+.main-container-right {
+    width: 25%; 
+    background-color: white;
+    border: 1px solid #dadada;
+    padding-top: 1%;
+    margin-right: 10%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.delivery-container {
+    margin: 4%;
+}
+
+
+.payment-container {
+    margin: 4%;
+}
+
+h1 {
+    font-size: 20px;
+    color: #333;
+}
+
+.delivery-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+
+.form-group-row {
+    display: flex;
+    gap: 15px;
+}
+
+.form-group-row .form-group {
+    flex: 1;
+}
+
+.input-field:focus {
+    border-color: #333;
+    outline: none;
+}
+
+#country{
+    width: 98%;
+}
+
+#last-name {
+    width: 88.5%;
+}
+
+#city {
+    width: 88.5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.secure-text {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.payment-method {
+    margin-top: 20px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.radio-option input {
+    margin-right: 10px;
+}
+
+.radio-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: auto;
+}
+
+.credit-card-form {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Ajout d'un écart de 15px entre chaque champ */
+    display: none; /* Cache le formulaire par défaut */
+}
+
+
+.input-field {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 14px;
+    width: 94.5%;
+}
+
+.input-field:focus{
+    border-color: #7193BE;
+    outline: none;
+    
+}
+
+.input-group {
+    display: flex;
+    gap: 10px;
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.checkbox-option input {
+    margin-right: 5px;
+}
+
+#code{
+    margin-right: 2.1%;
+}
+
+
+
+
+.payment-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.payment-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #7193BE;
+    color: white;
+    cursor: pointer;
+}
+
+.payment-btn:hover {
+    background-color: #0c4fa6;
+}
+
+.payment-btn:active {
+    background-color: #000000;
+}
+
+
+.payment-btn:focus {
+    outline: none;
+}
+
+/* Style pour le checkbox lorsqu'il est coché */
+.checkbox-option input:checked {
+    accent-color: #7193BE; /* Change la couleur principale */
+}
+
+/* Style pour le radio lorsqu'il est sélectionné */
+.radio-option input:checked {
+    accent-color: #7193BE; /* Change la couleur principale */
+}
+
+.order-summary {
+    list-style: none;
+    padding: 0;
+}
+
+.order-summary li {
+    font-size: 16px;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.order-summary .total {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.order-summary span {
+    color: #7193BE;
+}
+
+.order-summary-container{
+    margin: 4%;
+}
