@@ -7,42 +7,15 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    /* min-height: 100vh; */
 }
 
 /* Conteneur des carrés */
-.square-container1 {
+.square-container {
     display: flex; /* Active Flexbox */
-    justify-content: space-between; /* Espace égal entre les carrés */
-    align-items: center; /* Aligne les carrés verticalement */
+    flex-direction: column; /* Organise les lignes de carrés en colonnes */
     margin: 10px auto; /* Centre le conteneur dans la page */
     max-width: 80%; /* Limite la largeur du conteneur */
     padding-top: 40px;   
-}
-
-/* Conteneur des carrés */
-.square-container2 {
-    display: flex; /* Active Flexbox */
-    justify-content: space-between; /* Espace égal entre les carrés */
-    align-items: center; /* Aligne les carrés verticalement */
-    margin: 10px auto; /* Centre le conteneur dans la page */
-    max-width: 80%; /* Limite la largeur du conteneur */ 
-}
-
-/* Styles pour chaque carré */
-.square {
-    flex: 1; /* Les carrés occupent des parts égales */
-    height: 10vw; /* La hauteur est basée sur 30% de la largeur de la fenêtre */
-    width: 10vw;  /* La largeur est basée sur 30% de la largeur de la fenêtre */
-    max-height: 150px; /* Taille maximale */
-    max-width: 150px;  /* Taille maximale */
-    min-height: 20px; /* Taille minimale */
-    min-width: 20px;  /* Taille minimale */
-    background-color: #ffffff; /* Bleu clair */
-    margin: 0 10px; /* Espace horizontal entre les carrés */
-    cursor: pointer; /* Change le pointeur en main lors du survol */
-    transition: transform 0.3s ease-in-out; /* Animation de transformation */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
 }
 
 /* Ajoute l'animation au survol */
@@ -50,6 +23,7 @@ body {
     transform: scale(1.05); /* Agrandit légèrement le carré au survol */
 }
 
+/* Carré d'ajout */
 .squareAdd {
     flex: 1; /* Les carrés occupent des parts égales */
     height: 10vw; /* La hauteur est basée sur 30% de la largeur de la fenêtre */
@@ -81,7 +55,39 @@ body {
     max-height: 70%; /* Ajustez la taille de l'image si nécessaire */
 }
 
+/* Assurez-vous que chaque carré est un conteneur de positionnement */
+.square {
+    position: relative; /* Position relative pour que .square-img se base sur ce conteneur */
+    flex: 1; 
+    height: 10vw; 
+    width: 10vw; 
+    max-height: 150px; 
+    max-width: 150px;  
+    background-color: #ffffff; 
+    margin: 0 10px; 
+    cursor: pointer; 
+    transition: transform 0.3s ease-in-out; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
 
+/* Corrige le positionnement des images dans chaque carré */
+.square-img {
+    position: absolute; /* Maintenant basé sur .square */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%; /* Ajustez pour correspondre à la taille du carré */
+    max-height: 90%;
+}
+
+.square-line {
+    display: flex; 
+    justify-content: flex-start; /* Aligne les carrés à gauche */
+    align-items: center; 
+    flex-wrap: wrap; /* Permet le passage à une nouvelle ligne si nécessaire */
+    margin: 10px auto; 
+    max-width: 100%;
+}
 
 
 

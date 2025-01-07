@@ -280,9 +280,50 @@
         /* Par défaut masqué */
     }
 
-    #field1,
-    #field3,
-    #field4 {
+    #prix,
+    #nom,
+    #description {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         /* Ombre douce */
     }
+
+
+
+
+
+
+    /* Style pour la notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #7193BE;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 9999;
+    display: none;
+    width: 300px;
+    text-align: center;
+}
+
+.notification a {
+    color: white;
+    text-decoration: underline;
+}
+
+.notification.show {
+    display: block;
+    animation: slideIn 1s ease-out;
+}
+
+/* Animation pour la notification */
+@keyframes slideIn {
+    from {
+        top: -100px;
+    }
+    to {
+        top: 20px;
+    }
+}

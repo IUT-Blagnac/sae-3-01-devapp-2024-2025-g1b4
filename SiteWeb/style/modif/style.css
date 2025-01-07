@@ -1,10 +1,381 @@
-body {
-    background-color: rgba(228, 233, 238, 1);
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    margin: 0;
-    overflow-x: hidden;
+    /* style.css de dashboard.php */
+
+    /* Corps de la page */
+    body {
+        background-color: rgba(228, 233, 238, 1);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: column;
+        height: 100vh;
+        margin: 0;
+        overflow-x: hidden;
+    }
+
+    /* Conteneur principal */
+    .main-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 100vw;
+        /* Limite la largeur à 100% de la vue */
+        margin-left: 200px;
+        box-sizing: border-box;
+        /* Inclut le padding et les bordures dans les calculs de largeur/hauteur */
+    }
+
+
+
+    /* Conteneur des carrés */
+    .square-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 10px;
+        width: 90%;
+        padding-left: 100px;
+        padding-top: 50px;
+    }
+
+    .squareAdd {
+        height: 30vw;
+        width: 30vw;
+        max-height: 500px;
+        max-width: 500px;
+        min-height: 150px;
+        min-width: 150px;
+        margin: 0 10px;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+        border: 2px dashed #ccc;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Ombre subtile */
+    }
+
+    #chooseImageBtn {
+        padding: 10px;
+        background-color: #7193BE;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        position: relative;
+        /* Positionne le bouton relativement dans son conteneur */
+        z-index: 10;
+        /* S'assure que le bouton reste au-dessus de l'image si nécessaire */
+    }
+
+    #chooseImageBtn:hover {
+        background-color: #0c4fa6;
+    }
+
+    #chooseImageBtn:active {
+        background-color: #000;
+    }
+
+
+    /* Conteneur du formulaire */
+    .form-container {
+        height: 40vw;
+        width: 60vw;
+        min-height: 150px;
+        min-width: 150px;
+        margin-right: 400px;
+        margin-top: 15px;
+    }
+
+    /* Styles des champs du formulaire */
+    .form-container input {
+        height: 20px;
+        width: 96%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+
+    /* Pour les placeholders des champs input */
+    .form-container input::placeholder {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #999;
+    }
+
+    /* Conteneur de texte (textarea) */
+    .form-container textarea {
+        height: 200px;
+        width: 96%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        resize: none;
+        font-family: Arial;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Ombre subtile */
+    }
+
+    /* Pour les placeholders des champs textarea */
+    .form-container textarea::placeholder {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        color: #999;
+    }
+
+    /* Style du bouton de soumission */
+    .form-container button {
+        width: 100%;
+        padding: 10px;
+        background-color: #7193BE;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Ombre subtile */
+    }
+
+    .form-container button:hover {
+        background-color: #0c4fa6;
+    }
+
+    button:active {
+        background-color: #000000;
+    }
+
+    /* Style de l'input de type submit (modifier) */
+    .form-container .modifier {
+        width: 100%;
+        padding: 10px;
+        background-color: #7193BE;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Ombre subtile */
+        height: 6vh;
+    }
+
+    .form-container .modifier:hover {
+        background-color: #0c4fa6;
+    }
+
+    .form-container .modifier:active {
+        background-color: #000000;
+    }
+
+    /* Alignement des cases à cocher */
+    .checkbox-dropdown {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: white;
+        max-height: 200px;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .checkbox-dropdown label {
+        display: block;
+        margin: 5px 0;
+    }
+
+    .checkbox-dropdown input[type="checkbox"] {
+        position: relative;
+        top: 0;
+        margin-right: 10px;
+    }
+
+    /* Style de la case à cocher */
+    .checkbox-dropdown input[type="checkbox"] {
+        position: relative;
+        /* Positionnement relatif */
+        top: 34px;
+        /* Décale légèrement la case vers le bas */
+        left: 150px;
+        /* Décale uniquement la case à cocher */
+    }
+
+    /* Style du bouton "Couleurs" */
+    #showColorsBtn,
+    #showSizesBtn {
+        background-color: #7193BE;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    #showColorsBtn:hover,
+    #showSizesBtn:hover {
+        background-color: #0c4fa6;
+    }
+
+    #showColorsBtn:active,
+    #showSizesBtn:active {
+        background-color: #000000;
+    }
+
+    .checkbox-container {
+        position: relative;
+        margin-bottom: 15px;
+    }
+
+    /* Pour le conteneur de dropdown (masqué par défaut) */
+    .checkbox-dropdown {
+        display: none;
+    }
+
+    #showCategoriesBtn {
+        background-color: #7193BE;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 10px;
+        transition: background-color 0.3s ease;
+    }
+
+    #showCategoriesBtn:hover {
+        background-color: #0c4fa6;
+    }
+
+    #showCategoriesBtn:active {
+        background-color: #000000;
+    }
+
+    .checkbox-dropdown {
+        display: none;
+        /* Par défaut masqué */
+    }
+
+    #prix,
+    #nom,
+    #description {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Ombre douce */
+    }
+
+
+
+
+
+
+    /* Style pour la notification */
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #7193BE;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    z-index: 9999;
+    display: none;
+    width: 300px;
+    text-align: center;
 }
+
+.notification a {
+    color: white;
+    text-decoration: underline;
+}
+
+.notification.show {
+    display: block;
+    animation: slideIn 1s ease-out;
+}
+
+/* Animation pour la notification */
+@keyframes slideIn {
+    from {
+        top: -100px;
+    }
+    to {
+        top: 20px;
+    }
+}
+
+.image-preview-container {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.custom-file-button {
+    padding: 10px;
+    background-color: #7193BE;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    position: relative;
+    /* Positionne le bouton relativement dans son conteneur */
+    z-index: 10;
+    /* S'assure que le bouton reste au-dessus de l'image si nécessaire */
+}
+
+.custom-file-button:hover {
+    background-color: #0c4fa6;
+}
+
+.custom-file-button:active {
+    background-color: #000000;
+}
+
+.preview-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    position: absolute;
+    /* L'image se positionne absolument dans le carré */
+    top: 0;
+    left: 0;
+    z-index: 5;
+    /* S'assure que l'image est derrière le bouton */
+    display: none;
+    /* L'image est masquée par défaut */
+}
+
+.form-container .supprimer {
+    width: 100%;
+    padding: 10px;
+    background-color: #7193BE;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Ombre subtile */
+    height: 6vh;
+}
+
+.form-container .supprimer:hover {
+    background-color: #0c4fa6;
+}
+
+.form-container .supprimer:active {
+    background-color: #000000;
+}
+
+
