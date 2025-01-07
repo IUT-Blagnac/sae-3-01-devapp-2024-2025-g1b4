@@ -92,7 +92,10 @@
       <div class="second_container">
         <div class="button_wrapper">
             <div class="ligne"></div>
-            <button type="button" class="sc_button">ACHETER</button>
+            <button class="buy-button">Acheter</button>
+
+
+
         </div>
         <div class="sc_items">
             <div class="sc_item">

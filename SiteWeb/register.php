@@ -6,16 +6,24 @@
   		<link rel="stylesheet" href="./style/header/style.css">
 	</head>
     
-	<?php include './components/header.php'?>
+    <?php 
+        include './components/header.php';
+        require_once './components/bd.php';
+    ?>
 	
 	<body>
     <div class="form-container">
         <h1>Créer un compte</h1>
-        <form action="/register" method="POST">
+        <form action="./traitements/traitement_register.php" method="POST">
 
         <div class="name-container">
             <input type="text" id="first-name" name="first-name" placeholder="Prénom" required>
             <input type="text" id="last-name" name="last-name" placeholder="Nom" required>
+            <select id="sex" name="sex" required>
+                <option value="" disable selected>Genre</option>
+                <option value="H"> Homme </option>
+                <option value="F"> Femme </option>
+            </select>
         </div>
 
         <label for="birthdate-container">Date de naissance</label>
@@ -202,6 +210,7 @@
              <!-- Mail, Mot de passe et Confirmer mot de passe -->
              <div class="account-container">
                 <input type="email" id="email" name="email" placeholder="nom@example.com" required>
+                <input type="tel" id="tel" name="tel"  placeholder="Numéro de télephone" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}" required>
                 <input type="password" id="password" name="password" placeholder="Mot de passe" required>
                 <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirmer le mot de passe" required>
             </div>
