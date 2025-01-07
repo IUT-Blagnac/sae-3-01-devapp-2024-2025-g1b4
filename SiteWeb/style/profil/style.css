@@ -1,0 +1,53 @@
+html, body {
+  height: calc(100% - 40px);
+}
+
+.profil {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+.profil .left_menu {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  height: 100%;
+  width: 20%;
+  background-color: rgb(228, 233, 238);
+  padding-bottom: 20px;
+}
+.profil .left_menu .div_form {
+  width: 100%;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.profil .left_menu .div_form .lm_deconnexion {
+  width: 90%;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 15px 30px;
+  background-color: rgb(2, 2, 2);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+.profil .left_menu .div_form .lm_deconnexion:hover {
+  background-color: rgb(168, 168, 168);
+}
+.profil .global_page {
+  display: flex;
+  height: 100%;
+  width: 80%;
+}/*# sourceMappingURL=style.css.map */

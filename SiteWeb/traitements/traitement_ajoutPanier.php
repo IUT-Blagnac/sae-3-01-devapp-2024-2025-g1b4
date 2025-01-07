@@ -3,8 +3,12 @@
     session_start();
 
     if(!isset($_GET["idProd"]))
-        header("Location: index.php");
+        header("Location: ./../index.php");
 
+    if($_GET["isAvailable"]!="oui"){
+        header("Location: ./../consultProd.php?idProduit=". $_GET["idProd"] . "&msg=". urlencode("Produit à court de stock dans cette taille et couleur!"));
+        exit();
+    }
     
     if(isset($_SESSION["idClient"])){
 
@@ -37,6 +41,7 @@
 
     }
     
+
     header("Location: ./../panier.php");
 
 ?>

@@ -142,8 +142,6 @@ select:hover {
 select:focus {
     border-color: #587aa4; /* Met en valeur le focus */
     box-shadow: 0 0 5px rgba(88, 122, 164, 0.7); /* Ombre en focus */
-<<<<<<< Updated upstream
-=======
 }
 
 .stockAlert h1{
@@ -171,5 +169,4 @@ select:focus {
 
 .supprButt{
     left: -5vh;
->>>>>>> Stashed changes
 }

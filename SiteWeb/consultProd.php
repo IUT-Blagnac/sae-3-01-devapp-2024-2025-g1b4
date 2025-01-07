@@ -11,11 +11,6 @@ $pathToImg = "./assets/accueil/velo_demo.png";
 
 $imgs = "./assets/" . basename($_SERVER["PHP_SELF"], '.php') . "/";
 
-<<<<<<< Updated upstream
-if (!isset($_GET["idProduit"]))
-    header("Location: " . ($_GET["origin"] ?? "index.php"));
-=======
->>>>>>> Stashed changes
 
 require_once './components/bd.php';
 
@@ -34,12 +29,8 @@ try {
         throw new Exception("Le Produit demandé est introuvable !");
     }
 
-<<<<<<< Updated upstream
-$variants=$req->fetchAll();
-=======
     // Préparer la requête pour appeler la procédure stockée
     $statement = $pdo->prepare('CALL getAvgAvis(:idProd, @avg, @count)');
->>>>>>> Stashed changes
 
     // Lier le paramètre :idProd à la valeur transmise dans $_GET["idProduit"]
     $idProduit = isset($_GET["idProduit"]) ? (int)$_GET["idProduit"] : 0;
@@ -131,17 +122,13 @@ include './components/header.php';
 
 <body>
 
-<<<<<<< Updated upstream
-=======
 
     <div class="stockAlert">
         <h1 id="rupture">Rupture de Stock!!<h1>
         <h1 id="stockBas">Stock très faible! Moins de 5 exemplaires restants!</h1>
     </div>
 
->>>>>>> Stashed changes
     <div class="main">
-
         <div class="infoSpace">
             <div class="img" id="img">
                 <img src="<?= $pathToImg ?>" alt="">
@@ -177,6 +164,7 @@ include './components/header.php';
                 <form action="traitements/traitement_ajoutPanier.php" method="get">
                     <input type="hidden" name="idProd" value="<?= $_GET['idProduit'] ?>" />
                     <select name="couleur" id="color" onChange="updateStock()">
+                        <!-- Ici se trouve la sélection de la couleur du produit -->
                         <?php
                         foreach ($colors as $color) {
                         ?>
@@ -185,7 +173,7 @@ include './components/header.php';
                         }
                         ?>
                     </select>
-                    <select name="taille" id="taille" onChange="updateStock()">
+                    <select name="taille" id="taille" onChange='updateStock()'>
 
                         <?php
                         foreach ($tailles as $taille) {
@@ -201,6 +189,8 @@ include './components/header.php';
                         <input type="number" name="qte" id="qte" min="1" value="1" />
                         <input id="ajout" class="ajouter" type="submit" value="Ajouter au panier" />
                     </div>
+                    <br><br>
+                    <div id="stockDisplay">Stock disponible : --</div>
                 </form>
             </div>
 
@@ -221,19 +211,13 @@ include './components/header.php';
         </div>
     </div>
 
+
     <script>
-        var variant=<?= $variants?>;
+        <?php
+        echo 'var variant=' . json_encode($variants) . ';';
+        ?>
 
-        function updateStock(){
-            var e = document.getElementById("taille");
-            var taille = e.options[e.selectedIndex].value;
 
-<<<<<<< Updated upstream
-            var e = document.getElementById("color");
-            var couleur = e.options[e.selectedIndex].value;
-            
-            
-=======
         function updateStock() {
             try {
                 var eTaille = document.getElementById("taille");
@@ -288,8 +272,9 @@ include './components/header.php';
 
 
 
->>>>>>> Stashed changes
         }
+
+        updateStock();
     </script>
 
 
