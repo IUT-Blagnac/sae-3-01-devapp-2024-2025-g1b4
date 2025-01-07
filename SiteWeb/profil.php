@@ -24,7 +24,6 @@
             $roleReq->execute(["mail" => $_SESSION["client_email"]]);
 
             $role = $roleReq->fetch();
-            echo $role['role'];
             $_SESSION['client_permission'] = $role['role'];
         }
     ?>
@@ -32,7 +31,7 @@
     <div class="profil">
         <div class="left_menu">
             <?php
-                if ($_SESSION['client_permission'] == 'admin') {
+                if ($_SESSION['client_permission'] == 'admin' OR $_SESSION['client_permission'] == 'owner') {
                     echo '<button class="dashboard-btn" type="button" onclick="window.location.href=\'admin.php\'">Accéder au dashboard</button>';
 
                     // Gérer les rôles si l'utilisateur est owner
