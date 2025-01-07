@@ -1,63 +1,132 @@
 <?php
-include './components/header.php';
+
+session_start();
+if (!isset($_GET["idProduit"])) {
+    header("Location: " . ($_GET["origin"] ?? "articles.php"));
+    exit();
+}
+
 
 $pathToImg = "./assets/accueil/velo_demo.png";
 
 $imgs = "./assets/" . basename($_SERVER["PHP_SELF"], '.php') . "/";
 
-if (!isset($_GET["idProduit"]))
-    header("Location: " . ($_GET["origin"] ?? "articles.php"));
 
 require_once './components/bd.php';
 
-$req = $pdo->prepare("SELECT * FROM Produit WHERE idProduit=:idProd");
-$req->execute(["idProd" => $_GET["idProduit"]]);
-
-$prod = $req->fetch();
-
-$req = $pdo->prepare("SELECT DISTINCT Couleur_idCouleur, nomCouleur FROM VariantArticle, Couleur WHERE Produit_idProduit=:idProd AND Couleur_idCouleur=idCouleur");
-$req->execute(["idProd" => $_GET["idProduit"]]);
-
-$colors = $req->fetchAll();
+try {
+    if ($_GET["idProduit"] <= 0) {
+        throw new Exception('Identifiant du produit invalide.');
+    }
 
 
-$req = $pdo->prepare("SELECT DISTINCT Taille_idTaille, nomTaille FROM VariantArticle, Taille WHERE Produit_idProduit=:idProd AND Taille_idTaille=idTaille");
-$req->execute(["idProd" => $_GET['idProduit']]);
+    $req = $pdo->prepare("SELECT * FROM Produit WHERE idProduit=:idProd");
+    $req->execute(["idProd" => $_GET["idProduit"]]);
 
-$tailles = $req->fetchAll();
+    $prod = $req->fetch();
 
-$req = $pdo->prepare("SELECT * FROM VariantArticle WHERE Produit_idProduit=:idProd");
-$req->execute(["idProd" => $_GET["idProduit"]]);
+    if (!$prod) {
+        throw new Exception("Le Produit demandé est introuvable !");
+    }
 
-$variants = $req->fetchAll();
+    // Préparer la requête pour appeler la procédure stockée
+    $statement = $pdo->prepare('CALL getAvgAvis(:idProd, @avg, @count)');
 
-// on prépare la requête
-$statement = $pdo->prepare('CALL getAvgAvis(:idProd, @avg, @count)');
-// on donne la valeur de $pIdGrp au paramètre :idGrp de la requete préparée, en précisant que c'est de l'INTeger.
-$statement->bindParam(':idProd', $_GET["idProduit"], PDO::PARAM_INT);
-// on exécute la requete, donc la procédure stockée
-$statement->execute();
-// il faut fermer le cursor sinon on ne peut pas récupérer la valeur retournée par la procédure stockée
-$statement->closeCursor();
+    // Lier le paramètre :idProd à la valeur transmise dans $_GET["idProduit"]
+    $idProduit = isset($_GET["idProduit"]) ? (int)$_GET["idProduit"] : 0;
+    $statement->bindParam(':idProd', $idProduit, PDO::PARAM_INT);
 
-// on prépare la requête de récupération du paramètre OUT de la procédure stockée
-$resultat = $pdo->prepare("select @avg as avg,@count as count");
-// on execute
-$resultat->execute();
-// on récupere le résultat de cette requete
-$avisProd = $resultat->fetch();
+    // Exécuter la requête
+    $statement->execute();
 
-$avisProd["avg"] = round($avisProd["avg"] * 2) / 2;
+    // Fermer le curseur avant de récupérer les résultats des variables de sortie
+    $statement->closeCursor();
+
+    // Récupérer les valeurs des variables MySQL
+    $result = $pdo->query('SELECT @avg AS avg, @count AS count');
+
+    $avisProd = $result->fetch();
+
+    if (!$avisProd) {
+        throw new Exception("Impossible de récupérer les résultats de la procédure stockée.");
+    }
+
+    $avisProd["avg"] = round($avisProd["avg"] * 2) / 2;
+} catch (PDOException $e) {
+    // Gérer les erreurs liées à PDO
+    header("Location: index.php?msg=" . urlencode("Erreur PDO : ") . $e->getMessage());
+} catch (Exception $e) {
+    // Gérer les autres types d'erreurs
+    header("Location: index.php?msg=" . urlencode("Erreur : ") . $e->getMessage());
+}
+
+try {
+
+    $req = $pdo->prepare("SELECT * FROM VariantArticle WHERE Produit_idProduit=:idProd");
+    $req->execute(["idProd" => $_GET["idProduit"]]);
+
+    $variants = $req->fetchAll();
+
+    if (!$variants)
+        throw new Exception("Les tailles et couleurs disponibles n'ont pu être chargées de la base de données!");
+
+
+    $req = $pdo->prepare("SELECT DISTINCT Couleur_idCouleur, nomCouleur FROM VariantArticle, Couleur WHERE Produit_idProduit=:idProd AND Couleur_idCouleur=idCouleur");
+    $req->execute(["idProd" => $_GET["idProduit"]]);
+
+    $colors = $req->fetchAll();
+
+    if (!$colors)
+        throw new Exception("Les couleurs disponibles n'ont pu être chargées de la base de données!");
+
+    $req = $pdo->prepare("SELECT DISTINCT Taille_idTaille, nomTaille FROM VariantArticle, Taille WHERE Produit_idProduit=:idProd AND Taille_idTaille=idTaille");
+    $req->execute(["idProd" => $_GET['idProduit']]);
+
+    $tailles = $req->fetchAll();
+
+    if (!$colors)
+        throw new Exception("Les tailles disponibles n'ont pu être chargées de la base de données!");
+} catch (PDOException $e) {
+    echo '<script>alert(" Attention ! Erreur PDO ! Les tailles et couleurs disponibles n\'ont pu être correctement chargées")</script>';
+} catch (Exception $e) {
+    echo '<script>alert(" Attention ! ' . $e->getMessage() . '")</script>';
+}
+
+try {
+    if (!isset($_SESSION["client_email"]))
+        throw new Exception("Client non connecté!");
+
+    $req = $pdo->prepare("SELECT role FROM Client WHERE email=:email");
+
+    $req->execute(["email" => $_SESSION["client_email"]]);
+
+    $role = $req->fetch();
+
+    if (!$role)
+        throw new Exception('Attention ! Rôle introuvable ! ');
+} catch (PDOException $e) {
+    echo '<script>alert(" Attention ! ' . $e->getMessage() . '")</script>';
+} catch (Exception $e) {
+    $msg = $e->getMessage();
+
+    if (str_starts_with($msg, "Attention"))
+        echo '<script>alert("' . $e->getMessage() . '")</script>';
+
+    $role = "";
+}
+
+include './components/header.php';
 
 ?>
 
+
 <body>
 
-    
-<div class="stockAlert">
-    <h1 id="rupture">Rupture de Stock!!<h1>
-    <h1 id="stockBas">Stock très faible! Moins de 5 exemplaires restants!</h1>
-</div>
+
+    <div class="stockAlert">
+        <h1 id="rupture">Rupture de Stock!!<h1>
+        <h1 id="stockBas">Stock très faible! Moins de 5 exemplaires restants!</h1>
+    </div>
 
     <div class="main">
         <div class="infoSpace">
@@ -94,7 +163,6 @@ $avisProd["avg"] = round($avisProd["avg"] * 2) / 2;
 
                 <form action="traitements/traitement_ajoutPanier.php" method="get">
                     <input type="hidden" name="idProd" value="<?= $_GET['idProduit'] ?>" />
-                    <input type="hidden" name="isAvailable" id="isAvailable" value="oui"/>
                     <select name="couleur" id="color" onChange="updateStock()">
                         <!-- Ici se trouve la sélection de la couleur du produit -->
                         <?php
@@ -119,12 +187,27 @@ $avisProd["avg"] = round($avisProd["avg"] * 2) / 2;
                     </br>
                     <div class="ajout">
                         <input type="number" name="qte" id="qte" min="1" value="1" />
-                        <input class="ajouter" type="submit" value="Ajouter au panier" />
+                        <input id="ajout" class="ajouter" type="submit" value="Ajouter au panier" />
                     </div>
                     <br><br>
                     <div id="stockDisplay">Stock disponible : --</div>
                 </form>
             </div>
+
+            <?php
+            if ($role == "admin") {
+            ?>
+                <span class="adminLinks">
+                    <a href="./traitements/traitement_supprProduit.php?idProduit=<?= htmlspecialchars($_GET["idProduit"]) ?>" onclick="return confirm('Voulez-vous vraiment supprimer ce produit ?')" class="supprButt">
+                        <img src="./assets/consultProd/delete.png" alt="supprimer" class="supprImg">
+                    </a>
+                    <a href="./modif.php?idProduit=<?= htmlspecialchars($_GET["idProduit"]) ?>" class="modifyButt">
+                        <img src="./assets/consultProd/stylo.png" alt="modifier" class="modifyImg">
+                    </a>
+                </span>
+            <?php
+            }
+            ?>
         </div>
     </div>
 
@@ -136,48 +219,59 @@ $avisProd["avg"] = round($avisProd["avg"] * 2) / 2;
 
 
         function updateStock() {
+            try {
+                var eTaille = document.getElementById("taille");
+                var taille = eTaille.options[eTaille.selectedIndex].value;
+                var eCouleur = document.getElementById("color");
+                var couleur = eCouleur.options[eCouleur.selectedIndex].value;
 
-            var eTaille = document.getElementById("taille");
-            var taille = eTaille.options[eTaille.selectedIndex].value;
+                var stockTrouve = false; // Indicateur si on trouve le stock
 
-            var eCouleur = document.getElementById("color");
-            var couleur = eCouleur.options[eCouleur.selectedIndex].value;
+                for (var i = 0; i < variant.length; i++) {
+                    if (variant[i]["Couleur_idCouleur"] == couleur &&
+                        variant[i]["Taille_idTaille"] == taille) {
 
-            // Parcourir le tableau des variantes pour trouver la correspondance
-            var stockTrouve = false; // Indicateur si on trouve le stock
-            for (var i = 0; i < variant.length; i++) {
-                if (
-                    variant[i]["Couleur_idCouleur"] == couleur &&
-                    variant[i]["Taille_idTaille"] == taille
-                ) {
-
-                    // Exemple : mise à jour d'un champ HTML
-                    document.getElementById("stockDisplay").innerText =
-                        "Stock disponible : " + variant[i]["stock"];
+                        document.getElementById("stockDisplay").innerText =
+                            "Stock disponible : " + variant[i]["stock"];
 
 
+                        variant[i]["stock"] = variant[i]["stock"] == null ? 0 : variant[i]["stock"];
 
-                    if(variant[i]['stock']==0){
-                        document.getElementById("isAvailable").value="non";
-                        document.getElementById("rupture").hidden=false;
-                        document.getElementById("stockBas").hidden=true;
-                    }else{
-                        if(variant[i]["stock"]<5)
-                            document.getElementById("stockBas").hidden=false;
-                        else
-                            document.getElementById("stockBas").hidden=true;
+                        if (variant[i]['stock'] == 0) {
+                            document.getElementById("rupture").hidden = false;
+                            document.getElementById("stockBas").hidden = true;
+                            document.getElementById("ajout").disabled=true;
 
-                        document.getElementById("isAvailable").value="oui";
-                        document.getElementById("rupture").hidden=true;
+                        } else {
+                            document.getElementById("ajout").disabled=false;
+
+                            if (variant[i]["stock"] < 5)
+                                document.getElementById("stockBas").hidden = false;
+                            else
+                                document.getElementById("stockBas").hidden = true;
+
+                            document.getElementById("rupture").hidden = true;
+                        }
+                        stockTrouve = true;
+                        break;
                     }
-                    stockTrouve = true;
-                    break; 
                 }
+
+                if (!stockTrouve) {
+                    throw new Exception("Stock non Disponible !");
+                }
+
+            } catch (e) {
+                document.getElementById("stockDisplay").innerText = "Stock non disponible";
+                document.getElementById("stockBas").hidden = true;
+                document.getElementById("rupture").hidden = true;
+
+                document.getElementById("ajout").disabled=true;
+                return;
             }
 
-            if (!stockTrouve) {
-                document.getElementById("stockDisplay").innerText = "Stock non disponible";
-            }
+
+
         }
 
         updateStock();

@@ -1,3 +1,7 @@
+*{
+    overflow: hidden;
+}
+
 .main{
     background-color: #e4e9ee;
     height: 89vh;
@@ -7,6 +11,7 @@
 }
 
 .infoSpace {
+    position: relative;
     display: flex;
     align-items: flex-start;
     background: #c7d2dc;
@@ -16,6 +21,7 @@
     padding: 20px;
     justify-content: center;
     margin: auto;
+    overflow: visible;
 }
 
 .info img{
@@ -84,7 +90,6 @@
 .ajouter:hover {
     background-color: #587aa4; /* Couleur plus sombre au survol */
     border-color: #587aa4;
-
 }
 
 
@@ -144,4 +149,24 @@ select:focus {
     font-weight: bold;
     color: red;
     text-align:center;
+}
+
+.adminLinks a{
+    position: absolute;
+    top:-5vh;
+    height:10vh;
+    width: 10vh;
+}
+
+.adminLinks img{
+    height:10vh;
+    width: 10vh;
+}
+
+.modifyButt{
+    right:-5vh;
+}
+
+.supprButt{
+    left: -5vh;
 }
