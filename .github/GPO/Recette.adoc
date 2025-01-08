@@ -243,7 +243,52 @@ Ordinateur sous Windows ou OS équivalent.
 |====
 
 ===== 3.4 US: Modifier les informations d'un produit
+
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Remplir le formulaire de modification d'un produit avec des données valides et soumettre
+| Les modifications sont sauvegardées dans la base de données et visibles sur le site
+| Accès administrateur pour modifier des produits
+| Succès
+
+| Modifier uniquement certains champs du produit et soumettre
+| Les modifications des champs spécifiés sont sauvegardées dans la base de données et visibles sur le site
+| Accès administrateur pour modifier des produits
+| Succès
+
+| Réinitialiser les modifications avant de soumettre
+| Les informations restent inchangées et le produit conserve son état initial
+| Accès administrateur pour modifier des produits
+| Succès
+|====
+
+
 ===== 3.5 US: Supprimer un produit
+
+===== 3.5 US: Supprimer un produit
+
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Confirmer la suppression d'un produit via l'interface d'administration
+| Le produit est supprimé de la base de données et n'est plus visible sur le site
+| Accès administrateur pour supprimer des produits
+| Succès
+
+| Supprimer un produit avec des variantes associées (couleurs, tailles)
+| Le produit et toutes ses variantes sont supprimés de la base de données
+| Accès administrateur pour supprimer des produits
+| Succès
+
+| Annuler une suppression avant confirmation
+| Aucune suppression n'est effectuée, le produit reste inchangé
+| Accès administrateur pour supprimer des produits
+| Échec
+|====
+
 
 ==== Filtrage et Tri des Produits
 ===== 4.1 US: Filtrer les produits par marques ( could )
