@@ -409,6 +409,7 @@ Ordinateur sous Windows ou OS équivalent.
 
 ===== 7.2 US: Partager un avis
 ===== 7.3 US: Implémentations d'offres en lot
+Non fait
 
 === Paiement et Transactions
 ===== 8.1 US: Choix du paiement
