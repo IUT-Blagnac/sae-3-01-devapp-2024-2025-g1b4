@@ -203,6 +203,22 @@ Ordinateur sous Windows ou OS équivalent.
 === Gestion de Produits
 ==== Consultation et Interaction avec les Produits
 ===== 3.1 US: Consulter un produit
+
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Consulter la description et les détails d'un produit
+| Tous les champs pertinents d'un produit sont affichés
+| Le produit est présent dans la Base de Données
+| Succès
+
+| Consulter la description et les détails d'un produit à cours de stock
+| Tous les champs pertinents d'un produit sont affichés mais la commande est impossible
+| Le produit est présent dans la Base de Données et à cours de stock
+| Succès
+|====
+
 ===== 3.2 US: Consulter la liste des produits
 
 [cols="3,2,2,2", options="header"]
@@ -320,6 +336,11 @@ Ordinateur sous Windows ou OS équivalent.
 | Message 'Stock épuisé' affiché
 | Produit sans stock
 | Succès
+
+| Consulter un produit avec un faible stock
+| Message 'stock faibe' affiché
+| Produit sans stock
+| Succès
 |====
 
 ===== 5.2 US: Définir les paliers de stocks par produit
@@ -341,11 +362,64 @@ Ordinateur sous Windows ou OS équivalent.
 
 ===== 5.3 US: Consulter sans acheter produit en rupture
 
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Consulter la page d'un produit à court de stock
+| Le stock disponible est indiqué comme en rupture
+| Produits avec des informations de stock
+| Succès
+|====
+
 === Interface Utilisateur et Navigation
 ===== 6.1 US: Naviguer facilement par un menu
+
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Avoir un menu sur chaque page du site
+| Le menu permet d'accéder aux pages primordiales du site
+| Pages principales du site accèssible
+| Succès
+
+| Le menu dispose d'une barre de recherche accéssible
+| Le menu redirige vers une page ou les produits correspondants sont affichés
+| Une page d'affichage de produits existe
+| Succès
+
+| Avoir un indicateur graphique de la page actuelle
+| Souligner la page actuelle
+| La page actuelle existe
+| Succès
+
+|====
+
 ===== 6.2 US: Carousel sur la page d'accueil
 ===== 6.3 US: Carte des magasins
+
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Avoir une page où se trouve une carte des sites physique de l'entreprise
+| Des pointeurs indique l'emplacement
+| Avoir des sites physiques
+| Succès
+
+|====
+
 ===== 6.4 US: Sélection de couleur du produit
+
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Consulter et acheter un produit disponible dans une certaine couleur
+| Le stock disponible dépends de la couleur
+| Produits avec des informations de couleur
+| Succès
 
 === Interactions et Promotions
 ===== 7.1 US: Avis utilisateurs
@@ -363,9 +437,26 @@ Ordinateur sous Windows ou OS équivalent.
 | Message d'erreur demandant de se connecter
 | Utilisateur non connecté
 | Échec
+
+| Laisser un avis sans avoir déjà commandé le produit
+| Bouton pour laisser un avis indisponible
+| Produit jamais commandé
+| Echec
 |====
 
 ===== 7.2 US: Partager un avis
+
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Partage son avis sur un produit acheté
+| L'avis est maintenant disponible et affecte la note moyenne du produit
+| Le produit a déjà été commandé
+| Succès
+
+|====
+
 ===== 7.3 US: Implémentations d'offres en lot
 
 === Paiement et Transactions
