@@ -306,6 +306,8 @@ Ordinateur sous Windows ou OS équivalent.
 ==== Filtrage et Tri des Produits
 ===== 4.1 US: Filtrer les produits par marques ( could )
 
+Non Fait
+
 ===== 4.2 US: Filtrer les produits
 
 [cols="3,2,2,2", options="header"]
@@ -439,6 +441,17 @@ Ordinateur sous Windows ou OS équivalent.
 |====
 
 ===== 6.2 US: Carousel sur la page d'accueil
+
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Avoir un carousel sur la page d'accueil ou les produits clés sont présentés
+| Le carousel permet de sélectionner et ajouter au panier un produit
+| Des produits dans la BD
+| Succès
+
+|====
 ===== 6.3 US: Carte des magasins
 
 [cols="3,2,2,2", options="header"]
@@ -462,6 +475,8 @@ Ordinateur sous Windows ou OS équivalent.
 | Le stock disponible dépends de la couleur
 | Produits avec des informations de couleur
 | Succès
+
+|====
 
 === Interactions et Promotions
 ===== 7.1 US: Avis utilisateurs
