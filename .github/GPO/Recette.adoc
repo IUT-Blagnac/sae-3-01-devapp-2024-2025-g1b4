@@ -264,9 +264,6 @@ Ordinateur sous Windows ou OS équivalent.
 | Succès
 |====
 
-
-===== 3.5 US: Supprimer un produit
-
 ===== 3.5 US: Supprimer un produit
 
 [cols="3,2,2,2", options="header"]
