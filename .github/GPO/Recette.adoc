@@ -179,6 +179,17 @@ Ordinateur sous Windows ou OS équivalent.
 
 |====
 ===== 2.3 US: Rester connecté
+
+[cols="3,2,2,2", options="header"]
+|====
+| Action | Comportement attendu | Pré-conditions | Résultat
+
+| Pouvoir naviguer sur le site avec un compte
+| Le site reconnaît l'utilisateur sur les pages
+| Gestion des comptes possible
+| Succès
+
+|====
 ===== 2.4 US: Obligation de créer un compte avant de pouvoir procéder au paiement
 [cols="3,2,2,2", options="header"]
 |====
