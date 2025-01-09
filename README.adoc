@@ -103,6 +103,11 @@ Appel offre : 11,84/20
 Toujours rien ...
 Note 0/3
 
+=== Evaluation ODJ ET COM semaine 51
+Toujours rien ...
+Note 0/3
+Pensez à m'envoyer l'ODJ pour la semaine prochaine, à noter que vous serez noté sur 8 en com puisque rien n'a été fait pendant la SAE.
+
 === Evaluation bi-hebdomadaire des sprints  
 
 ifdef::env-github[]
