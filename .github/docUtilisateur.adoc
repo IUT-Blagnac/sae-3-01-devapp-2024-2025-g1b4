@@ -1,0 +1,128 @@
+= Documentation Utilisateur du Site La Roue Tourne
+:toc: preamble
+:toc-title: Table des Matières
+:toclevels: 4
+// Variables
+:img: ../media/
+:tuto: {img}Tutoriels_utilisation/
+:gestCpt: {tuto}GestionComptes/
+:prod: {tuto}GestionProduits/
+:nav: {tuto}Navigation/
+:order: {tuto}ProcessusCommande/
+
+Université de Toulouse
+
+IUT de Blagnac
+
+Département Informatique
+
+SAE 3.3
+
+ifdef::env-github[]
+++++
+<p align="center">
+  <img width="600" height="600" src="../media/image_docu.png">
+</p>
+++++
+endif::[]
+
+ifndef::env-github[]
+image::{img}image_docu.png[Image de document, 350, align=center]
+endif::[]
+
+____
+*_Nom : ARGUELLES Alexian, ABAYEV Amina, DELAPLAGNE Titouan, GADBIN Hugo_*
+____
+
+Version 1.0
+
+À destination de l'entreprise La Roue Tourne
+
+Créé pour : Les utilisateurs et les administrateurs du site
+
+== 1 - Introduction
+
+La Roue Tourne est un site e-commerce qui offre une large gamme de produits. Cette documentation a pour but de guider les utilisateurs et les administrateurs dans l'utilisation des fonctionnalités du site.
+
+== 2 - Gestion de Compte Utilisateur
+
+=== Créer un compte utilisateur
+
+Pour créer un compte utilisateur, suivez ces étapes:
+
+. Accédez à la page d'inscription depuis le menu principal.
+. Remplissez les champs requis: nom, email, et mot de passe.
+. Validez l'inscription pour recevoir un email de confirmation.
+. Confirmez l'inscription en cliquant sur le lien envoyé par email.
+
+image:{gestCpt}creer_compte.png[Création de compte utilisateur]
+
+=== Authentification et Session
+
+Pour vous connecter au site:
+
+. Cliquez sur le lien "Se connecter".
+. Entrez votre email et mot de passe dans le formulaire de connexion.
+. Vous serez redirigé vers votre espace personnel après une connexion réussie.
+
+image:{gestCpt}connexion.png[Connexion au site]
+
+== 3 - Gestion de Produits
+
+=== Consulter et Interagir avec les Produits
+
+Pour consulter un produit:
+
+. Naviguez dans les différentes catégories de produits ou utilisez la fonction de recherche.
+. Cliquez sur un produit pour afficher ses détails, comme la description, le prix, et la disponibilité en stock.
+
+image:{prod}consulter_produit.png[Consultation de produit]
+
+=== Ajouter un Nouvel Article
+
+Administrateurs uniquement:
+
+. Accédez au panneau d'administration.
+. Remplissez le formulaire pour ajouter un nouveau produit, en incluant nom, description, prix, et stock.
+. Soumettez le formulaire pour ajouter le produit à la base de données.
+
+image:{prod}ajouter_produit.png[Ajout de produit]
+
+== 4 - Interface Utilisateur et Navigation
+
+=== Navigation Facile par un Menu
+
+. Utilisez le menu principal pour accéder aux différentes sections du site, incluant les catégories de produits, gestion de compte, et contact.
+. Le menu inclut également une barre de recherche pour faciliter l'accès direct aux produits spécifiques.
+
+image:{nav}menu_navigation.png[Navigation dans le menu]
+
+== 5 - Processus de Commande
+
+=== Passer une Commande
+
+. Ajoutez des produits à votre panier.
+. Accédez à votre panier et vérifiez vos articles.
+. Cliquez sur "Procéder au paiement".
+. Entrez vos informations de paiement et de livraison.
+. Confirmez la commande pour finaliser l'achat.
+
+image:{order}processus_commande.png[Processus de commande]
+
+== 6 - Support et Assistance
+
+En cas de besoin d'assistance, contactez notre service client via email ou téléphone. Des guides d'utilisation et FAQ sont également disponibles sur notre site pour aider les utilisateurs à naviguer sur le site et à utiliser les fonctionnalités offertes.
+
+== 7 - Conclusion
+
+Nous espérons que cette documentation vous aidera à utiliser efficacement le site La Roue Tourne. Pour toute question supplémentaire, n'hésitez pas à contacter notre équipe de support.
+
+== Annexe
+
+=== Glossaire
+
+Termes et définitions utilisés dans cette documentation.
+
+=== Contact
+
+Informations de contact pour le support technique et le service client.
