@@ -21,7 +21,7 @@ SAE 3.3
 ifdef::env-github[]
 ++++
 <p align="center">
-  <img width="600" height="600" src="/image/image_docu.png">
+  <img width="600" height="600" src="/image/cahier-de-recette.png">
 </p>
 ++++
 endif::[]
@@ -55,7 +55,7 @@ Pour créer un compte utilisateur, suivez ces étapes:
 . Validez l'inscription pour recevoir un email de confirmation.
 . Confirmez l'inscription en cliquant sur le lien envoyé par email.
 
-image:{gestCpt}creer_compte.png[Création de compte utilisateur]
+image: image/creer.png[Création de compte utilisateur]
 
 === Authentification et Session
 
