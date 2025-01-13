@@ -21,7 +21,7 @@ SAE 3.3
 ifdef::env-github[]
 ++++
 <p align="center">
-  <img width="600" height="600" src="../media/image_docu.png">
+  <img width="600" height="600" src="./image/image_docu.png">
 </p>
 ++++
 endif::[]
