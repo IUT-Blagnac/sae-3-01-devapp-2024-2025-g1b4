@@ -68,7 +68,7 @@ Tuteur/tutrice enseignant(e) de l'équipe:: mailto:jean-michel.bruel@univ-tlse2.
 - https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/blob/master/.github/GPO/Doc%20Conception.adoc[Document de conception]
 - https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/blob/master/.github/GPO/Recette.adoc[Cahier de recettes]
 - https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/blob/master/.github/GPO/Fiche%20conseil.pdf[Fiche Conseil]
-- https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/blob/master/.github/RENDU PHP S50.pdf[Documentation technique]
+- https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/blob/master/.github/docTechnique.pdf[Documentation technique]
 
 == Réalisations
 - https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/tree/master/.github/GPO/ODJ[Liens vers les ODJ de réunion]
