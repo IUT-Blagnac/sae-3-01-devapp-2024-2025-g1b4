@@ -95,7 +95,7 @@ Administrateurs uniquement:
 . Utilisez le menu principal pour accéder aux différentes sections du site, incluant les catégories de produits, gestion de compte, et contact.
 . Le menu inclut également une barre de recherche pour faciliter l'accès direct aux produits spécifiques.
 
-image::image/Menu.png[width="600", align="center", title="Visualisation du menu"]
+image::image/Menu.png[width="800", align="center", title="Visualisation du menu"]
 
 == 5 - Processus de Commande
 
@@ -107,7 +107,7 @@ image::image/Menu.png[width="600", align="center", title="Visualisation du menu"
 . Entrez vos informations de paiement et de livraison.
 . Confirmez la commande pour finaliser l'achat.
 
-image::image/panier.png[width="600", align="center", title="Consulter le panier"]
+image::image/ppanier.png[width="600", align="center", title="Consulter le panier"]
 
 == 6 - Support et Assistance
 
