@@ -73,6 +73,8 @@ Tuteur/tutrice enseignant(e) de l'équipe:: mailto:jean-michel.bruel@univ-tlse2.
 - https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/tree/master/.github/GPO/ODJ[Liens vers les ODJ de réunion]
 - https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/tree/master/.github/GPO/CR[Liens vers les CR de réunion]
 
+- https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/releases/tag/1.0[Release Final 1.0]
+
 == Gestion de projet & Qualité
 
 Chaque sprint (semaine) vous devrez livrer une nouvelle version de votre application (release).
