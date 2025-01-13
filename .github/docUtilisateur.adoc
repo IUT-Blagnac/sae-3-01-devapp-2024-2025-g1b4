@@ -65,7 +65,8 @@ Pour vous connecter au site:
 . Entrez votre email et mot de passe dans le formulaire de connexion.
 . Vous serez redirigé vers votre espace personnel après une connexion réussie.
 
-image:{gestCpt}connexion.png[Connexion au site]
+image::image/connexion.png[width="600", align="center", title="Connexion au site"]
+
 
 == 3 - Gestion de Produits
 
@@ -76,7 +77,7 @@ Pour consulter un produit:
 . Naviguez dans les différentes catégories de produits ou utilisez la fonction de recherche.
 . Cliquez sur un produit pour afficher ses détails, comme la description, le prix, et la disponibilité en stock.
 
-image:{prod}consulter_produit.png[Consultation de produit]
+image::image/produit.png[width="600", align="center", title="Consultation de produit"]
 
 === Ajouter un Nouvel Article
 
@@ -86,7 +87,6 @@ Administrateurs uniquement:
 . Remplissez le formulaire pour ajouter un nouveau produit, en incluant nom, description, prix, et stock.
 . Soumettez le formulaire pour ajouter le produit à la base de données.
 
-image:{prod}ajouter_produit.png[Ajout de produit]
 
 == 4 - Interface Utilisateur et Navigation
 
@@ -95,7 +95,7 @@ image:{prod}ajouter_produit.png[Ajout de produit]
 . Utilisez le menu principal pour accéder aux différentes sections du site, incluant les catégories de produits, gestion de compte, et contact.
 . Le menu inclut également une barre de recherche pour faciliter l'accès direct aux produits spécifiques.
 
-image:{nav}menu_navigation.png[Navigation dans le menu]
+image::image/Menu.png[width="600", align="center", title="Visualisation du menu"]
 
 == 5 - Processus de Commande
 
@@ -107,7 +107,7 @@ image:{nav}menu_navigation.png[Navigation dans le menu]
 . Entrez vos informations de paiement et de livraison.
 . Confirmez la commande pour finaliser l'achat.
 
-image:{order}processus_commande.png[Processus de commande]
+image::image/panier.png[width="600", align="center", title="Consulter le panier"]
 
 == 6 - Support et Assistance
 
