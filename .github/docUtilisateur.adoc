@@ -3,7 +3,7 @@
 :toc-title: Table des Matières
 :toclevels: 4
 // Variables
-:img: /image/
+:img: image/
 :tuto: {img}Tutoriels_utilisation/
 :gestCpt: {tuto}GestionComptes/
 :prod: {tuto}GestionProduits/
@@ -21,13 +21,13 @@ SAE 3.3
 ifdef::env-github[]
 ++++
 <p align="center">
-  <img width="600" height="600" src="/image/cahier-de-recette.png">
+  <img width="600" height="600" src="image/cahier-de-recette.png">
 </p>
 ++++
 endif::[]
 
 ifndef::env-github[]
-image::{img}image_docu.png[Image de document, 350, align=center]
+image::{img}cahier-de-recette.png[Image de document, 350, align=center]
 endif::[]
 
 ____
@@ -55,7 +55,7 @@ Pour créer un compte utilisateur, suivez ces étapes:
 . Validez l'inscription pour recevoir un email de confirmation.
 . Confirmez l'inscription en cliquant sur le lien envoyé par email.
 
-image: image/creer.png[Création de compte utilisateur]
+image::image/creer.png[width="600", align="center", title="Création d'utilisateur"]
 
 === Authentification et Session
 
