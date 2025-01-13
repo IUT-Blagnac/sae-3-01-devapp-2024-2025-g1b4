@@ -3,7 +3,7 @@
 :toc-title: Table des Matières
 :toclevels: 4
 // Variables
-:img: ./image/
+:img: /image/
 :tuto: {img}Tutoriels_utilisation/
 :gestCpt: {tuto}GestionComptes/
 :prod: {tuto}GestionProduits/
@@ -21,7 +21,7 @@ SAE 3.3
 ifdef::env-github[]
 ++++
 <p align="center">
-  <img width="600" height="600" src="./image/image_docu.png">
+  <img width="600" height="600" src="/image/image_docu.png">
 </p>
 ++++
 endif::[]
