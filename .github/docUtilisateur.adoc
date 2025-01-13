@@ -3,7 +3,7 @@
 :toc-title: Table des Matières
 :toclevels: 4
 // Variables
-:img: ../media/
+:img: ./image/
 :tuto: {img}Tutoriels_utilisation/
 :gestCpt: {tuto}GestionComptes/
 :prod: {tuto}GestionProduits/
