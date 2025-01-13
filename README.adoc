@@ -66,12 +66,12 @@ Tuteur/tutrice enseignant(e) de l'équipe:: mailto:jean-michel.bruel@univ-tlse2.
 
 == Documentation
 - https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/blob/master/.github/GPO/Doc%20Conception.adoc[Document de conception]
-- Documentation utilisateur(Semaine 2)
 - https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/blob/master/.github/GPO/Recette.adoc[Cahier de recettes]
 - https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/blob/master/.github/GPO/Fiche%20conseil.pdf[Fiche Conseil]
 
 == Réalisations
-...
+- https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/tree/master/.github/GPO/ODJ[Liens vers les ODJ de réunion]
+- https://github.com/IUT-Blagnac/sae-3-01-devapp-2024-2025-g1b4/tree/master/.github/GPO/CR[Liens vers les CR de réunion]
 
 == Gestion de projet & Qualité
 
