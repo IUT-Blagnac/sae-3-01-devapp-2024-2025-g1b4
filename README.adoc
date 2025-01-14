@@ -135,3 +135,8 @@ Backlog produit ok mais pas de backlog de sprint !! Pas d'issues en cours de tra
 
 J'ai des backlogs sprint 3 et 4 mais les US ne sont pas éclatées en tâches et ces tâches ne sont pas assignées. Je n'ai toujours pas de cahier de tests, pas de doc hormis la doc conception, pas de release.
 
+==== Evaluation semaine 2
+US toujours non éclatées en tâches, pas de milestone. Remarques précédentes non prises en compte. doc tech et user pointent vers le même document  ! Test OK. J'aurai aimé un lien vers le site ... attention vous avez un lien vers une release obsolète dans le readme
+note provisoire : 7,36/20
+note fiche synthèse droit : 12/20
+
