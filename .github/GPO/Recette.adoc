@@ -1,568 +1,217 @@
-:toc: macro
-:toc-title: Sommaire
-:toclevels: 4
-// Variables
-:imgPath: ./../image/
-
-= Cahier De Recette - La Roue Tourne
-
-image:{imgPath}logo_univ.png[image,width=250,height=150]
-
-Université de Toulouse
-
-IUT de Blagnac
-
-Département Informatique
-
-SAE 3.3
-
-ifdef::env-github[]
-++++
-<p align="center">
-  <img width="500" height="500" src="../image/cahier-de-recette.png">
-</p>
-++++
-endif::[]
-
-ifndef::env-github[]
-image::{imgPath}cahier-de-recette.png[Image de document, 250, align=center]
-endif::[]
-
-____
-*_Nom : ARGUELLES Alexian, ABAYEV Amina, DELAPLAGNE Titouan, GADBIN Hugo_*
-____
-
-Version 1.0
-
-À destination de l'entreprise La Roue Tourne
-
-Créé pour : 
-
-
-
-___
-
-
-
-
-toc::[]
-
-== I. Introduction
-=== 1. Objet :
-[.text-justify]
-Ce document est conçu pour documenter et guider les tests des fonctionnalités développées pour le site e-commerce de "La Roue Tourne". Il vise à assurer que toutes les fonctionnalités livrées répondent aux besoins exprimés dans les User Stories du backlog produit.
-
-
-== II. Pre-Requis :
-[.text-justify]
-L'exécution des tests spécifiés au chapitre suivant requiert :
-
-**Environnement de Développement** :
-
-- PHP installé (version 6 ou supérieure).
-- IDE compatible avec PHP, HTML et CSS (comme Visual Studio Code) configuré pour le projet.
-
-**Serveur Web** :
-
-- Apache pour le déploiement du site.
-
-**Base de Données** :
-
-- Une base de données Oracle configurée et accessible.
-- Scripts de création des tables et des données de test exécutés.
-
-
-
-=== 1. Éléments à tester :
-[.text-justify]
-Les éléments testés concernent les Use-Cases spécifiés dans la *documentation technique.
-
-
-=== 2. Environnement de test :
-[.text-justify]
-Ordinateur sous Windows ou OS équivalent.
-
-
-== III. Cas de Test par User Story
-
-
-=== Gestion de Compte Utilisateur
-==== Créer un compte utilisateur
-===== 1.1 US: Créer un compte utilisateur
-
-[cols="4", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Cliquer sur le lien "S'inscrire"
-| Le formulaire d'inscription doit s'afficher.
-| Aucun compte utilisateur connecté.
-| Succès
-
-| Remplir le formulaire d'inscription et soumettre
-| Un nouveau compte utilisateur est créé, et l'utilisateur est redirigé vers la page d'accueil ou son tableau de bord.
-| Tous les champs du formulaire sont remplis correctement.
-| Succès
-
-| Recevoir un email de confirmation
-| Un email de confirmation est envoyé à l'adresse indiquée lors de l'inscription.
-| Adresse email valide fournie lors de l'inscription.
-| Succès
-|====
-
-===== 1.2 US: Créer un compte administrateur
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Accéder à la page de profil en tant qu'owner
-| La liste des utilisateurs avec leurs rôles actuels est affichée
-| Administrateur connecté avec le rôle "owner"
-| Succès
-
-| Modifier le rôle d'un utilisateur via une interface dédiée (ex. menu déroulant ou bouton)
-| Le rôle de l'utilisateur sélectionné est mis à jour avec succès
-| Rôle "owner" et utilisateur existant
-| Succès
-
-| Tenter de modifier le rôle d'un utilisateur sans disposer du rôle "owner"
-| L'option de modification de rôle est désactivée ou non accessible
-| Administrateur connecté sans rôle "owner"
-| Attendu
-
-| Vérifier le rôle modifié d'un utilisateur
-| Les modifications de rôle sont enregistrées et reflétées immédiatement dans la liste des utilisateurs
-| Rôle modifié avec succès
-| Succès
-|====
-
-==== Authentification et Session
-===== 2.1 US: Se connecter
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Accéder à la page de connexion via le bouton "Se connecter"
-| Le client est redirigé vers la page de connexion
-| Client non connecté
-| Succès
-
-| Remplir le formulaire de connexion avec des informations valides (email et mot de passe) et soumettre
-| Le client est connecté et redirigé vers son espace personnel
-| Compte utilisateur existant avec des informations valides
-| Succès
-
-| Remplir le formulaire de connexion avec des informations invalides (email ou mot de passe incorrects)
-| Un message d'erreur informe le client que les informations sont incorrectes
-| Informations invalides fournies
-| Attendu
-
-| Consulter l'espace personnel après connexion
-| Le client a accès à ses données personnelles, ses commandes passées, et ses informations de compte
-| Client connecté
-| Succès
-|====
-===== 2.2 US: Se déconnecter
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Cliquer sur le bouton "Déconnexion"
-| L'utilisateur est immédiatement déconnecté et redirigé vers la page d'accueil
-| Utilisateur connecté
-| Succès
-
-| Vérifier la présence du bouton "Déconnexion" sur différentes pages
-| Le bouton "Déconnexion" est accessible sur toutes les pages du site
-| Utilisateur connecté et naviguant sur différentes pages
-| Succès
-
-|====
-===== 2.3 US: Rester connecté
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Pouvoir naviguer sur le site avec un compte
-| Le site reconnaît l'utilisateur sur les pages
-| Gestion des comptes possible
-| Succès
-
-|====
-===== 2.4 US: Obligation de créer un compte avant de pouvoir procéder au paiement
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Tenter de passer une commande sans être connecté
-| Un message clair informe le client qu'il doit créer un compte ou se connecter avant de poursuivre
-| Client non connecté
-| Succès
-
-| Cliquer sur le lien ou bouton "Créer un compte" dans le message d'information
-| Le client est redirigé vers la page de création de compte
-| Client non connecté
-| Succès
-
-| Tenter de passer une commande après avoir créé un compte et s'être connecté
-| Le processus de paiement se déroule normalement
-| Client connecté
-| Succès
-|====
-
-=== Gestion de Produits
-==== Consultation et Interaction avec les Produits
-===== 3.1 US: Consulter un produit
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Consulter la description et les détails d'un produit
-| Tous les champs pertinents d'un produit sont affichés
-| Le produit est présent dans la Base de Données
-| Succès
-
-| Consulter la description et les détails d'un produit à cours de stock
-| Tous les champs pertinents d'un produit sont affichés mais la commande est impossible
-| Le produit est présent dans la Base de Données et à cours de stock
-| Succès
-|====
-
-===== 3.2 US: Consulter la liste des produits
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Accéder à la page de liste de produits
-| La liste complète des produits disponibles est affichée
-| Base de données contenant des produits
-| Succès
-
-| Utiliser la pagination pour naviguer entre les pages de produits
-| Chaque page de la pagination montre un ensemble distinct de produits
-| Plusieurs pages de produits disponibles
-| Succès
-
-| Rechercher un produit spécifique via la barre de recherche sur la page de liste
-| Les produits correspondant aux termes de recherche sont affichés
-| Termes de recherche valides entrés
-| Echec
-|====
-
-===== 3.3 US: Ajouter un nouvel article
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Remplir le formulaire d'ajout d'un nouveau produit et soumettre
-| Le produit est ajouté à la base de données et affiché sur le site
-| Accès administrateur pour ajouter des produits
-| Succès
-
-| Soumettre un formulaire d'ajout de produit incomplet
-| Message d'erreur indiquant les champs manquants
-| Champs obligatoires non remplis
-| Échec
-|====
-
-===== 3.4 US: Modifier les informations d'un produit
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Remplir le formulaire de modification d'un produit avec des données valides et soumettre
-| Les modifications sont sauvegardées dans la base de données et visibles sur le site
-| Accès administrateur pour modifier des produits
-| Succès
-
-| Modifier uniquement certains champs du produit et soumettre
-| Les modifications des champs spécifiés sont sauvegardées dans la base de données et visibles sur le site
-| Accès administrateur pour modifier des produits
-| Succès
-
-| Réinitialiser les modifications avant de soumettre
-| Les informations restent inchangées et le produit conserve son état initial
-| Accès administrateur pour modifier des produits
-| Succès
-|====
-
-===== 3.5 US: Supprimer un produit
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Confirmer la suppression d'un produit via l'interface d'administration
-| Le produit est supprimé de la base de données et n'est plus visible sur le site
-| Accès administrateur pour supprimer des produits
-| Succès
-
-| Supprimer un produit avec des variantes associées (couleurs, tailles)
-| Le produit et toutes ses variantes sont supprimés de la base de données
-| Accès administrateur pour supprimer des produits
-| Succès
-
-| Annuler une suppression avant confirmation
-| Aucune suppression n'est effectuée, le produit reste inchangé
-| Accès administrateur pour supprimer des produits
-| Échec
-|====
-
-
-==== Filtrage et Tri des Produits
-===== 4.1 US: Filtrer les produits par marques ( could )
-
-Non Fait
-
-===== 4.2 US: Filtrer les produits
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Appliquer des filtres multiples sur les produits
-| Seuls les produits correspondant aux critères sélectionnés sont affichés
-| Plusieurs filtres disponibles (prix, catégorie, etc.)
-| Succès
-
-| Appliquer un filtre sans aucun produit correspondant
-| Aucun produit n'est affiché après l'application du filtre et un message s'affiche
-| Filtre appliqué sans produits correspondants dans la base de données
-| Succès
-|====
-
-===== 4.3 US: Trier par catégorie
-
-[cols="4", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Sélectionner une catégorie spécifique pour trier les produits
-| Les produits de la catégorie choisie sont affichés
-| Produits disponibles dans plusieurs catégories
-| Succès
-
-| Sélectionner plusieurs catégories spécifiques pour trier les produits
-| Les produits des catégories choisies sont affichés
-| Produits disponibles dans plusieurs catégories
-| Succès
-
-| Sélectionner une catégorie sans produits
-| Aucun produit n'est affiché pour la catégorie sélectionnée et un message s'affiche
-| Catégorie sélectionnée sans produits disponibles
-| Succès
-|====
-
-===== 4.4 US: Filtrer par prix
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Choisir une fourchette de prix dans les options de filtrage
-| Seuls les produits dont le prix se situe dans la fourchette sélectionnée sont affichés
-| Produits avec différentes gammes de prix disponibles
-| Succès
-
-| Choisir une fourchette de prix où aucun produit n'est disponible
-| Aucun produit n'est affiché après l'application du filtre
-| Fourchette de prix sans produits correspondants
-| Succès
-|====
-
-=== Gestion du Stock
-===== 5.1 US: Voir le stock disponible
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Consulter la page d'un produit
-| Le stock disponible est affiché sur la page du produit
-| Produits avec des informations de stock
-| Succès
-
-| Consulter un produit sans stock
-| Message 'Stock épuisé' affiché
-| Produit sans stock
-| Succès
-
-| Consulter un produit avec un faible stock
-| Message 'stock faibe' affiché
-| Produit sans stock
-| Succès
-|====
-
-===== 5.2 US: Définir les paliers de stocks par produit
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Régler les paliers de stock dans les paramètres du produit
-| Les alertes de stock sont générées lorsque le stock atteint le palier défini
-| Accès administrateur pour la gestion des stocks
-| Succès
-
-| Régler un palier de stock incorrect
-| Aucune alerte générée même si le stock est insuffisant
-| Palier défini en dessous du stock actuel sans intention
-| Échec
-|====
-
-===== 5.3 US: Consulter sans acheter produit en rupture
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Consulter la page d'un produit à court de stock
-| Le stock disponible est indiqué comme en rupture
-| Produits avec des informations de stock
-| Succès
-|====
-
-=== Interface Utilisateur et Navigation
-===== 6.1 US: Naviguer facilement par un menu
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Avoir un menu sur chaque page du site
-| Le menu permet d'accéder aux pages primordiales du site
-| Pages principales du site accèssible
-| Succès
-
-| Le menu dispose d'une barre de recherche accéssible
-| Le menu redirige vers une page ou les produits correspondants sont affichés
-| Une page d'affichage de produits existe
-| Succès
-
-| Avoir un indicateur graphique de la page actuelle
-| Souligner la page actuelle
-| La page actuelle existe
-| Succès
-
-|====
-
-===== 6.2 US: Carousel sur la page d'accueil
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Avoir un carousel sur la page d'accueil ou les produits clés sont présentés
-| Le carousel permet de sélectionner et ajouter au panier un produit
-| Des produits dans la BD
-| Succès
-
-|====
-===== 6.3 US: Carte des magasins
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Avoir une page où se trouve une carte des sites physique de l'entreprise
-| Des pointeurs indique l'emplacement
-| Avoir des sites physiques
-| Succès
-
-|====
-
-===== 6.4 US: Sélection de couleur du produit
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Consulter et acheter un produit disponible dans une certaine couleur
-| Le stock disponible dépends de la couleur
-| Produits avec des informations de couleur
-| Succès
-
-|====
-
-=== Interactions et Promotions
-===== 7.1 US: Avis utilisateurs
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Laisser un avis sur un produit
-| L'avis est ajouté au produit et visible pour les autres utilisateurs
-| Utilisateur connecté et ayant acheté le produit
-| Succès
-
-| Laisser un avis sans être connecté
-| Message d'erreur demandant de se connecter
-| Utilisateur non connecté
-| Échec
-
-| Laisser un avis sans avoir déjà commandé le produit
-| Bouton pour laisser un avis indisponible
-| Produit jamais commandé
-| Echec
-|====
-
-===== 7.2 US: Partager un avis
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Partage son avis sur un produit acheté
-| L'avis est maintenant disponible et affecte la note moyenne du produit
-| Le produit a déjà été commandé
-| Succès
-
-|====
-
-===== 7.3 US: Implémentations d'offres en lot
-Non fait
-
-=== Paiement et Transactions
-===== 8.1 US: Choix du paiement
-
-[cols="3,2,2,2", options="header"]
-|====
-| Action | Comportement attendu | Pré-conditions | Résultat
-
-| Sélectionner une méthode de paiement lors de la finalisation de l'achat
-| Le paiement est traité selon la méthode choisie
-| Produits dans le panier et utilisateur prêt à payer
-| Succès
-
-| Essayer d'utiliser une méthode de paiement désactivée
-| Message d'erreur affiché indiquant la méthode non disponible
-| Méthode de paiement non disponible sélectionnée
-| Échec
-|====
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Cahier de Recette – Les Amis de Virebent (SAE 5.1)
+
+Université de Toulouse  
+IUT de Blagnac – Département Informatique
+
+![Logo IUT Blagnac](../Images/Logo_IUT_Blagnac.png)
+
+![Image de couverture](../Images/image_doc_tech.jpg)
+
+Équipe:  
+- BOULOUIHA-GNAOUI Yassir  
+- ARGUELLES Alexian  
+- DELAPAGNE Titouan  
+- LOVIN Alex  
+- THEOPHILE Adrien  
+- ABAYEV Amina
+
+Version: 1.0  
+Destinataire: Association “Les Amis de Virebent”  
+Projet: Base de données + site WordPress
+
+Table des matières
+- I. Introduction
+  - 1. Objet
+  - 2. Périmètre (User Stories)
+  - 3. Références
+- II. Pré-requis & Environnement
+  - 1. Pré-requis
+  - 2. Environnement de test
+  - 3. Données de test
+- III. Plan de test par User Story
+  - US‑P1: Consulter une fiche produit/œuvre/immeuble (#60)
+  - US‑P2: Recherche (immeubles/œuvres/mobiliers) (#59)
+  - US‑P3: Comptes adhérents / Authentification (#53)
+  - US‑P4: Administration contenus (ajout/édition) (#48)
+  - US‑P5: Relations entre contenus (mobilier/immeuble/catalogues) (#71)
+  - US‑P6: Galerie multi‑images + marquage “sensible” (#63, #64)
+  - US‑P7: Import des données client (#51)
+  - (Annexe) Qualité et non-fonctionnel
+- IV. Traçabilité (User Stories ↔ Issues ↔ Tests)
+- V. Validation & Anomalies
+
+---
+
+## I. Introduction
+
+### 1. Objet
+Ce document définit les tests de validation fonctionnelle (recette) du site WordPress connecté à une base de données pour l’association “Les Amis de Virebent”. Il vise à s’assurer que les livrables correspondant aux User Stories et tâches GitHub sont conformes aux besoins.
+
+### 2. Périmètre (User Stories)
+- US (#60): Consulter une fiche produit/œuvre/mobilier/immeuble.
+- US (#59): Rechercher des biens (immeubles/œuvres/mobiliers).
+- US (#53): Créer et gérer des comptes adhérents (authentification).
+- US (#48): Ajouter des contenus (CPT/admin panel).
+- US (#71): Relier mobilier ↔ immeuble ↔ catalogues.
+- Tâches liées aux galeries (#63, #64) et à l’import (#51).
+
+### 3. Références
+- Documentation technique SAE 5.1 (WordPress + DB).
+- Issues GitHub (TSV fourni).
+- Guides d’installation et d’utilisation (issues #65, #61, #58, #70).
+
+---
+
+## II. Pré-requis & Environnement
+
+### 1. Pré-requis
+- WordPress opérationnel (version LTS supportée).
+- Accès admin WordPress (compte test “admin”).
+- PHP 8.x, MySQL/MariaDB accessible.
+- Plugins nécessaires activés (CPT, ACF ou équivalent si utilisé).
+- Thème/child-theme ou templates actifs.
+- Scripts d’import disponibles (pour #51).
+
+### 2. Environnement de test
+- Navigateur: Chrome/Firefox récents.
+- OS: Windows/macOS/Linux.
+- Environnement WordPress de recette (staging) avec BD isolée.
+- SMTP ou mailcatcher pour vérifier emails (si nécessaire pour comptes).
+
+### 3. Données de test
+- Échantillons d’œuvres/immeubles/mobiliers/catalogues.
+- Images “sensibles” vs “non sensibles” (pour galeries).
+- Comptes test: 
+  - admin (capacité complète),
+  - membre bureau (lecture étendue),
+  - visiteur (non connecté).
+- CSV/Excel client pour import (#51).
+
+---
+
+## III. Plan de test par User Story
+
+Note: Chaque cas liste Action | Résultat attendu | Pré-conditions | Résultat (à compléter en exécution).
+
+### US‑P1: Consulter une fiche produit/œuvre/immeuble (Issue #60)
+Sous‑tâches liées: #62 (récup info produit), #66 (affichage info), #63/#64 (galerie).
+
+| ID | Action | Résultat attendu | Pré-conditions | Résultat |
+|---|---|---|---|---|
+| P1-T1 | Ouvrir une fiche (single) | La page affiche titre, description, média, champs spécifiques | CPT “product/œuvre/immeuble” enregistré et contenu publié |  |
+| P1-T2 | Afficher galerie liée | La galerie affiche les images dans l’ordre | Galerie associée configurée |  |
+| P1-T3 | Naviguer vers éléments liés (catalogues/galerie) | Les liens mènent aux pages associées | Relations enregistrées |  |
+| P1-T4 | Absence de données sensibles pour public | Les images marquées “sensibles” n’apparaissent pas au public | Media flag “sensible” présent |  |
+| P1-T5 | Affichage complet pour admin | L’admin voit tout (y compris sensibles) | Connecté en admin |  |
+| P1-T6 | SEO/slug | Le slug est propre, la balise title et h1 cohérents | Thème actif et template single |  |
+
+### US‑P2: Recherche (immeubles/œuvres/mobiliers) (Issue #59)
+Sous‑tâches liées: #67 (formulaire), #68 (style), #69 (résultats), #70 (doc).
+
+| ID | Action | Résultat attendu | Pré-conditions | Résultat |
+|---|---|---|---|---|
+| P2-T1 | Ouvrir la page de recherche | Formulaire avec champs pertinents (type, mots‑clés…) | Page de recherche publiée |  |
+| P2-T2 | Rechercher avec critère type | Résultats filtrés par type (immeuble/œuvre/mobilier) | Contenus présents |  |
+| P2-T3 | Rechercher par mots‑clés | Résultats pertinents via WP_Query/meta_query | Indexation basique WP |  |
+| P2-T4 | Aucun résultat | Message informant “aucun résultat” | Critère volontairement rare |  |
+| P2-T5 | Pagination | Résultats paginés et navigation OK | > N résultats |  |
+| P2-T6 | Respect du flag “sensible” en search | Images sensibles non montrées au public | Images sensibles présentes |  |
+
+### US‑P3: Comptes adhérents / Authentification (Issue #53)
+Sous‑tâches: #54 (choix plugin), #55 (formulaire), #57 (liaison), #58 (docs).
+
+| ID | Action | Résultat attendu | Pré-conditions | Résultat |
+|---|---|---|---|---|
+| P3-T1 | Choix plugin auth | Plugin d’auth compatible et activé | Étude faite (#54) |  |
+| P3-T2 | Afficher le formulaire de connexion | Le formulaire s’affiche (shortcode/bloc) | Page de login publiée |  |
+| P3-T3 | Connexion valide | Redirection vers tableau de bord / page prévue | Compte test valide |  |
+| P3-T4 | Connexion invalide | Message d’erreur explicite | MDP incorrect |  |
+| P3-T5 | Déconnexion | Session fermée, retour à la page publique | Compte connecté |  |
+| P3-T6 | Rôles et capacités | Admin voit médias sensibles; public non | Rôles configurés |  |
+
+### US‑P4: Administration contenus (ajout/édition) (Issue #48)
+Sous‑tâches: #49 (choix plugins), #50 (config plugins), #51 (import), #61/#65 (docs).
+
+| ID | Action | Résultat attendu | Pré-conditions | Résultat |
+|---|---|---|---|---|
+| P4-T1 | Accéder au back‑office CPT | Menus CPT visibles (Produit, Galerie, etc.) | CPT enregistrés |  |
+| P4-T2 | Créer un contenu | Sauvegarde OK, statut en “publish/draft” selon choix | Champs requis remplis |  |
+| P4-T3 | Éditer un contenu | Modifs persistées après sauvegarde | Contenu existant |  |
+| P4-T4 | Supprimer un contenu | Contenu déplacé corbeille/supprimé | Droit suffisant |  |
+| P4-T5 | UI Panel Admin plugin | Pages d’admin accessibles (si plugin panel #34) | Plugin installé |  |
+| P4-T6 | Documentation | Guide d’installation et d’usage à jour | Issues #61/#65 |  |
+
+### US‑P5: Relations (mobilier ↔ immeuble ↔ catalogues) (Issue #71)
+
+| ID | Action | Résultat attendu | Pré-conditions | Résultat |
+|---|---|---|---|---|
+| P5-T1 | Éditer “mobilier” | Metabox Relations: Catalogues (multi), Immeuble (unique) | CPT “mobilier” actif |  |
+| P5-T2 | Sauvegarder relations mobilier | Metas: catalogues = [IDs], immeuble = ID | Sélections effectuées |  |
+| P5-T3 | Modifier relations | Anciennes valeurs remplacées proprement | Relations existantes |  |
+| P5-T4 | Éditer “immeuble” | Onglet Catalogues (multi) uniquement | CPT “immeuble” actif |  |
+| P5-T5 | Pas de relations sur “catalogue” | Aucune metabox Relations | CPT “catalogue” actif |  |
+| P5-T6 | Helper get_relations() | Retour structure: {immeuble, catalogues[]} | Helper dispo |  |
+
+### US‑P6: Galerie multi‑images + marquage “sensible” (Issues #63, #64)
+Basé sur votre modèle “Cahier_recette.adoc”.
+
+| ID | Action | Résultat attendu | Pré-conditions | Résultat |
+|---|---|---|---|---|
+| P6-T1 | Ajout multiple d’images | Miniatures listées, case “Image sensible”, bouton “Supprimer”, poignée de tri | CPT avec metabox galerie |  |
+| P6-T2 | Persistance du flag sensible | Cases cochées restent cochées après reload (meta stockée) | Sauvegarde effectuée |  |
+| P6-T3 | Tri par glisser‑déposer | Ordre conservé après reload (meta reflète l’ordre) | Drag‑drop actif |  |
+| P6-T4 | Suppression image intermédiaire | Image disparait, meta nettoyée | Sauvegarde effectuée |  |
+| P6-T5 | Galerie vidée | Meta supprimée, interface vide | Toutes images supprimées |  |
+| P6-T6 | Robustesse indices | Plusieurs ajouts/suppressions/tri avant save → état final correct | Session d’édition |  |
+| P6-T7 | Filtrage front public | Sans capacité, seules images non sensibles | Front affiche galerie |  |
+| P6-T8 | Filtrage front admin | Admin voit sensibles + non sensibles | Rôle admin |  |
+
+Capacités/rôles pour médias sensibles:
+
+| ID | Action | Résultat attendu | Pré-conditions | Résultat |
+|---|---|---|---|---|
+| P6-C1 | Attribution capacité | Rôle admin possède `la_view_sensitive_media` | Hooks d’init rôles |  |
+| P6-C2 | Respect en front | Différence de rendu selon capacité | Comptes configurés |  |
+
+### US‑P7: Import des données client (Issue #51)
+Parent: #48
+
+| ID | Action | Résultat attendu | Pré-conditions | Résultat |
+|---|---|---|---|---|
+| P7-T1 | Charger un fichier source | Le script accepte CSV/Excel attendu (colonnes mappées) | Fichier conforme |  |
+| P7-T2 | Simuler import à blanc (dry‑run) | Rapport de pré‑import: lignes OK/KO, erreurs de mapping | Option dry‑run si prévue |  |
+| P7-T3 | Import réel | Posts/meta créés, logs d’insertion disponibles | BD accessible |  |
+| P7-T4 | Idempotence partielle | Second import identique → pas de doublons (ou stratégie gérée) | Clés/identifiants gérés |  |
+| P7-T5 | Liens/relations après import | Relations (galeries/catalogues/immeubles) créées si mappées | Données relationnelles présentes |  |
+| P7-T6 | Rollback/erreurs | En cas d’erreur, rapport explicite et état BD cohérent | Gestion d’erreurs |  |
+
+---
+
+### (Annexe) Qualité et non-fonctionnel
+
+| ID | Action | Résultat attendu | Pré-conditions | Résultat |
+|---|---|---|---|---|
+| Q-T1 | Temps d’affichage fiche | < 2s sur 10 items galerie (en staging) | Cache basique actif |  |
+| Q-T2 | Sécurité médias sensibles | Aucun accès direct fichier sensible côté public (sans lien) | Protections médias |  |
+| Q-T3 | Accessibilité | Images avec alt, contrastes OK (spot‑check) | Thème |  |
+| Q-T4 | Responsive | Fiche/galerie s’affichent bien mobile/tablette | Thème responsive |  |
+
+---
+
+## IV. Traçabilité (User Stories ↔ Issues ↔ Tests)
+
+- US #60 → Tâches #62, #66, #63, #64 → Tests P1‑T1..T6, P6‑T1..T8
+- US #59 → Tâches #67, #68, #69, #70 → Tests P2‑T1..T6
+- US #53 → Tâches #54, #55, #57, #58 → Tests P3‑T1..T6
+- US #48 → Tâches #49, #50, #51, #61, #65 → Tests P4‑T1..T6, P7‑T1..T6
+- US #71 → (relations) → Tests P5‑T1..T6
+
+Chaque test conserve un ID unique pour faciliter le suivi d’exécution et le lien aux tickets GitHub.
+
+---
+
+## V. Validation & Anomalies
+
+- Pour chaque test: consigner “Succès/Échec”, captures d’écran, logs éventuels.
+- Anomalies: créer un ticket GitHub lié au test ID et à l’issue parente.
+- Critères de passage: 100% des tests critiques (US #60, #59, #53, #48) en succès; 95% global.
